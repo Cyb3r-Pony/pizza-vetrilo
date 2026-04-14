@@ -1,0 +1,5 @@
+{
+  "name": "Pizza Vetrilo",
+  "description": "Modern restaurant platform for Pizza Vetrilo - Sofia's favorite pizza, BBQ, and catering.",
+  "requestFramePermissions": ["geolocation"]
+}

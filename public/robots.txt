@@ -1,0 +1,88 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://pizzavetrilo.bg/sitemap.xml
+
+# ──────────────────────────────────────────────
+# AI crawler allowlist — major providers
+# ──────────────────────────────────────────────
+
+# OpenAI (ChatGPT training & browsing)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google (Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Microsoft (Copilot / Bing AI)
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Meta (LLaMA / AI products)
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Apple (Siri, AI features)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon (Alexa, AWS AI)
+User-agent: Amazonbot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (open dataset powering many LLMs)
+User-agent: CCBot
+Allow: /
+
+# Bytedance (TikTok AI)
+User-agent: Bytespider
+Allow: /
+
+# Diffbot (knowledge graph AI)
+User-agent: Diffbot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# You.com AI
+User-agent: YouBot
+Allow: /

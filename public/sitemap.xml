@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+
+  <!-- ═══════════════════════════════════
+       CORE PAGES
+  ═══════════════════════════════════ -->
+
+  <!-- Homepage — bilingual (BG primary, EN alternate) -->
+  <url>
+    <loc>https://pizzavetrilo.bg/</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://pizzavetrilo.bg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pizzavetrilo.bg/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pizzavetrilo.bg/"/>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&amp;fit=crop&amp;q=80&amp;w=1200</image:loc>
+      <image:title>Pizza Vetrilo — Автентична пица в София</image:title>
+    </image:image>
+  </url>
+
+  <!-- Menu page -->
+  <url>
+    <loc>https://pizzavetrilo.bg/menu</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&amp;fit=crop&amp;q=80&amp;w=800</image:loc>
+      <image:title>Меню — Pizza Vetrilo</image:title>
+    </image:image>
+  </url>
+
+  <!-- Locations page (contains all 3 restaurant cards + maps) -->
+  <url>
+    <loc>https://pizzavetrilo.bg/locations</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Deep-links to individual restaurant sections -->
+  <url>
+    <loc>https://pizzavetrilo.bg/locations#v1</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pizzavetrilo.bg/locations#v2</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pizzavetrilo.bg/locations#v3</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Catering page -->
+  <url>
+    <loc>https://pizzavetrilo.bg/catering</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&amp;fit=crop&amp;q=80&amp;w=1200</image:loc>
+      <image:title>Кетъринг — Pizza Vetrilo</image:title>
+    </image:image>
+  </url>
+
+  <!-- Gallery page -->
+  <url>
+    <loc>https://pizzavetrilo.bg/gallery</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- About page -->
+  <url>
+    <loc>https://pizzavetrilo.bg/about</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact page -->
+  <url>
+    <loc>https://pizzavetrilo.bg/contact</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       LEGAL PAGES
+  ═══════════════════════════════════ -->
+
+  <url>
+    <loc>https://pizzavetrilo.bg/privacy</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://pizzavetrilo.bg/terms</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
