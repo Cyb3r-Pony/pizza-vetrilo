@@ -7,9 +7,10 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { LOCATIONS } from '../data/appData';
 
 const NAV_LINKS = [
-  { name: 'nav.lunch', path: '/menu/Lunch_Menu_Vetrilo.pdf', isExternal: true },
+  { name: 'nav.lunch', path: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`, isExternal: true },
   { name: 'nav.menu', path: '/menu' },
   { name: 'nav.locations', path: '/locations', hasDropdown: true },
+  { name: 'nav.delivery', path: '/locations' },
   { name: 'nav.catering', path: '/catering' },
   { name: 'nav.gallery', path: '/gallery' },
   { name: 'nav.about', path: '/about' },
@@ -43,9 +44,9 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className={cn(
-            "text-2xl font-serif font-bold tracking-tight transition-colors group-hover:text-brand-accent",
+            "text-lg sm:text-2xl font-serif font-bold tracking-tight transition-colors group-hover:text-brand-accent",
             isScrolled || location.pathname !== '/' ? "text-brand-accent" : "text-white"
           )}>
             PIZZA VETRILO
@@ -53,7 +54,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-4" aria-label="Main navigation">
           {NAV_LINKS.map((link) => (
             <div
               key={link.path}

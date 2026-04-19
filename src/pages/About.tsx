@@ -8,10 +8,10 @@ export function About() {
 
   return (
     <div className="pt-24 pb-24 min-h-screen">
-      <section className="bg-brand-ink text-white py-20 mb-16">
+      <section className="bg-brand-ink text-white py-12 sm:py-20 mb-10 sm:mb-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl mb-6">{t('about.title')}</h1>
-          <p className="text-brand-secondary text-xl max-w-2xl mx-auto font-light">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl mb-4 sm:mb-6">{t('about.title')}</h1>
+          <p className="text-brand-secondary text-base sm:text-xl max-w-2xl mx-auto font-light">
             {t('about.subtitle')}
           </p>
         </div>

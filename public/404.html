@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pizza Vetrilo</title>
+    <script>
+      // Store the full URL and redirect to the app root
+      // The app's index.html will pick this up and restore the route
+      sessionStorage.redirect = location.href;
+      location.replace(location.origin + '/pizza-vetrilo/');
+    </script>
+  </head>
+  <body></body>
+</html>
