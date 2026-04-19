@@ -2,6 +2,16 @@
 <html lang="bg">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // GitHub Pages SPA redirect receiver
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pizza Vetrilo | Автентична италианска пица в София</title>
     <meta name="description" content="Пицария Ветрило — автентична италианска пица на пещ, барбекю и средиземноморска кухня в три локации в София. Поръчки и резервации." />
@@ -163,8 +173,8 @@
       ]
     }
     </script>
-    <script type="module" crossorigin src="/pizza-vetrilo/assets/index-BAyBTQDW.js"></script>
-    <link rel="stylesheet" crossorigin href="/pizza-vetrilo/assets/index-CmRrBwHg.css">
+    <script type="module" crossorigin src="/pizza-vetrilo/assets/index-l_bNB-Oc.js"></script>
+    <link rel="stylesheet" crossorigin href="/pizza-vetrilo/assets/index-D5kjHWLn.css">
   </head>
   <body>
     <div id="root"></div>
