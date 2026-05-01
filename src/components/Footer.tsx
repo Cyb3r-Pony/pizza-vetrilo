@@ -56,6 +56,14 @@ export function Footer() {
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Takeaway.com <ExternalLink size={11} />
               </a>
+              <a href={DELIVERY_LINKS.glovo} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
+                Glovo <ExternalLink size={11} />
+              </a>
+              <a href={DELIVERY_LINKS.bolt} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
+                Bolt Food <ExternalLink size={11} />
+              </a>
             </div>
           </div>
 
@@ -68,7 +76,7 @@ export function Footer() {
                 {t('footer.ourLocations')}
               </h4>
               <a
-                href="/Obslujvani_rayoni.pdf"
+                href={`${import.meta.env.BASE_URL}Obslujvani_rayoni.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent hover:text-white transition-colors"

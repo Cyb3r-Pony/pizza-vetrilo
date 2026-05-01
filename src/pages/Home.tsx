@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MENU_ITEMS, LOCATIONS } from '../data/appData';
+import { MenuItem, MenuData, LOCATIONS } from '../data/appData';
 import { useTranslation } from '../contexts/LanguageContext';
+import { useSiteConfig } from '../hooks/useSiteConfig';
+
+const CATEGORY_KEYS: Array<keyof Omit<MenuData, 'categories'>> = [
+  'pizza', 'salads', 'starters', 'soups', 'pasta', 'risotto',
+  'fish', 'bbq', 'main-dishes', 'oven-dishes', 'burgers', 'breads', 'garnishes', 'sauces', 'desserts'
+];
 
 export function Home() {
   const { t, language } = useTranslation();
-  const featuredDishes = MENU_ITEMS.filter(item => item.tags?.includes('popular')).slice(0, 6);
+  const { lunchMenuEnabled } = useSiteConfig();
+  const [featuredDishes, setFeaturedDishes] = useState<MenuItem[]>([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}menu/menu.json`)
+      .then(r => r.ok ? r.json() : null)
+      .then((data: MenuData | null) => {
+        if (!data) return;
+        const all: MenuItem[] = [];
+        for (const key of CATEGORY_KEYS) {
+          const arr = data[key];
+          if (Array.isArray(arr)) {
+            arr.forEach(item => { if (!item.hidden) all.push(item); });
+          }
+        }
+        setFeaturedDishes(all.filter(item => item.tags?.includes('popular')).slice(0, 6));
+      })
+      .catch(() => { /* silently fail — section stays hidden */ });
+  }, []);
 
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white">
+      <section className="relative min-h-screen flex items-center justify-center text-white pt-24 pb-20">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000"
@@ -30,31 +54,33 @@ export function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 leading-tight">
               {t('hero.title')} <br />
               <span className="text-brand-secondary">{t('hero.subtitle')}</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-white/80 max-w-2xl mx-auto font-light">
+            <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-10 text-white/80 max-w-2xl mx-auto font-light">
               {t('hero.tagline')}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="/menu/Lunch_Menu_Vetrilo.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full text-lg font-bold uppercase tracking-widest hover:bg-white/20 transition-all hover:-translate-y-1"
-              >
-                {t('hero.viewLunch')}
-              </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              {lunchMenuEnabled && (
+                <a
+                  href={`${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/20 px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-white/20 transition-all hover:-translate-y-1"
+                >
+                  {t('hero.viewLunch')}
+                </a>
+              )}
               <Link
-                to="/menu"
-                className="w-full sm:w-auto bg-brand-accent text-white px-10 py-4 rounded-full text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all hover:-translate-y-1"
+                to="/menu?category=Salads"
+                className="w-full sm:w-auto bg-brand-accent text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all hover:-translate-y-1"
               >
                 {t('hero.viewMenu')}
               </Link>
               <Link
                 to="/locations"
-                className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full text-lg font-bold uppercase tracking-widest hover:bg-white/20 transition-all hover:-translate-y-1"
+                className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/20 px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-white/20 transition-all hover:-translate-y-1"
               >
                 {t('hero.findLocation')}
               </Link>
@@ -62,7 +88,7 @@ export function Home() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden sm:flex">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
             <div className="w-1 h-2 bg-white rounded-full" />
           </div>
@@ -70,29 +96,29 @@ export function Home() {
       </section>
 
       {/* Quick Actions Bar */}
-      <div className="bg-white shadow-xl relative z-20 -mt-12 mx-4 lg:mx-auto max-w-5xl rounded-2xl grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100 overflow-hidden">
-        <a href={`tel:${LOCATIONS[0].phone.replace(/[\s\/]/g, '')}`} className="p-6 flex flex-col items-center gap-2 hover:bg-brand-bg transition-colors group">
-          <Phone className="text-brand-accent group-hover:scale-110 transition-transform" />
-          <span className="text-xs uppercase tracking-widest font-bold">{t('quick.call')}</span>
+      <div className="bg-white shadow-xl relative z-20 -mt-6 sm:-mt-12 mx-4 lg:mx-auto max-w-5xl rounded-2xl grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100 overflow-hidden">
+        <a href={`tel:${LOCATIONS[0].phone.replace(/[\s\/]/g, '')}`} className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
+          <Phone size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.call')}</span>
         </a>
-        <Link to="/locations" className="p-6 flex flex-col items-center gap-2 hover:bg-brand-bg transition-colors group">
-          <Calendar className="text-brand-accent group-hover:scale-110 transition-transform" />
-          <span className="text-xs uppercase tracking-widest font-bold">{t('quick.reserve')}</span>
+        <Link to="/locations" className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
+          <Calendar size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.reserve')}</span>
         </Link>
-        <Link to="/locations" className="p-6 flex flex-col items-center gap-2 hover:bg-brand-bg transition-colors group">
-          <Truck className="text-brand-accent group-hover:scale-110 transition-transform" />
-          <span className="text-xs uppercase tracking-widest font-bold">{t('quick.delivery')}</span>
+        <Link to="/locations" className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
+          <Truck size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.delivery')}</span>
         </Link>
-        <Link to="/menu" className="p-6 flex flex-col items-center gap-2 hover:bg-brand-bg transition-colors group">
-          <UtensilsCrossed className="text-brand-accent group-hover:scale-110 transition-transform" />
-          <span className="text-xs uppercase tracking-widest font-bold">{t('quick.menu')}</span>
+        <Link to="/menu?category=Salads" className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
+          <UtensilsCrossed size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.menu')}</span>
         </Link>
       </div>
 
       {/* Categories Section */}
       <section className="py-24 container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4">{t('section.exploreMenu')}</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">{t('section.exploreMenu')}</h2>
           <div className="w-24 h-1 bg-brand-accent mx-auto" />
         </div>
 
@@ -103,7 +129,7 @@ export function Home() {
             { name: 'Pasta', img: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&q=80&w=800' },
             { name: 'Salads', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800' },
             { name: 'Desserts', img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&q=80&w=800' },
-            { name: 'Lunch Menu', img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800', href: '/menu/Lunch_Menu_Vetrilo.pdf' },
+            ...(lunchMenuEnabled ? [{ name: 'Lunch Menu', img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800', href: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf` }] : []),
           ].map((cat) => {
             const cardContent = (
               <>
@@ -115,7 +141,7 @@ export function Home() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-white text-3xl md:text-4xl">{t(`cat.${cat.name}`)}</h3>
+                  <h3 className="text-white text-xl sm:text-3xl md:text-4xl">{t(`cat.${cat.name}`)}</h3>
                 </div>
               </>
             );
@@ -135,12 +161,12 @@ export function Home() {
       {/* Featured Dishes */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10 sm:mb-16 gap-6">
             <div>
-              <h2 className="text-4xl md:text-5xl mb-4">{t('section.chefsFavorites')}</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">{t('section.chefsFavorites')}</h2>
               <p className="text-brand-muted max-w-md">{t('section.chefsFavoritesDesc')}</p>
             </div>
-            <Link to="/menu" className="flex items-center gap-2 text-brand-accent font-bold uppercase tracking-widest hover:gap-4 transition-all">
+            <Link to="/menu?category=Salads" className="flex items-center gap-2 text-brand-accent font-bold uppercase tracking-widest hover:gap-4 transition-all">
               {t('section.viewFullMenu')} <ArrowRight size={20} />
             </Link>
           </div>
@@ -150,9 +176,10 @@ export function Home() {
               <div key={dish.id} className="group bg-brand-bg rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
                 <div className="h-64 overflow-hidden relative">
                   <img
-                    src={dish.image}
+                    src={dish.image
+                      ? (dish.image.startsWith('http') ? dish.image : `${import.meta.env.BASE_URL}${dish.image}`)
+                      : ''}
                     alt={dish.name[language]}
-                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
@@ -167,14 +194,18 @@ export function Home() {
                 <div className="p-8">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-2xl">{dish.name[language]}</h3>
-                    <span className="text-brand-accent font-bold text-xl">{dish.price.toFixed(2)} lv.</span>
+                    <span className="text-brand-accent font-bold text-xl">
+                      {dish.price_small != null && dish.price_large != null
+                        ? `${dish.price_small.toFixed(2)} / ${dish.price_large.toFixed(2)} lv.`
+                        : dish.price ? `${dish.price.toFixed(2)} lv.` : '—'}
+                    </span>
                   </div>
                   <p className="text-brand-muted text-sm leading-relaxed mb-6 line-clamp-2">
                     {dish.description[language]}
                   </p>
                   <div className="flex justify-between items-center pt-6 border-t border-gray-200">
                     <span className="text-xs text-brand-muted font-medium uppercase tracking-widest">{dish.weight}</span>
-                    <Link to="/menu" className="text-brand-ink font-bold text-sm uppercase tracking-widest hover:text-brand-accent transition-colors">
+                    <Link to="/menu?category=Salads" className="text-brand-ink font-bold text-sm uppercase tracking-widest hover:text-brand-accent transition-colors">
                       {t('menu.moreInfo')}
                     </Link>
                   </div>
@@ -276,7 +307,7 @@ export function Home() {
             />
           </div>
           <div className="lg:w-1/2 space-y-8">
-            <h2 className="text-4xl md:text-5xl text-brand-secondary">{t('section.cateringTitle')}</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl text-brand-secondary">{t('section.cateringTitle')}</h2>
             <p className="text-white/70 text-lg leading-relaxed">
               {t('section.cateringDesc')}
             </p>

@@ -5,13 +5,11 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { EMAIL_REGEX, PHONE_REGEX } from '../lib/utils';
 
 const EVENT_TYPES = [
-  { name: 'Weddings', img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Corporate events', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800' },
   { name: 'Team building', img: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Kids parties', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Garden parties', img: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800' },
+  { name: 'Kids parties', img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=800' },
+  { name: 'Birthday parties', img: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&q=80&w=800' },
+  { name: 'Garden parties', img: 'https://images.unsplash.com/photo-1470753937643-efeb931202a9?auto=format&fit=crop&q=80&w=800' },
   { name: 'Coffee breaks', img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Cocktail events', img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800' },
   { name: 'Proms', img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800' },
 ];
 
@@ -86,7 +84,7 @@ export function Catering() {
   return (
     <div className="pt-24 pb-24 min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center text-white overflow-hidden">
+      <section className="relative min-h-[50vh] sm:h-[60vh] flex items-center justify-center text-white overflow-hidden py-16 sm:py-0">
         <img
           src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000"
           alt=""
@@ -100,13 +98,13 @@ export function Catering() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-5xl md:text-7xl mb-6">{t('catering.heroTitle')}</h1>
-            <p className="text-xl md:text-2xl text-brand-secondary max-w-2xl mx-auto font-light mb-10">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl mb-4 sm:mb-6">{t('catering.heroTitle')}</h1>
+            <p className="text-base sm:text-xl md:text-2xl text-brand-secondary max-w-2xl mx-auto font-light mb-6 sm:mb-10">
               {t('catering.heroSubtitle')}
             </p>
             <a
               href="#inquiry-form"
-              className="inline-block bg-brand-accent text-white px-10 py-4 rounded-full text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
+              className="inline-block bg-brand-accent text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
             >
               {t('section.requestOffer')}
             </a>
@@ -115,9 +113,9 @@ export function Catering() {
       </section>
 
       {/* Event Types Grid */}
-      <section className="py-24 container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4">{t('catering.eventsTitle')}</h2>
+      <section className="py-16 sm:py-24 container mx-auto px-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">{t('catering.eventsTitle')}</h2>
           <div className="w-24 h-1 bg-brand-accent mx-auto" />
         </div>
 

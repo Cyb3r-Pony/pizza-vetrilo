@@ -1,0 +1,78 @@
+{
+  "categories": ["Food", "Interior", "Events", "Atmosphere"],
+
+  "items": [
+    {
+      "id": "g1",
+      "url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Пица", "en": "Pizza" },
+      "category": "Food"
+    },
+    {
+      "id": "g2",
+      "url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Барбекю", "en": "BBQ" },
+      "category": "Food"
+    },
+    {
+      "id": "g3",
+      "url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Салата", "en": "Salad" },
+      "category": "Food"
+    },
+    {
+      "id": "g4",
+      "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Интериор", "en": "Restaurant Interior" },
+      "category": "Interior"
+    },
+    {
+      "id": "g5",
+      "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Ресторант", "en": "Restaurant" },
+      "category": "Interior"
+    },
+    {
+      "id": "g6",
+      "url": "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Зала", "en": "Dining Area" },
+      "category": "Atmosphere"
+    },
+    {
+      "id": "g7",
+      "url": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Кетъринг събитие", "en": "Catering Event" },
+      "category": "Events"
+    },
+    {
+      "id": "g8",
+      "url": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Десерт", "en": "Dessert" },
+      "category": "Food"
+    },
+    {
+      "id": "g9",
+      "url": "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Паста", "en": "Pasta" },
+      "category": "Food"
+    },
+    {
+      "id": "g10",
+      "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Атмосфера", "en": "Atmosphere" },
+      "category": "Atmosphere"
+    },
+    {
+      "id": "g11",
+      "url": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Събитие", "en": "Event" },
+      "category": "Events"
+    },
+    {
+      "id": "g12",
+      "url": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=800",
+      "caption": { "bg": "Дърва пица", "en": "Wood Fired Pizza" },
+      "category": "Food"
+    }
+  ]
+}

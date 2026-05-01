@@ -24,10 +24,10 @@ export function Locations() {
 
   return (
     <div className="pt-24 pb-24 min-h-screen">
-      <section className="bg-brand-ink text-white py-20 mb-16">
+      <section className="bg-brand-ink text-white py-12 sm:py-20 mb-10 sm:mb-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl mb-6">{t('locations.title')}</h1>
-          <p className="text-brand-secondary text-xl max-w-2xl mx-auto font-light">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl mb-4 sm:mb-6">{t('locations.title')}</h1>
+          <p className="text-brand-secondary text-base sm:text-xl max-w-2xl mx-auto font-light">
             {t('locations.subtitle')}
           </p>
         </div>
@@ -35,17 +35,17 @@ export function Locations() {
 
       <div className="container mx-auto px-4">
         {/* Delivery Partners */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 p-8 bg-white rounded-3xl shadow-sm border border-gray-100">
+        <div className="flex flex-col items-center sm:flex-row sm:justify-between gap-6 mb-16 p-5 sm:p-8 bg-white rounded-3xl shadow-sm border border-gray-100">
           <div className="text-center sm:text-left">
             <h2 className="text-2xl font-bold mb-1">{t('locations.deliveryTitle')}</h2>
             <p className="text-brand-muted text-sm">{t('locations.deliveryDesc')}</p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-3">
             <a
               href={DELIVERY_LINKS.wolt}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-brand-accent text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
+              className="flex items-center justify-center gap-2 bg-[#009DE0] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
             >
               Wolt <ExternalLink size={14} />
             </a>
@@ -53,9 +53,25 @@ export function Locations() {
               href={DELIVERY_LINKS.takeaway}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-brand-ink text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
+              className="flex items-center justify-center gap-2 bg-[#E96B2B] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
             >
-              Takeaway.com <ExternalLink size={14} />
+              Takeaway <ExternalLink size={14} />
+            </a>
+            <a
+              href={DELIVERY_LINKS.glovo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-[#FFC244] text-brand-ink px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
+            >
+              Glovo <ExternalLink size={14} />
+            </a>
+            <a
+              href={DELIVERY_LINKS.bolt}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-[#34D186] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
+            >
+              Bolt Food <ExternalLink size={14} />
             </a>
           </div>
         </div>
@@ -137,7 +153,7 @@ export function Locations() {
                     <ExternalLink size={16} /> {t('locations.directions')}
                   </a>
                   <a
-                    href="/Obslujvani_rayoni.pdf"
+                    href={`${import.meta.env.BASE_URL}Obslujvani_rayoni.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-brand-bg text-brand-ink py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-all"
