@@ -85,7 +85,7 @@ export function Locations() {
                     loc.id === 'v1'
                       ? 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800'
                       : loc.id === 'v2'
-                      ? 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=800'
+                      ? `${window.location.origin}${import.meta.env.BASE_URL}images/restaurant/restaurant-2/image-3.jpeg`
                       : 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800'
                   }
                   alt={loc.name[language]}

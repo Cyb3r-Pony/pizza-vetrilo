@@ -18,7 +18,7 @@ function resolveUrl(src: string): string {
 }
 
 export function Gallery() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('Food');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { t, language } = useTranslation();
 
@@ -33,12 +33,10 @@ export function Gallery() {
       .catch(() => { /* silently fail */ });
   }, []);
 
-  const navCategories = galleryData ? ['All', ...galleryData.categories] : ['All'];
+  const navCategories = galleryData ? galleryData.categories : [];
   const allItems = galleryData?.items ?? [];
 
-  const filteredItems = activeCategory === 'All'
-    ? allItems
-    : allItems.filter(item => item.category === activeCategory);
+  const filteredItems = allItems.filter(item => item.category === activeCategory);
 
   return (
     <div className="pt-24 pb-24 min-h-screen">
