@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { History, Heart, Users, ExternalLink } from 'lucide-react';
+import { History, Heart, Users, ExternalLink, Star } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 
 export function About() {
@@ -65,7 +65,7 @@ export function About() {
           </div>
           <div className="text-center space-y-4">
             <div className="w-16 h-16 bg-brand-bg rounded-full flex items-center justify-center mx-auto text-brand-accent">
-              <History size={32} />
+              <Star size={32} />
             </div>
             <h3 className="text-2xl font-bold">{t('about.reputation')}</h3>
             <p className="text-brand-muted">

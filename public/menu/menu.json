@@ -1224,7 +1224,8 @@
       },
       "price": 0,
       "weight": "",
-      "image": "images/menu/starters/chushki_burek.jpg"
+      "image": "images/menu/starters/chushki_burek.jpg",
+      "hidden": true
     }
   ],
   "soups": [
@@ -1461,7 +1462,8 @@
       },
       "price": 0,
       "weight": "",
-      "image": "images/menu/pasta/spageti_riba_ton.jpg"
+      "image": "images/menu/pasta/spageti_riba_ton.jpg",
+      "hidden": true
     }
   ],
   "risotto": [
@@ -2080,7 +2082,8 @@
       },
       "price": 0,
       "weight": "",
-      "image": "images/menu/main-dishes/svinski_minioni.jpg"
+      "image": "images/menu/main-dishes/svinski_minioni.jpg",
+      "hidden": true
     },
     {
       "id": "md9",
@@ -2094,7 +2097,8 @@
       },
       "price": 0,
       "weight": "",
-      "image": "images/menu/main-dishes/santa_monika.jpg"
+      "image": "images/menu/main-dishes/santa_monika.jpg",
+      "hidden": true
     }
   ],
   "oven-dishes": [
