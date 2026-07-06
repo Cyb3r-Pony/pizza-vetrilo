@@ -11,6 +11,17 @@ const CATEGORY_KEYS: Array<keyof Omit<MenuData, 'categories'>> = [
   'fish', 'bbq', 'main-dishes', 'oven-dishes', 'burgers', 'breads', 'garnishes', 'sauces', 'desserts'
 ];
 
+// Maps each MenuData key back to the category name used in the URL (?category=...)
+const KEY_TO_CATEGORY: Partial<Record<keyof Omit<MenuData, 'categories'>, string>> = {
+  pizza: 'Pizza', salads: 'Salads', starters: 'Starters', soups: 'Soups',
+  pasta: 'Pasta', risotto: 'Risotto', fish: 'Fish', bbq: 'BBQ',
+  'main-dishes': 'Main Dishes', 'oven-dishes': 'Oven Dishes',
+  burgers: 'Burgers', breads: 'Breads', garnishes: 'Garnishes',
+  sauces: 'Sauces', desserts: 'Desserts',
+};
+
+const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.origin : ''}${import.meta.env.BASE_URL}images/restaurant/general/Vetrilo-logo.png`;
+
 export function Home() {
   const { t, language } = useTranslation();
   const { lunchMenuEnabled } = useSiteConfig();
@@ -25,7 +36,8 @@ export function Home() {
         for (const key of CATEGORY_KEYS) {
           const arr = data[key];
           if (Array.isArray(arr)) {
-            arr.forEach(item => { if (!item.hidden) all.push(item); });
+            // Inject the display category name so dish cards can link to the right section
+            arr.forEach(item => { if (!item.hidden) all.push({ ...item, category: KEY_TO_CATEGORY[key] ?? '' }); });
           }
         }
         setFeaturedDishes(all.filter(item => item.tags?.includes('popular')).slice(0, 6));
@@ -177,11 +189,12 @@ export function Home() {
                 <div className="h-64 overflow-hidden relative">
                   <img
                     src={dish.image
-                      ? (dish.image.startsWith('http') ? dish.image : `${import.meta.env.BASE_URL}${dish.image}`)
-                      : ''}
+                      ? (dish.image.startsWith('http') ? dish.image : `${window.location.origin}${import.meta.env.BASE_URL}${dish.image}`)
+                      : LOGO_PLACEHOLDER}
                     alt={dish.name[language]}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    onError={(e) => { const t = e.currentTarget; if (!t.src.includes('Vetrilo-logo')) t.src = LOGO_PLACEHOLDER; }}
                   />
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
                     {dish.tags?.map(tag => (
@@ -205,7 +218,7 @@ export function Home() {
                   </p>
                   <div className="flex justify-between items-center pt-6 border-t border-gray-200">
                     <span className="text-xs text-brand-muted font-medium uppercase tracking-widest">{dish.weight}</span>
-                    <Link to="/menu?category=Salads" className="text-brand-ink font-bold text-sm uppercase tracking-widest hover:text-brand-accent transition-colors">
+                    <Link to={`/menu?category=${dish.category || 'Salads'}`} className="text-brand-ink font-bold text-sm uppercase tracking-widest hover:text-brand-accent transition-colors">
                       {t('menu.moreInfo')}
                     </Link>
                   </div>

@@ -108,10 +108,10 @@ export function Footer() {
                     </p>
                     <div className="flex flex-col gap-1">
                       {splitPhones(loc.ordersPhone).map((num) => (
-                        <p key={num} className="text-sm text-white/85 flex items-center gap-2.5 font-medium leading-snug">
+                        <a key={num} href={`tel:${num.replace(/[\s\/]/g, '')}`} className="text-sm text-white/85 flex items-center gap-2.5 font-medium leading-snug hover:text-brand-accent transition-colors">
                           <Phone size={13} className="shrink-0 text-brand-secondary" />
                           {num}
-                        </p>
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -123,10 +123,10 @@ export function Footer() {
                     </p>
                     <div className="flex flex-col gap-1">
                       {splitPhones(loc.reservationPhone).map((num) => (
-                        <p key={num} className="text-sm text-white/85 flex items-center gap-2.5 font-medium">
+                        <a key={num} href={`tel:${num.replace(/[\s\/]/g, '')}`} className="text-sm text-white/85 flex items-center gap-2.5 font-medium hover:text-brand-accent transition-colors">
                           <Phone size={13} className="shrink-0 text-brand-secondary" />
                           {num}
-                        </p>
+                        </a>
                       ))}
                     </div>
                   </div>
