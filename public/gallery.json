@@ -1,55 +1,504 @@
 {
-  "categories": ["Food", "Interior", "Events"],
-
+  "categories": [
+    "Food",
+    "Interior",
+    "Events"
+  ],
   "items": [
-    { "id": "g-f1",  "url": "images/menu/salads/proshuto_salad.jpg",                   "caption": { "bg": "Салата с киноа и прошуто",        "en": "Quinoa & Prosciutto Salad" },         "category": "Food" },
-    { "id": "g-f2",  "url": "images/menu/salads/kinoa_domat.jpg",                       "caption": { "bg": "Салата с киноа и сушени домати",  "en": "Quinoa & Sun-dried Tomato Salad" },   "category": "Food" },
-    { "id": "g-f3",  "url": "images/menu/salads/cesar_salad.jpg",                       "caption": { "bg": "Салата Цезар",                    "en": "Caesar Salad" },                      "category": "Food" },
-    { "id": "g-f4",  "url": "images/menu/salads/katak.jpg",                             "caption": { "bg": "Катък с печени чушки",            "en": "Katak with Roasted Peppers" },        "category": "Food" },
-    { "id": "g-f5",  "url": "images/menu/starters/kartofi_gradinarski.jpg",             "caption": { "bg": "Пресни картофи по градинарски",   "en": "Fresh Garden Potatoes" },             "category": "Food" },
-    { "id": "g-f6",  "url": "images/menu/starters/tikvichki_po_gracki.jpg",             "caption": { "bg": "Тиквички по гръцки",              "en": "Greek-style Zucchini" },              "category": "Food" },
-    { "id": "g-f7",  "url": "images/menu/starters/pileshki_krila.jpg",                  "caption": { "bg": "Пилешки крила",                   "en": "Chicken Wings" },                     "category": "Food" },
-    { "id": "g-f8",  "url": "images/menu/pasta/spageti_susheni_domati.jpg",             "caption": { "bg": "Спагети със сушени домати",       "en": "Spaghetti with Sun-dried Tomatoes" }, "category": "Food" },
-    { "id": "g-f9",  "url": "images/menu/pasta/spageti_karbonara.jpg",                  "caption": { "bg": "Спагети карбонара",               "en": "Spaghetti Carbonara" },               "category": "Food" },
-    { "id": "g-f10", "url": "images/menu/risotto/Risoto_manatarki.jpg",                 "caption": { "bg": "Ризото с манатарки",              "en": "Porcini Mushroom Risotto" },          "category": "Food" },
-    { "id": "g-f11", "url": "images/menu/pizza/margarita.jpg",                          "caption": { "bg": "Маргарита",                       "en": "Margherita" },                        "category": "Food" },
-    { "id": "g-f12", "url": "images/menu/pizza/peperone.jpg",                           "caption": { "bg": "Пепероне",                        "en": "Peperone" },                          "category": "Food" },
-    { "id": "g-f13", "url": "images/menu/pizza/siciliana.jpg",                          "caption": { "bg": "Сицилиана",                       "en": "Siciliana" },                         "category": "Food" },
-    { "id": "g-f14", "url": "images/menu/pizza/proshuto_krudo.jpg",                     "caption": { "bg": "Прошуто Крудо",                   "en": "Prosciutto Crudo" },                  "category": "Food" },
-    { "id": "g-f15", "url": "images/menu/pizza/kuatro_formadji.jpg",                    "caption": { "bg": "Куатро Формаджи",                 "en": "Quattro Formaggi" },                  "category": "Food" },
-    { "id": "g-f16", "url": "images/menu/pizza/bonifacho.jpg",                          "caption": { "bg": "Бонифачо",                        "en": "Bonifacho" },                         "category": "Food" },
-    { "id": "g-f17", "url": "images/menu/fish/file_pastarva.jpg",                       "caption": { "bg": "Филе от пъстърва на тиган",       "en": "Pan-fried Trout Fillet" },            "category": "Food" },
-    { "id": "g-f18", "url": "images/menu/fish/kotlet_siomga.jpg",                       "caption": { "bg": "Котлет от сьомга на скара",       "en": "Grilled Salmon Steak" },              "category": "Food" },
-    { "id": "g-f19", "url": "images/menu/bbq/oshtipaci.jpg",                            "caption": { "bg": "Сръбски ощипаци",                 "en": "Serbian Oshtipaci" },                 "category": "Food" },
-    { "id": "g-f20", "url": "images/menu/bbq/pleskavica.jpg",                           "caption": { "bg": "Пълнена сръбска плескавица",      "en": "Stuffed Serbian Pljeskavica" },       "category": "Food" },
-    { "id": "g-f21", "url": "images/menu/bbq/parjola_but.jpg",                          "caption": { "bg": "Пилешка пържола бут",             "en": "Chicken Thigh Steak" },               "category": "Food" },
-    { "id": "g-f22", "url": "images/menu/bbq/svinski_rebarca.jpg",                      "caption": { "bg": "Свински ребърца Сегенецки",       "en": "Segenets-style Pork Ribs" },          "category": "Food" },
-    { "id": "g-f23", "url": "images/menu/oven-dishes/valche_meze.jpg",                  "caption": { "bg": "Вълче мезе",                      "en": "Wolf's Meze" },                       "category": "Food" },
-    { "id": "g-f24", "url": "images/menu/oven-dishes/kartofi_bekon.jpg",                "caption": { "bg": "Запечени картофи с бекон",        "en": "Baked Potatoes with Bacon" },         "category": "Food" },
-    { "id": "g-f25", "url": "images/menu/oven-dishes/djolan_zelenchutsi.jpg",           "caption": { "bg": "Джолан със зеленчуци",            "en": "Knuckle with Vegetables" },           "category": "Food" },
-    { "id": "g-f26", "url": "images/menu/burgers/tortilq.jpg",                          "caption": { "bg": "Тортиля",                         "en": "Tortilla" },                          "category": "Food" },
-    { "id": "g-f27", "url": "images/menu/sides/italiansko_hlebche.jpg",                 "caption": { "bg": "Италианско хлебче",               "en": "Italian Bread" },                     "category": "Food" },
-    { "id": "g-f28", "url": "images/menu/desserts/tiramisu.jpg",                        "caption": { "bg": "Домашно Тирамису",                "en": "Homemade Tiramisu" },                 "category": "Food" },
-    { "id": "g-f29", "url": "images/menu/desserts/torta_lint.jpg",                      "caption": { "bg": "Торта Линд",                      "en": "Lindt Cake" },                        "category": "Food" },
-    { "id": "g-f30", "url": "images/menu/desserts/cedeno_mlqko_s_gorski_plod.jpg",      "caption": { "bg": "Цедено мляко с горски плод",      "en": "Strained Milk with Forest Fruits" },  "category": "Food" },
-    { "id": "g-f31", "url": "images/menu/desserts/alachinka_gorski_plod.jpg",           "caption": { "bg": "Палачинка с горски плодове",      "en": "Pancake with Forest Fruits" },        "category": "Food" },
-    { "id": "g-f32", "url": "images/menu/desserts/eklerova_torta_qgodi.jpg",            "caption": { "bg": "Еклерова торта с ягоди",          "en": "Eclair Cake with Strawberries" },     "category": "Food" },
-
-    { "id": "g-i1",  "url": "images/restaurant/restaurant-2/image-1.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-    { "id": "g-i2",  "url": "images/restaurant/restaurant-2/image-2.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-    { "id": "g-i3",  "url": "images/restaurant/restaurant-2/image-3.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-    { "id": "g-i4",  "url": "images/restaurant/restaurant-2/image-4.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-    { "id": "g-i5",  "url": "images/restaurant/restaurant-2/image-5.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-    { "id": "g-i6",  "url": "images/restaurant/restaurant-2/image-6.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-    { "id": "g-i7",  "url": "images/restaurant/restaurant-2/image-7.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Interior" },
-
-    { "id": "g-e1",  "url": "images/restaurant/restaurant-2-events/image-1.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e2",  "url": "images/restaurant/restaurant-2-events/image-2.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e3",  "url": "images/restaurant/restaurant-2-events/image-3.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e4",  "url": "images/restaurant/restaurant-2-events/image-4.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e5",  "url": "images/restaurant/restaurant-2-events/image-5.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e6",  "url": "images/restaurant/restaurant-2-events/image-6.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e7",  "url": "images/restaurant/restaurant-2-events/image-7.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" },
-    { "id": "g-e8",  "url": "images/restaurant/restaurant-2-events/image-8.jpeg", "caption": { "bg": "Ресторант 2 - Стрелбище", "en": "Restaurant 2 - Strelbishte" }, "category": "Events" }
+    {
+      "id": "g-f1",
+      "url": "images/menu/salads/proshuto_salad.jpg",
+      "caption": {
+        "bg": "Салата с киноа и прошуто",
+        "en": "Quinoa & Prosciutto Salad"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f2",
+      "url": "images/menu/salads/kinoa_domat.jpg",
+      "caption": {
+        "bg": "Салата с киноа и сушени домати",
+        "en": "Quinoa & Sun-dried Tomato Salad"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f3",
+      "url": "images/menu/salads/cesar_salad.jpg",
+      "caption": {
+        "bg": "Салата Цезар",
+        "en": "Caesar Salad"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f4",
+      "url": "images/menu/salads/katak.jpg",
+      "caption": {
+        "bg": "Катък с печени чушки",
+        "en": "Katak with Roasted Peppers"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f5",
+      "url": "images/menu/starters/kartofi_gradinarski.jpg",
+      "caption": {
+        "bg": "Пресни картофи по градинарски",
+        "en": "Fresh Garden Potatoes"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f6",
+      "url": "images/menu/starters/tikvichki_po_gracki.jpg",
+      "caption": {
+        "bg": "Тиквички по гръцки",
+        "en": "Greek-style Zucchini"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f7",
+      "url": "images/menu/starters/pileshki_krila.jpg",
+      "caption": {
+        "bg": "Пилешки крила",
+        "en": "Chicken Wings"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f8",
+      "url": "images/menu/pasta/spageti_susheni_domati.jpg",
+      "caption": {
+        "bg": "Спагети със сушени домати",
+        "en": "Spaghetti with Sun-dried Tomatoes"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f9",
+      "url": "images/menu/pasta/spageti_karbonara.jpg",
+      "caption": {
+        "bg": "Спагети карбонара",
+        "en": "Spaghetti Carbonara"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f10",
+      "url": "images/menu/risotto/Risoto_manatarki.jpg",
+      "caption": {
+        "bg": "Ризото с манатарки",
+        "en": "Porcini Mushroom Risotto"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f11",
+      "url": "images/menu/pizza/margarita.jpg",
+      "caption": {
+        "bg": "Маргарита",
+        "en": "Margherita"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f12",
+      "url": "images/menu/pizza/peperone.jpg",
+      "caption": {
+        "bg": "Пепероне",
+        "en": "Peperone"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f13",
+      "url": "images/menu/pizza/siciliana.jpg",
+      "caption": {
+        "bg": "Сицилиана",
+        "en": "Siciliana"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f14",
+      "url": "images/menu/pizza/proshuto_krudo.jpg",
+      "caption": {
+        "bg": "Прошуто Крудо",
+        "en": "Prosciutto Crudo"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f15",
+      "url": "images/menu/pizza/kuatro_formadji.jpg",
+      "caption": {
+        "bg": "Куатро Формаджи",
+        "en": "Quattro Formaggi"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f16",
+      "url": "images/menu/pizza/bonifacho.jpg",
+      "caption": {
+        "bg": "Бонифачо",
+        "en": "Bonifacho"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f17",
+      "url": "images/menu/fish/file_pastarva.jpg",
+      "caption": {
+        "bg": "Филе от пъстърва на тиган",
+        "en": "Pan-fried Trout Fillet"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f18",
+      "url": "images/menu/fish/kotlet_siomga.jpg",
+      "caption": {
+        "bg": "Котлет от сьомга на скара",
+        "en": "Grilled Salmon Steak"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f19",
+      "url": "images/menu/bbq/oshtipaci.jpg",
+      "caption": {
+        "bg": "Сръбски ощипаци",
+        "en": "Serbian Oshtipaci"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f20",
+      "url": "images/menu/bbq/pleskavica.jpg",
+      "caption": {
+        "bg": "Пълнена сръбска плескавица",
+        "en": "Stuffed Serbian Pljeskavica"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f21",
+      "url": "images/menu/bbq/parjola_but.jpg",
+      "caption": {
+        "bg": "Пилешка пържола бут",
+        "en": "Chicken Thigh Steak"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f22",
+      "url": "images/menu/bbq/svinski_rebarca.jpg",
+      "caption": {
+        "bg": "Свински ребърца Сегенецки",
+        "en": "Segenets-style Pork Ribs"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f23",
+      "url": "images/menu/oven-dishes/valche_meze.jpg",
+      "caption": {
+        "bg": "Вълче мезе",
+        "en": "Wolf's Meze"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f24",
+      "url": "images/menu/oven-dishes/kartofi_bekon.jpg",
+      "caption": {
+        "bg": "Запечени картофи с бекон",
+        "en": "Baked Potatoes with Bacon"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f25",
+      "url": "images/menu/oven-dishes/djolan_zelenchutsi.jpg",
+      "caption": {
+        "bg": "Джолан със зеленчуци",
+        "en": "Knuckle with Vegetables"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f26",
+      "url": "images/menu/burgers/tortilq.jpg",
+      "caption": {
+        "bg": "Тортиля",
+        "en": "Tortilla"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f27",
+      "url": "images/menu/sides/italiansko_hlebche.jpg",
+      "caption": {
+        "bg": "Италианско хлебче",
+        "en": "Italian Bread"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f28",
+      "url": "images/menu/desserts/tiramisu.jpg",
+      "caption": {
+        "bg": "Домашно Тирамису",
+        "en": "Homemade Tiramisu"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f29",
+      "url": "images/menu/desserts/torta_lint.jpg",
+      "caption": {
+        "bg": "Торта Линд",
+        "en": "Lindt Cake"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f30",
+      "url": "images/menu/desserts/cedeno_mlqko_s_gorski_plod.jpg",
+      "caption": {
+        "bg": "Цедено мляко с горски плод",
+        "en": "Strained Milk with Forest Fruits"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f31",
+      "url": "images/menu/desserts/alachinka_gorski_plod.jpg",
+      "caption": {
+        "bg": "Палачинка с горски плодове",
+        "en": "Pancake with Forest Fruits"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-f32",
+      "url": "images/menu/desserts/eklerova_torta_qgodi.jpg",
+      "caption": {
+        "bg": "Еклерова торта с ягоди",
+        "en": "Eclair Cake with Strawberries"
+      },
+      "category": "Food"
+    },
+    {
+      "id": "g-i1",
+      "url": "images/restaurant/restaurant-2/image-1.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i2",
+      "url": "images/restaurant/restaurant-2/image-2.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i3",
+      "url": "images/restaurant/restaurant-2/image-3.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i4",
+      "url": "images/restaurant/restaurant-2/image-4.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i5",
+      "url": "images/restaurant/restaurant-2/image-5.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i6",
+      "url": "images/restaurant/restaurant-2/image-6.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i7",
+      "url": "images/restaurant/restaurant-2/image-7.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-e1",
+      "url": "images/restaurant/restaurant-2-events/image-1.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e2",
+      "url": "images/restaurant/restaurant-2-events/image-2.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e3",
+      "url": "images/restaurant/restaurant-2-events/image-3.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e4",
+      "url": "images/restaurant/restaurant-2-events/image-4.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e5",
+      "url": "images/restaurant/restaurant-2-events/image-5.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e6",
+      "url": "images/restaurant/restaurant-2-events/image-6.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e7",
+      "url": "images/restaurant/restaurant-2-events/image-7.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e8",
+      "url": "images/restaurant/restaurant-2-events/image-8.jpeg",
+      "caption": {
+        "bg": "Ресторант 2 - Стрелбище",
+        "en": "Restaurant 2 - Strelbishte"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-i3-1",
+      "url": "images/restaurant/restaurant-3/image-1.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i3-2",
+      "url": "images/restaurant/restaurant-3/image-2.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i3-3",
+      "url": "images/restaurant/restaurant-3/image-3.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-e3-1",
+      "url": "images/restaurant/restaurant-3-events/image-1.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e3-2",
+      "url": "images/restaurant/restaurant-3-events/image-2.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e3-3",
+      "url": "images/restaurant/restaurant-3-events/image-3.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e3-4",
+      "url": "images/restaurant/restaurant-3-events/image-4.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e3-5",
+      "url": "images/restaurant/restaurant-3-events/image-5.jpeg",
+      "caption": {
+        "bg": "Ресторант 3 - Младост",
+        "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Events"
+    }
   ]
 }
