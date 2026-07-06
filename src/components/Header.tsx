@@ -92,12 +92,12 @@ export function Header() {
                 className={cn(
                   "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-accent",
                   isScrolled || location.pathname !== '/' ? "text-brand-ink/80" : "text-white/80",
-                  (location.pathname === link.path || (link.hasDropdown && location.pathname === '/locations')) && "!text-brand-accent"
+                  (location.pathname === link.path.split('?')[0] || (link.hasDropdown && location.pathname === '/locations')) && "!text-brand-accent"
                 )}
               >
                 {t(link.name)}
                 {link.hasDropdown && <ChevronDown size={14} className={cn("transition-transform", hoveredLink === link.name && "rotate-180")} aria-hidden="true" />}
-                {(location.pathname === link.path || (link.hasDropdown && location.pathname === '/locations')) && (
+                {(location.pathname === link.path.split('?')[0] || (link.hasDropdown && location.pathname === '/locations')) && (
                   <motion.div
                     layoutId="nav-underline"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent"

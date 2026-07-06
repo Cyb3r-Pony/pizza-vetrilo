@@ -1,13 +1,12 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Info, ExternalLink } from 'lucide-react';
+import { ChevronDown, ChevronUp, Info, ExternalLink } from 'lucide-react';
 import { MenuItem, MenuData } from '../data/appData';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 
-const ITEMS_PER_PAGE = 6;
 const EUR_RATE = 1.95583; // fixed BGN/EUR rate
 
 // Maps display category name (from menu.json "categories" array) to its key in MenuData
@@ -46,7 +45,6 @@ export function Menu() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get('category') || '';
   const [expandedDish, setExpandedDish] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const { t, language } = useTranslation();
   const { lunchMenuEnabled } = useSiteConfig();
 
@@ -120,22 +118,8 @@ export function Menu() {
     return allItems.filter(item => item.category === activeCategory);
   }, [activeCategory, allItems]);
 
-  // Reset to page 1 when category changes
-  useEffect(() => { setCurrentPage(1); }, [activeCategory]);
-
-  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
-  const pageItems = filteredItems.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
-
   const handleCategoryChange = (cat: string) => {
     setSearchParams({ category: cat });
-    setExpandedDish(null);
-  };
-
-  const handlePage = (p: number) => {
-    setCurrentPage(p);
     setExpandedDish(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -218,13 +202,13 @@ export function Menu() {
           <>
             <AnimatePresence mode="wait">
               <motion.div
-                key={`${activeCategory}-${currentPage}`}
+                key={activeCategory}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                {pageItems.map((item) => (
+                {filteredItems.map((item) => (
                   <DishCard
                     key={item.id}
                     item={item}
@@ -240,46 +224,6 @@ export function Menu() {
             {filteredItems.length === 0 && (
               <div className="text-center py-20">
                 <p className="text-brand-muted text-lg">{t('menu.noItems')}</p>
-              </div>
-            )}
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-14">
-                <button
-                  onClick={() => handlePage(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="p-2 rounded-full bg-brand-bg text-brand-ink hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <button
-                    key={p}
-                    onClick={() => handlePage(p)}
-                    className={cn(
-                      "w-10 h-10 rounded-full text-sm font-bold uppercase tracking-widest transition-all",
-                      p === currentPage
-                        ? "bg-brand-accent text-white shadow-md shadow-brand-accent/30"
-                        : "bg-brand-bg text-brand-ink hover:bg-gray-200"
-                    )}
-                  >
-                    {p}
-                  </button>
-                ))}
-
-                <button
-                  onClick={() => handlePage(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className="p-2 rounded-full bg-brand-bg text-brand-ink hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                >
-                  <ChevronRight size={20} />
-                </button>
-
-                <span className="ml-3 text-xs text-brand-muted font-medium uppercase tracking-widest">
-                  {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredItems.length)} / {filteredItems.length}
-                </span>
               </div>
             )}
           </>
