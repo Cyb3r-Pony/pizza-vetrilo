@@ -112,6 +112,21 @@ export function Menu() {
     }
   }, [activeCategory]);
 
+  // Scroll indicator: tracks position and visible ratio of the category strip
+  const [navScrollState, setNavScrollState] = useState({ left: 0, clientW: 1, scrollW: 1 });
+
+  const updateNavScrollState = () => {
+    const el = navScrollRef.current;
+    if (!el) return;
+    setNavScrollState({ left: el.scrollLeft, clientW: el.clientWidth, scrollW: el.scrollWidth });
+  };
+
+  // Measure after categories load (scrollWidth isn't available until rendered)
+  useEffect(() => {
+    const id = requestAnimationFrame(updateNavScrollState);
+    return () => cancelAnimationFrame(id);
+  }, [menuData, lunchMenuEnabled]);
+
   const allItems = useMemo<MenuItem[]>(() => {
     if (!menuData) return [];
     const items: MenuItem[] = [];
@@ -179,6 +194,7 @@ export function Menu() {
           <div
             ref={navScrollRef}
             className="no-scrollbar flex gap-2 overflow-x-auto pb-1"
+            onScroll={updateNavScrollState}
           >
             {navCategories.map((cat) => {
               const isActive = activeCategory === cat;
@@ -186,7 +202,7 @@ export function Menu() {
                 return (
                   <a
                     key={cat}
-                    ref={isActive ? (el) => { activeBtnRef.current = el; } : undefined}
+                    ref={isActive ? (el: HTMLAnchorElement | null) => { activeBtnRef.current = el; } : undefined}
                     href={`${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -213,6 +229,20 @@ export function Menu() {
               );
             })}
           </div>
+
+          {/* Scroll indicator — only visible when content overflows */}
+          {navScrollState.scrollW > navScrollState.clientW + 4 && (
+            <div className="relative h-0.5 bg-gray-200 rounded-full mx-1 mt-2 overflow-hidden">
+              <div
+                className="absolute top-0 h-full bg-brand-accent rounded-full"
+                style={{
+                  width: `${(navScrollState.clientW / navScrollState.scrollW) * 100}%`,
+                  left: `${(navScrollState.left / navScrollState.scrollW) * 100}%`,
+                  transition: 'left 80ms linear',
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
 
