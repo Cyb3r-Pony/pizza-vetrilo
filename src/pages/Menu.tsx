@@ -178,8 +178,7 @@ export function Menu() {
         <div className="container mx-auto px-4 py-3">
           <div
             ref={navScrollRef}
-            className="flex gap-2 overflow-x-auto sm:flex-wrap sm:overflow-x-visible pb-1 sm:pb-0"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="no-scrollbar flex gap-2 overflow-x-auto pb-1"
           >
             {navCategories.map((cat) => {
               const isActive = activeCategory === cat;
