@@ -345,19 +345,11 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
           <h3 className="text-lg sm:text-xl font-serif leading-snug">{item.name[language]}</h3>
           <div className="flex flex-col items-end shrink-0">
             {hasDual ? (
-              <>
-                <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">
-                  {item.price_small!.toFixed(2)} / {item.price_large!.toFixed(2)} лв.
-                </span>
-                <span className="text-brand-muted text-xs font-medium leading-tight">
-                  {toEur(item.price_small!)} / {toEur(item.price_large!)} €
-                </span>
-              </>
+              <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">
+                {toEur(item.price_small!)} / {toEur(item.price_large!)} €
+              </span>
             ) : singlePrice > 0 ? (
-              <>
-                <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">{singlePrice.toFixed(2)} лв.</span>
-                <span className="text-brand-muted text-xs font-medium leading-tight">{toEur(singlePrice)} €</span>
-              </>
+              <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">{toEur(singlePrice)} €</span>
             ) : (
               <span className="text-brand-muted text-sm font-medium">—</span>
             )}
@@ -398,19 +390,11 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
                   <span className="uppercase tracking-widest">{item.weight}</span>
                   <div className="text-right">
                     {hasDual ? (
-                      <>
-                        <span className="font-bold text-brand-accent block">
-                          {item.price_small!.toFixed(2)} / {item.price_large!.toFixed(2)} лв.
-                        </span>
-                        <span className="text-brand-muted">
-                          {toEur(item.price_small!)} / {toEur(item.price_large!)} €
-                        </span>
-                      </>
+                      <span className="font-bold text-brand-accent block">
+                        {toEur(item.price_small!)} / {toEur(item.price_large!)} €
+                      </span>
                     ) : singlePrice > 0 ? (
-                      <>
-                        <span className="font-bold text-brand-accent block">{singlePrice.toFixed(2)} лв.</span>
-                        <span className="text-brand-muted">{toEur(singlePrice)} €</span>
-                      </>
+                      <span className="font-bold text-brand-accent block">{toEur(singlePrice)} €</span>
                     ) : (
                       <span>—</span>
                     )}
