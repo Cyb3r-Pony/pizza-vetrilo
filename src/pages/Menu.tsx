@@ -7,8 +7,6 @@ import { cn } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 
-const EUR_RATE = 1.95583;
-
 const CATEGORY_KEY_MAP: Record<string, keyof Omit<MenuData, 'categories'>> = {
   "Pizza": "pizza",
   "Salads": "salads",
@@ -27,9 +25,6 @@ const CATEGORY_KEY_MAP: Record<string, keyof Omit<MenuData, 'categories'>> = {
   "Desserts": "desserts"
 };
 
-function toEur(bgn: number) {
-  return (bgn / EUR_RATE).toFixed(2);
-}
 
 const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.origin : ''}${import.meta.env.BASE_URL}images/restaurant/general/Vetrilo-logo.png`;
 
@@ -346,10 +341,10 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
           <div className="flex flex-col items-end shrink-0">
             {hasDual ? (
               <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">
-                {toEur(item.price_small!)} / {toEur(item.price_large!)} €
+                {item.price_small!.toFixed(2)} / {item.price_large!.toFixed(2)} €
               </span>
             ) : singlePrice > 0 ? (
-              <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">{toEur(singlePrice)} €</span>
+              <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">{singlePrice.toFixed(2)} €</span>
             ) : (
               <span className="text-brand-muted text-sm font-medium">—</span>
             )}
@@ -391,10 +386,10 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
                   <div className="text-right">
                     {hasDual ? (
                       <span className="font-bold text-brand-accent block">
-                        {toEur(item.price_small!)} / {toEur(item.price_large!)} €
+                        {item.price_small!.toFixed(2)} / {item.price_large!.toFixed(2)} €
                       </span>
                     ) : singlePrice > 0 ? (
-                      <span className="font-bold text-brand-accent block">{toEur(singlePrice)} €</span>
+                      <span className="font-bold text-brand-accent block">{singlePrice.toFixed(2)} €</span>
                     ) : (
                       <span>—</span>
                     )}

@@ -27,8 +27,8 @@
         "bg": "Доматен сос, кашкавал, риган и зехтин.",
         "en": "Tomato sauce, yellow cheese, oregano, olive oil."
       },
-      "price_small": 10.15,
-      "price_large": 11.13,
+      "price_small": 5.19,
+      "price_large": 5.69,
       "weight": "",
       "tags": [
         "popular",
@@ -46,8 +46,8 @@
         "bg": "Доматен сос, шунка, гъби, кашкавал, риган, зехтин.",
         "en": "Tomato sauce, ham, mushrooms, yellow cheese, oregano, olive oil."
       },
-      "price_small": 13.08,
-      "price_large": 15.04,
+      "price_small": 6.69,
+      "price_large": 7.69,
       "weight": "",
       "image": "images/menu/pizza/barza.jpg"
     },
@@ -61,8 +61,8 @@
         "bg": "Доматен сос, шунка, бекон, гъби, кашкавал, яйце, риган, пресни домати, зехтин.",
         "en": "Tomato sauce, ham, bacon, mushrooms, yellow cheese, egg, oregano, fresh tomatoes, olive oil."
       },
-      "price_small": 14.06,
-      "price_large": 16.41,
+      "price_small": 7.19,
+      "price_large": 8.39,
       "weight": "",
       "image": "images/menu/pizza/selska.jpg"
     },
@@ -76,8 +76,8 @@
         "bg": "Доматен сос, шунка, луканка, кисели краставички, кашкавал, риган, зехтин.",
         "en": "Tomato sauce, ham, lukanka, pickled cucumbers, yellow cheese, oregano, olive oil."
       },
-      "price_small": 16.02,
-      "price_large": 17.97,
+      "price_small": 8.19,
+      "price_large": 9.19,
       "weight": "",
       "image": "images/menu/pizza/siciliana.jpg"
     },
@@ -91,8 +91,8 @@
         "bg": "Доматен сос, кашкавал, салам Вентричина, люти чушки и зехтин.",
         "en": "Tomato sauce, yellow cheese, Ventricina salami, chili peppers, olive oil."
       },
-      "price_small": 15.24,
-      "price_large": 17.58,
+      "price_small": 7.79,
+      "price_large": 8.99,
       "weight": "",
       "image": "images/menu/pizza/peperone.jpg"
     },
@@ -106,8 +106,8 @@
         "bg": "Доматен сос, луканка, пушено сирене, домати на кубчета, кашкавал, риган и зехтин.",
         "en": "Tomato sauce, lukanka, smoked cheese, diced tomatoes, yellow cheese, oregano, olive oil."
       },
-      "price_small": 15.04,
-      "price_large": 17.0,
+      "price_small": 7.69,
+      "price_large": 8.69,
       "weight": "",
       "image": "images/menu/pizza/Marchela.jpg"
     },
@@ -121,8 +121,8 @@
         "bg": "Доматен сос, пушено сирене, бяло сирене, синьо сирене, кашкавал, зехтин.",
         "en": "Tomato sauce, smoked cheese, white cheese, blue cheese, yellow cheese, olive oil."
       },
-      "price_small": 14.06,
-      "price_large": 16.02,
+      "price_small": 7.19,
+      "price_large": 8.19,
       "weight": "",
       "image": "images/menu/pizza/kuatro_formadji.jpg"
     },
@@ -136,8 +136,8 @@
         "bg": "Сметана, пушено сирене, синьо сирене, моцарела, кашкавал, пресен домат, зехтин.",
         "en": "Cream, smoked cheese, blue cheese, mozzarella, yellow cheese, fresh tomato, olive oil."
       },
-      "price_small": 14.06,
-      "price_large": 15.63,
+      "price_small": 7.19,
+      "price_large": 7.99,
       "weight": "",
       "image": "images/menu/pizza/formadji_lux.jpg"
     },
@@ -151,8 +151,8 @@
         "bg": "Доматен сос, шунка, бекон, гъби, пресни чушки, кашкавал, риган, маслини, зехтин.",
         "en": "Tomato sauce, ham, bacon, mushrooms, fresh peppers, yellow cheese, oregano, olives, olive oil."
       },
-      "price_small": 14.65,
-      "price_large": 17.0,
+      "price_small": 7.49,
+      "price_large": 8.69,
       "weight": "",
       "image": "images/menu/pizza/kuatro_stadjone.jpg"
     },
@@ -166,8 +166,8 @@
         "bg": "Доматен сос, шунка, гъби, кашкавал, маслини, прошуто, риган, зехтин.",
         "en": "Tomato sauce, ham, mushrooms, yellow cheese, olives, prosciutto, oregano, olive oil."
       },
-      "price_small": 17.0,
-      "price_large": 19.15,
+      "price_small": 8.69,
+      "price_large": 9.79,
       "weight": "",
       "image": "images/menu/pizza/proshuto_krudo.jpg"
     },
@@ -181,8 +181,8 @@
         "bg": "Доматен сос, пушено пиле, кисели краставички, пушено сирене, царевица, кашкавал, риган и зехтин.",
         "en": "Tomato sauce, smoked chicken, pickles, smoked cheese, corn, yellow cheese, oregano, olive oil."
       },
-      "price_small": 14.06,
-      "price_large": 16.02,
+      "price_small": 7.19,
+      "price_large": 8.19,
       "weight": "",
       "image": "images/menu/pizza/bonifacho.jpg"
     },
@@ -196,8 +196,8 @@
         "bg": "Сметана, смокини, моцарела, прошуто, зехтин.",
         "en": "Cream, figs, mozzarella, prosciutto, olive oil."
       },
-      "price_small": 16.02,
-      "price_large": 19.15,
+      "price_small": 8.19,
+      "price_large": 9.79,
       "weight": "",
       "image": "images/menu/pizza/unikato.jpg"
     },
@@ -211,8 +211,8 @@
         "bg": "Доматен сос, сушени домати, спанак, маслини, моцарела, синьо сирене, пекорино, зехтин.",
         "en": "Tomato sauce, sun-dried tomatoes, spinach, olives, mozzarella, blue cheese, pecorino, olive oil."
       },
-      "price_small": 16.02,
-      "price_large": 17.97,
+      "price_small": 8.19,
+      "price_large": 9.19,
       "weight": "",
       "image": "images/menu/pizza/di_trevi.jpg"
     },
@@ -226,8 +226,8 @@
         "bg": "Доматен сос, бекон, лук, кашкавал, яйце, риган, зехтин.",
         "en": "Tomato sauce, bacon, onion, yellow cheese, egg, oregano, olive oil."
       },
-      "price_small": 13.08,
-      "price_large": 15.43,
+      "price_small": 6.69,
+      "price_large": 7.89,
       "weight": "",
       "image": "images/menu/pizza/kariola.jpg"
     },
@@ -241,8 +241,8 @@
         "bg": "Доматен сос, гъби, пресни чушки, маслини, кашкавал, риган, зехтин.",
         "en": "Tomato sauce, mushrooms, fresh peppers, olives, yellow cheese, oregano, olive oil."
       },
-      "price_small": 13.08,
-      "price_large": 14.65,
+      "price_small": 6.69,
+      "price_large": 7.49,
       "weight": "",
       "image": "images/menu/pizza/kalabreze.jpg"
     },
@@ -256,8 +256,8 @@
         "bg": "Доматен сос, моцарела, пикантен салам, люти чушки.",
         "en": "Tomato sauce, mozzarella, spicy salami, chili peppers."
       },
-      "price_small": 14.5,
-      "price_large": 16.41,
+      "price_small": 7.41,
+      "price_large": 8.39,
       "weight": "",
       "tags": [
         "spicy"
@@ -274,8 +274,8 @@
         "bg": "Доматен сос, риба тон, кашкавал, скариди, ролца от раци, чесън, риган, лимон.",
         "en": "Tomato sauce, tuna, yellow cheese, shrimp, crab sticks, garlic, oregano, lemon."
       },
-      "price_small": 14.65,
-      "price_large": 17.39,
+      "price_small": 7.49,
+      "price_large": 8.89,
       "weight": "",
       "image": "images/menu/pizza/sunrise.jpg"
     },
@@ -289,8 +289,8 @@
         "bg": "Доматен сос, салам Вентричина, пресни чушки, моцарела, сирене Чедър, зехтин.",
         "en": "Tomato sauce, Ventricina salami, fresh peppers, mozzarella, Cheddar cheese, olive oil."
       },
-      "price_small": 16.02,
-      "price_large": 17.97,
+      "price_small": 8.19,
+      "price_large": 9.19,
       "weight": "",
       "image": "images/menu/pizza/donatela.jpg"
     },
@@ -304,8 +304,8 @@
         "bg": "Доматен сос, гъби, грах, лук, царевица, кашкавал, риган, пресен домат, зехтин.",
         "en": "Tomato sauce, mushrooms, peas, onion, corn, yellow cheese, oregano, fresh tomato, olive oil."
       },
-      "price_small": 12.11,
-      "price_large": 13.67,
+      "price_small": 6.19,
+      "price_large": 6.99,
       "weight": "",
       "tags": [
         "vegetarian"
@@ -322,8 +322,8 @@
         "bg": "Сос песто, белени домати, моцарела, сирене Ементал, бекон, зехтин.",
         "en": "Pesto sauce, peeled tomatoes, mozzarella, Emmental cheese, bacon, olive oil."
       },
-      "price_small": 13.67,
-      "price_large": 19.02,
+      "price_small": 6.99,
+      "price_large": 9.72,
       "weight": "",
       "image": "images/menu/pizza/veliola.jpg"
     },
@@ -337,8 +337,8 @@
         "bg": "Доматен сос, манатарки, моцарела, прошуто, зехтин.",
         "en": "Tomato sauce, porcini mushrooms, mozzarella, prosciutto, olive oil."
       },
-      "price_small": 17.58,
-      "price_large": 19.73,
+      "price_small": 8.99,
+      "price_large": 10.09,
       "weight": "",
       "image": "images/menu/pizza/proshuto_porchini.jpg"
     },
@@ -354,7 +354,7 @@
       },
       "weight": "",
       "image": "images/menu/pizza/di_karne.jpg",
-      "price": 19.73
+      "price": 10.09
     },
     {
       "id": "pi19",
@@ -366,8 +366,8 @@
         "bg": "Доматен сос, риба тон, рязани маслини, пресен лук, кашкавал, риган, зехтин, лимон.",
         "en": "Tomato sauce, tuna, sliced olives, spring onion, yellow cheese, oregano, olive oil, lemon."
       },
-      "price_small": 16.02,
-      "price_large": 17.97,
+      "price_small": 8.19,
+      "price_large": 9.19,
       "weight": "",
       "image": ""
     },
@@ -381,8 +381,8 @@
         "bg": "Доматен сос, маслини, риган, зехтин, шунка, бекон, кашкавал, пушено пиле.",
         "en": "Tomato sauce, olives, oregano, olive oil, ham, bacon, yellow cheese, smoked chicken."
       },
-      "price_small": 15.04,
-      "price_large": 16.41,
+      "price_small": 7.69,
+      "price_large": 8.39,
       "weight": "",
       "image": ""
     },
@@ -396,8 +396,8 @@
         "bg": "Доматен сос, шунка, лук, кашкавал, люти чушки, риган, зехтин.",
         "en": "Tomato sauce, ham, onion, yellow cheese, chili peppers, oregano, olive oil."
       },
-      "price_small": 15.04,
-      "price_large": 17.0,
+      "price_small": 7.69,
+      "price_large": 8.69,
       "weight": "",
       "image": ""
     },
@@ -411,8 +411,8 @@
         "bg": "Доматен сос, шунка, ананас, кашкавал, зехтин.",
         "en": "Tomato sauce, ham, pineapple, yellow cheese, olive oil."
       },
-      "price_small": 14.06,
-      "price_large": 16.02,
+      "price_small": 7.19,
+      "price_large": 8.19,
       "weight": "",
       "image": ""
     },
@@ -426,8 +426,8 @@
         "bg": "Доматен сос, шунка, гъби, луканка, кашкавал, яйце, риган и зехтин.",
         "en": "Tomato sauce, ham, mushrooms, lukanka, yellow cheese, egg, oregano, olive oil."
       },
-      "price_small": 17.0,
-      "price_large": 19.15,
+      "price_small": 8.69,
+      "price_large": 9.79,
       "weight": "",
       "image": ""
     },
@@ -441,8 +441,8 @@
         "bg": "Доматен сос, шунка, гъби, кисели краставици, кашкавал, пармезан, риган и зехтин.",
         "en": "Tomato sauce, ham, mushrooms, pickles, yellow cheese, parmesan, oregano, olive oil."
       },
-      "price_small": 15.04,
-      "price_large": 17.0,
+      "price_small": 7.69,
+      "price_large": 8.69,
       "weight": "",
       "image": ""
     },
@@ -456,8 +456,8 @@
         "bg": "Сметана, пушено пиле, синьо сирене, пушено сирене, кашкавал, яйце, риган и зехтин.",
         "en": "Cream, smoked chicken, blue cheese, smoked cheese, yellow cheese, egg, oregano, olive oil."
       },
-      "price_small": 14.06,
-      "price_large": 16.02,
+      "price_small": 7.19,
+      "price_large": 8.19,
       "weight": "",
       "image": ""
     },
@@ -471,8 +471,8 @@
         "bg": "Доматен сос, бекон, печени чушки, рязани маслини, кашкавал, риган, зехтин.",
         "en": "Tomato sauce, bacon, roasted peppers, sliced olives, yellow cheese, oregano, olive oil."
       },
-      "price_small": 15.04,
-      "price_large": 17.0,
+      "price_small": 7.69,
+      "price_large": 8.69,
       "weight": "",
       "image": "images/menu/pizza/pancheta.jpg"
     },
@@ -536,7 +536,7 @@
         "bg": "Айсберг, лолоросо, киноа, авокадо, прошуто, лимонов дресинг.",
         "en": "Iceberg, lollo rosso, quinoa, avocado, prosciutto, lemon dressing."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "image": "images/menu/salads/proshuto_salad.jpg"
     },
@@ -550,7 +550,7 @@
         "bg": "Айсберг, лолоросо, киноа, авокадо, сьомга, лимонов дресинг.",
         "en": "Iceberg, lollo rosso, quinoa, avocado, salmon, lemon dressing."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "image": "images/menu/salads/kinoa_siomga_salad.jpg"
     },
@@ -564,7 +564,7 @@
         "bg": "Айсберг, лолоросо, авокадо, киноа, сушени домати, пармезан, лимонов дресинг.",
         "en": "Iceberg, lollo rosso, avocado, quinoa, sun-dried tomatoes, parmesan, lemon dressing."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "image": "images/menu/salads/kinoa_domat.jpg"
     },
@@ -578,7 +578,7 @@
         "bg": "Айсберг, лолоросо, печено на скара сирене Халуми, дресинг.",
         "en": "Iceberg, lollo rosso, grilled halloumi cheese, dressing."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "",
       "image": "images/menu/salads/sofia_salad.jpg"
     },
@@ -592,7 +592,7 @@
         "bg": "Айсберг, прошуто, чери домати, печено пилешко филе, пармезан, кротони, цезар сос.",
         "en": "Iceberg, prosciutto, cherry tomatoes, grilled chicken breast, parmesan, croutons, Caesar sauce."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "tags": [
         "popular"
@@ -609,7 +609,7 @@
         "bg": "Розов домат, краставици, овче сирене, печена зелена чушка.",
         "en": "Pink tomato, cucumbers, sheep cheese, roasted green pepper."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "",
       "image": "images/menu/salads/lqtna.jpg"
     },
@@ -623,7 +623,7 @@
         "bg": "Маруля, краставица, риба тон, маслини.",
         "en": "Lettuce, cucumber, tuna, olives."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": "images/menu/salads/riba_ton.jpg"
     },
@@ -637,7 +637,7 @@
         "bg": "Печен патладжан, зехтин, чесън, риган, магданоз.",
         "en": "Roasted aubergine, olive oil, garlic, oregano, parsley."
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "",
       "image": "images/menu/salads/patladjan.jpg"
     },
@@ -651,7 +651,7 @@
         "bg": "Домати, моцарела и сос песто.",
         "en": "Tomatoes, mozzarella and pesto sauce."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "tags": [
         "popular"
@@ -668,7 +668,7 @@
         "bg": "Печен патладжан, домат, сирене, зехтин, чесън, риган, магданоз.",
         "en": "Roasted aubergine, tomato, white cheese, olive oil, garlic, oregano, parsley."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "image": "images/menu/salads/salata_ot_patladjan.jpg"
     },
@@ -682,7 +682,7 @@
         "bg": "Домат, боб, пресен лук, филе Елена, пастърма, сминдух, чеснова паста.",
         "en": "Tomato, beans, spring onion, Elena fillet, pastrama, fenugreek, garlic paste."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "",
       "image": "images/menu/salads/manastirska.jpg"
     },
@@ -696,7 +696,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.74,
+      "price": 5.49,
       "weight": "",
       "image": "images/menu/salads/katak.jpg"
     },
@@ -710,7 +710,7 @@
         "bg": "Яйца, маруля, млечен сос, чеснова паста.",
         "en": "Eggs, lettuce, milk sauce, garlic paste."
       },
-      "price": 11.72,
+      "price": 5.99,
       "weight": "",
       "image": "images/menu/salads/qichena.jpg"
     },
@@ -724,7 +724,7 @@
         "bg": "Маруля, краставица, пресен лук, репички, яйце, маслини.",
         "en": "Lettuce, cucumber, spring onion, radishes, egg, olives."
       },
-      "price": 11.13,
+      "price": 5.69,
       "weight": "",
       "image": "images/menu/salads/repichki.jpg"
     },
@@ -738,7 +738,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.99,
+      "price": 5.62,
       "weight": "",
       "tags": [
         "popular"
@@ -755,7 +755,7 @@
         "bg": "Домати, краставици, лук, гъби, сирене, яйце, чушки, шунка.",
         "en": "Tomatoes, cucumbers, onion, mushrooms, white cheese, egg, peppers, ham."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "image": "images/menu/salads/ovcharska.jpg"
     },
@@ -769,7 +769,7 @@
         "bg": "Маруля, краставици, домати, мариновано сирене, печена чушка, червен лук, маслини.",
         "en": "Lettuce, cucumbers, tomatoes, marinated cheese, roasted pepper, red onion, olives."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "tags": [
         "popular"
@@ -786,7 +786,7 @@
         "bg": "Овкусено със сос Лежур.",
         "en": "Seasoned with Lejour sauce."
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "",
       "image": "images/menu/salads/cveklo.jpg"
     },
@@ -800,7 +800,7 @@
         "bg": "Краставици, пресен лук, чушка, гъби, шунка, домати, млечен сос, снежанка, орехи, маслини.",
         "en": "Cucumbers, spring onion, pepper, mushrooms, ham, tomatoes, milk sauce, snejanka, walnuts, olives."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "image": "images/menu/salads/trite_rakii.jpg"
     },
@@ -814,7 +814,7 @@
         "bg": "Хлебче на пещ, катък с печени чушки, домати, краставици, пресни чушки, пресен лук, сос песто.",
         "en": "Oven bread, katak with roasted peppers, tomatoes, cucumbers, fresh peppers, spring onion, pesto sauce."
       },
-      "price": 15.43,
+      "price": 7.89,
       "weight": "",
       "image": ""
     },
@@ -828,7 +828,7 @@
         "bg": "Домати, сирене, чесън, босилек.",
         "en": "Tomatoes, white cheese, garlic, basil."
       },
-      "price": 11.13,
+      "price": 5.69,
       "weight": "",
       "image": ""
     },
@@ -842,7 +842,7 @@
         "bg": "Люти чушки с мед, копър, олио, чесън.",
         "en": "Hot peppers with honey, dill, oil, garlic."
       },
-      "price": 4.67,
+      "price": 2.39,
       "weight": "",
       "image": ""
     },
@@ -856,7 +856,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.15,
+      "price": 5.19,
       "weight": "",
       "image": ""
     },
@@ -870,7 +870,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "",
       "image": ""
     },
@@ -884,7 +884,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 11.13,
+      "price": 5.69,
       "weight": "",
       "image": ""
     },
@@ -898,7 +898,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.61,
+      "price": 3.89,
       "weight": "",
       "image": ""
     },
@@ -912,7 +912,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "",
       "image": ""
     },
@@ -926,7 +926,7 @@
         "bg": "Рукола, чери домат, айсберг, пармезан, дресинг.",
         "en": "Rocket, cherry tomato, iceberg, parmesan, dressing."
       },
-      "price": 13.67,
+      "price": 6.99,
       "weight": "",
       "image": ""
     },
@@ -940,7 +940,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": ""
     },
@@ -954,7 +954,7 @@
         "bg": "Шунка, кашкавал, домати, краставици, зеле, сос.",
         "en": "Ham, yellow cheese, tomatoes, cucumbers, cabbage, sauce."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": ""
     }
@@ -970,7 +970,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.15,
+      "price": 5.19,
       "weight": "",
       "image": "images/menu/starters/kartofeni_kufteta.jpg"
     },
@@ -984,7 +984,7 @@
         "bg": "Топени сиренца Президент, панирани в корнфлейкс и сладко от боровинки.",
         "en": "President melted cheese bites, breaded in cornflakes, served with blueberry jam."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "6 бр.",
       "image": "images/menu/starters/topeni_sirena.jpg"
     },
@@ -998,7 +998,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "180г",
       "image": "images/menu/starters/kashkaval_pane.jpg"
     },
@@ -1012,7 +1012,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 11.32,
+      "price": 5.79,
       "weight": "",
       "image": "images/menu/starters/sirene_pane_hapki.jpg"
     },
@@ -1026,7 +1026,7 @@
         "bg": "Картофи, чесън, пресен лук, копър.",
         "en": "Potatoes, garlic, spring onion, dill."
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "200г",
       "image": "images/menu/starters/kartofi_gradinarski.jpg"
     },
@@ -1040,7 +1040,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": "images/menu/starters/tikvichki_po_gracki.jpg"
     },
@@ -1054,7 +1054,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "250г",
       "image": "images/menu/starters/pile_kornfleiks.jpg"
     },
@@ -1068,7 +1068,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "330г",
       "image": "images/menu/starters/pileshki_krila.jpg"
     },
@@ -1082,7 +1082,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.59,
+      "price": 5.41,
       "weight": "",
       "image": "images/menu/starters/pileshki_bonfilenca.jpg"
     },
@@ -1096,7 +1096,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "250г",
       "image": "images/menu/starters/susamki.jpg"
     },
@@ -1110,7 +1110,7 @@
         "bg": "Задушен телешки език с масло, вино и овкусен с букет от подправки.",
         "en": "Braised beef tongue with butter, wine and aromatic spices."
       },
-      "price": 20.13,
+      "price": 10.29,
       "weight": "200г",
       "image": ""
     },
@@ -1124,7 +1124,7 @@
         "bg": "Сотирани картофи, бекон, пресен лук, сметана, кашкавал.",
         "en": "Sautéed potatoes, bacon, spring onion, cream, yellow cheese."
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "",
       "image": "images/menu/main-dishes/kartofi_po_irlandski.jpg"
     },
@@ -1138,7 +1138,7 @@
         "bg": "Пилешки дроб, лук, бекон, гъби.",
         "en": "Chicken liver, onion, bacon, mushrooms."
       },
-      "price": 14.26,
+      "price": 7.29,
       "weight": "350г",
       "image": ""
     },
@@ -1152,7 +1152,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "250г",
       "image": ""
     },
@@ -1166,7 +1166,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": ""
     },
@@ -1180,7 +1180,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.35,
+      "price": 5.29,
       "weight": "200г",
       "image": ""
     },
@@ -1194,7 +1194,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 11.32,
+      "price": 5.79,
       "weight": "",
       "image": ""
     },
@@ -1208,7 +1208,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "",
       "image": ""
     },
@@ -1239,7 +1239,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 5.06,
+      "price": 2.59,
       "weight": "300г",
       "image": ""
     },
@@ -1253,7 +1253,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 5.65,
+      "price": 2.89,
       "weight": "300г",
       "image": ""
     },
@@ -1267,7 +1267,7 @@
         "bg": "Бистра пилешка супа с притурка - моркови, фиде, лук, лимон.",
         "en": "Clear chicken soup with carrots, noodles, onion, lemon."
       },
-      "price": 6.04,
+      "price": 3.09,
       "weight": "300г",
       "image": ""
     },
@@ -1281,7 +1281,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.63,
+      "price": 3.39,
       "weight": "300г",
       "image": ""
     },
@@ -1295,7 +1295,7 @@
         "bg": "Бистра телешка супа с притурка - моркови, целина, картофи, лимон, магданоз.",
         "en": "Clear beef soup with carrots, celery, potatoes, lemon, parsley."
       },
-      "price": 7.99,
+      "price": 4.09,
       "weight": "300г",
       "image": ""
     },
@@ -1309,7 +1309,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.02,
+      "price": 3.59,
       "weight": "300г",
       "image": ""
     }
@@ -1325,7 +1325,7 @@
         "bg": "Талиателе, моркови, тиквички, гъби, лук, сос песто.",
         "en": "Tagliatelle, carrots, zucchini, mushrooms, onion, pesto sauce."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "tags": [
         "vegetarian"
@@ -1342,7 +1342,7 @@
         "bg": "Талиателе, спанак, шунка, пушено сирене, сметана, пармезан.",
         "en": "Tagliatelle, spinach, ham, smoked cheese, cream, parmesan."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "500г",
       "image": "images/menu/pasta/taliateli_bluto.jpg"
     },
@@ -1356,7 +1356,7 @@
         "bg": "Спагети, бекон, яйце, сметана, пармезан.",
         "en": "Spaghetti, bacon, egg, cream, parmesan."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "400г",
       "image": "images/menu/pasta/spageti_karbonara.jpg"
     },
@@ -1370,7 +1370,7 @@
         "bg": "Спагети, сушени домати, билки, пармезан.",
         "en": "Spaghetti, sun-dried tomatoes, herbs, parmesan."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "tags": [
         "vegetarian"
@@ -1387,7 +1387,7 @@
         "bg": "Сметана, пармезан, шунка, гъби, ядки.",
         "en": "Cream, parmesan, ham, mushrooms, nuts."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "500г",
       "image": ""
     },
@@ -1401,7 +1401,7 @@
         "bg": "Ролца от раци, пушена сьомга, скариди, морков, доматен сос, пармезан, бяло вино, босилек.",
         "en": "Crab sticks, smoked salmon, shrimp, carrot, tomato sauce, parmesan, white wine, basil."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "",
       "image": ""
     },
@@ -1415,7 +1415,7 @@
         "bg": "Лук, доматен сос, чесън, риган, босилек, пармезан.",
         "en": "Onion, tomato sauce, garlic, oregano, basil, parmesan."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "400г",
       "tags": [
         "vegetarian"
@@ -1432,7 +1432,7 @@
         "bg": "Спагети, сметана, яйце, синьо сирене, пушено сирене, пармезан.",
         "en": "Spaghetti, cream, egg, blue cheese, smoked cheese, parmesan."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "",
       "image": ""
     },
@@ -1446,7 +1446,7 @@
         "bg": "Доматен сос, лук, кайма, шунка.",
         "en": "Tomato sauce, onion, minced meat, ham."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "500г",
       "image": ""
     },
@@ -1477,7 +1477,7 @@
         "bg": "Ориз, бейби моркови, грах, царевица, броколи.",
         "en": "Rice, baby carrots, peas, corn, broccoli."
       },
-      "price": 11.72,
+      "price": 5.99,
       "weight": "400г",
       "tags": [
         "vegetarian"
@@ -1494,7 +1494,7 @@
         "bg": "Ориз, манатарки, сметана, пармезан.",
         "en": "Rice, porcini mushrooms, cream, parmesan."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "400г",
       "image": "images/menu/risotto/Risoto_manatarki.jpg"
     },
@@ -1508,7 +1508,7 @@
         "bg": "Ориз, пилешко филе, пармезан.",
         "en": "Rice, chicken fillet, parmesan."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "400г",
       "image": "images/menu/risotto/Risoto_pile.jpg"
     }
@@ -1524,7 +1524,7 @@
         "bg": "Поднася се с гарнитура от печен картоф.",
         "en": "Served with a garnish of roasted potato."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "",
       "image": "images/menu/fish/file_pastarva.jpg"
     },
@@ -1538,7 +1538,7 @@
         "bg": "Обезкостена пъстърва, сос от сметана, бадеми и пушено сирене.",
         "en": "Deboned trout, cream sauce with almonds and smoked cheese."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "350г",
       "image": "images/menu/fish/pastarva_bademov_sos.jpg"
     },
@@ -1552,7 +1552,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 23.56,
+      "price": 12.05,
       "weight": "250г",
       "image": "images/menu/fish/kotlet_siomga.jpg"
     },
@@ -1566,7 +1566,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.43,
+      "price": 3.29,
       "weight": "100г",
       "image": ""
     },
@@ -1580,7 +1580,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.43,
+      "price": 3.29,
       "weight": "100г",
       "image": ""
     },
@@ -1594,7 +1594,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 16.02,
+      "price": 8.19,
       "weight": "",
       "image": ""
     },
@@ -1608,7 +1608,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 16.02,
+      "price": 8.19,
       "weight": "",
       "image": ""
     }
@@ -1624,7 +1624,7 @@
         "bg": "Телешка кайма, бекон, кашкавал, лют пипер, бяло и червено зеле, морков, пикантни картофи, лютеница, пикантен сос.",
         "en": "Beef mince, bacon, yellow cheese, hot pepper, white & red cabbage, carrot, spicy potatoes, lyutenitsa, hot sauce."
       },
-      "price": 16.61,
+      "price": 8.49,
       "weight": "",
       "image": "images/menu/bbq/oshtipaci.jpg"
     },
@@ -1638,7 +1638,7 @@
         "bg": "Телешка кайма, бяло и червено зеле, морков, пикантни картофи, лютеница, пикантен сос.",
         "en": "Beef mince, white & red cabbage with carrot, spicy potatoes, lyutenitsa, hot sauce."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "400г",
       "image": "images/menu/bbq/kebapcheta.jpg"
     },
@@ -1652,7 +1652,7 @@
         "bg": "Телешка кайма, бекон, кашкавал, кисели краставички, топено сирене, зеле и морков, пикантни картофи, лютеница, пикантен сос.",
         "en": "Beef mince, bacon, yellow cheese, pickles, melted cheese, cabbage and carrot, spicy potatoes, lyutenitsa, hot sauce."
       },
-      "price": 17.58,
+      "price": 8.99,
       "weight": "400г",
       "image": "images/menu/bbq/pleskavica.jpg"
     },
@@ -1666,7 +1666,7 @@
         "bg": "Телешка кайма, бекон, кашкавал, зеле, морков, пикантни картофи, лютеница, пикантен сос, прясна чушка.",
         "en": "Beef mince, bacon, yellow cheese, cabbage, carrot, spicy potatoes, lyutenitsa, hot sauce, fresh pepper."
       },
-      "price": 16.61,
+      "price": 8.49,
       "weight": "",
       "image": "images/menu/bbq/gurmanska_pleskavica.jpg"
     },
@@ -1680,7 +1680,7 @@
         "bg": "Мариновани свински пържолки, тиквичка, зеле и морков, пикантни картофи, пикантен сос, лимон.",
         "en": "Marinated pork chops, zucchini, cabbage and carrot, spicy potatoes, hot sauce, lemon."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "400г",
       "image": "images/menu/bbq/svinski_kotlet.jpg"
     },
@@ -1694,7 +1694,7 @@
         "bg": "Пилешка пържола, зеле и морков, пикантни картофи, пикантен сос, лимон.",
         "en": "Chicken thigh steak, cabbage and carrot, spicy potatoes, hot sauce, lemon."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "400г",
       "image": "images/menu/bbq/parjola_but.jpg"
     },
@@ -1708,7 +1708,7 @@
         "bg": "Пилешко филе, зеле, морков, пикантни картофи, пикантен сос, лимон.",
         "en": "Chicken fillet, cabbage, carrot, spicy potatoes, hot sauce, lemon."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "",
       "image": "images/menu/bbq/kareta.jpg"
     },
@@ -1722,7 +1722,7 @@
         "bg": "Свински ребърца с пикантен сос, мариновани с подправки и вино, поднесени върху хлебче.",
         "en": "Pork ribs with hot sauce, marinated with spices and wine, served on bread."
       },
-      "price": 16.02,
+      "price": 8.19,
       "weight": "300г",
       "image": "images/menu/bbq/svinski_rebarca.jpg"
     },
@@ -1736,7 +1736,7 @@
         "bg": "Свинско контрафиле, кашкавал, бекон, горчица, майонеза, сос тартар, пикантни картофи, зеле и морков.",
         "en": "Pork loin, yellow cheese, bacon, mustard, mayonnaise, tartar sauce, spicy potatoes, cabbage and carrot."
       },
-      "price": 19.15,
+      "price": 9.79,
       "weight": "400г",
       "image": "images/menu/bbq/veshavica.jpg"
     },
@@ -1750,7 +1750,7 @@
         "bg": "Поднесени с горчица.",
         "en": "Served with mustard."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": ""
     },
@@ -1764,7 +1764,7 @@
         "bg": "Свинско бонфиле.",
         "en": "Pork tenderloin."
       },
-      "price": 8.0,
+      "price": 4.09,
       "weight": "150г",
       "image": ""
     },
@@ -1778,7 +1778,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.04,
+      "price": 3.09,
       "weight": "150г",
       "image": ""
     },
@@ -1792,7 +1792,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": ""
     },
@@ -1806,7 +1806,7 @@
         "bg": "Пилешко филе, бекон, гъби, кисели краставички, соев сос.",
         "en": "Chicken fillet, bacon, mushrooms, pickles, soy sauce."
       },
-      "price": 16.02,
+      "price": 8.19,
       "weight": "300г",
       "image": ""
     },
@@ -1820,7 +1820,7 @@
         "bg": "Свинско бонфиле с пълнеж от кашкавал, зеле, морков, шунка и гъби.",
         "en": "Pork tenderloin stuffed with yellow cheese, cabbage, carrot, ham and mushrooms."
       },
-      "price": 18.17,
+      "price": 9.29,
       "weight": "",
       "image": "images/menu/bbq/svinsko_vreteno.jpg"
     },
@@ -1834,7 +1834,7 @@
         "bg": "Свински ребърца, задушени с вино, мед и соев сос.",
         "en": "Pork ribs braised with wine, honey, soy sauce."
       },
-      "price": 15.63,
+      "price": 7.99,
       "weight": "300г",
       "image": ""
     },
@@ -1848,7 +1848,7 @@
         "bg": "Картоф, лук, морков, тиквичка, домат.",
         "en": "Potato, onion, carrot, zucchini, tomato."
       },
-      "price": 11.13,
+      "price": 5.69,
       "weight": "400г",
       "tags": [
         "vegetarian"
@@ -1865,7 +1865,7 @@
         "bg": "Свинско бонфиле, лук, гъби, чушки, бекон.",
         "en": "Pork tenderloin, onion, mushrooms, peppers, bacon."
       },
-      "price": 20.13,
+      "price": 10.29,
       "weight": "",
       "image": "images/menu/bbq/svinski_shaslik.jpg"
     },
@@ -1879,7 +1879,7 @@
         "bg": "Свински врат, зеле или маруля, лимон.",
         "en": "Pork neck, cabbage or lettuce, lemon."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "380г",
       "image": "images/menu/bbq/svinska_peperuda.jpg"
     },
@@ -1893,7 +1893,7 @@
         "bg": "Пилешко филе, бекон, чушка, гъби, лук.",
         "en": "Chicken fillet, bacon, pepper, mushrooms, onion."
       },
-      "price": 18.17,
+      "price": 9.29,
       "weight": "",
       "image": ""
     },
@@ -1907,7 +1907,7 @@
         "bg": "Свинско бонфиле.",
         "en": "Pork tenderloin."
       },
-      "price": 13.67,
+      "price": 6.99,
       "weight": "200г",
       "image": "images/menu/main-dishes/svinsko_file_natur.jpg"
     },
@@ -1921,7 +1921,7 @@
         "bg": "Кюфте, кебапче, свинска пържола и пилешко шишче, поднесени с пържени картофи и лютеница.",
         "en": "Meatball, kebab, pork steak and chicken skewer, served with fries and lyutenitsa."
       },
-      "price": 22.0,
+      "price": 11.25,
       "weight": "600г",
       "tags": [
         "popular"
@@ -1940,7 +1940,7 @@
         "bg": "Панирано свинско бонфиле, пържени картофи, масло.",
         "en": "Breaded pork tenderloin, fried potatoes, butter."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "",
       "image": "images/menu/main-dishes/shnicel.jpg"
     },
@@ -1954,7 +1954,7 @@
         "bg": "Пилешко филе, гъби, сметана, пушено сирене, синьо сирене, мастика.",
         "en": "Chicken fillet, mushrooms, cream, smoked cheese, blue cheese, mastika."
       },
-      "price": 16.02,
+      "price": 8.19,
       "weight": "400г",
       "image": "images/menu/main-dishes/pile_fondio.jpg"
     },
@@ -1968,7 +1968,7 @@
         "bg": "Свинско бонфиле, гъби, гъбен сос.",
         "en": "Pork tenderloin, mushrooms, mushroom sauce."
       },
-      "price": 16.02,
+      "price": 8.19,
       "weight": "400г",
       "image": "images/menu/main-dishes/svinsko_s_gaben_sos.jpg"
     },
@@ -1982,7 +1982,7 @@
         "bg": "Свински джолан, лук, чесън, моркови, картофи, целина, чушки, чери домати.",
         "en": "Pork knuckle, onion, garlic, carrots, potatoes, celery, peppers, cherry tomatoes."
       },
-      "price": 24.04,
+      "price": 12.29,
       "weight": "",
       "image": ""
     },
@@ -1996,7 +1996,7 @@
         "bg": "Обезкостен телешки джолан с картофки и сос демиглас.",
         "en": "Deboned beef knuckle with potatoes and demi-glace sauce."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "image": ""
     },
@@ -2010,7 +2010,7 @@
         "bg": "Обезкостен свински джолан с картофки и сос демиглас.",
         "en": "Deboned pork knuckle with potatoes and demi-glace sauce."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "400г",
       "image": "images/menu/main-dishes/obezkosten_svinski_djolan.jpg"
     },
@@ -2024,7 +2024,7 @@
         "bg": "Пилешко филе, сметана, синьо сирене, спанак, пармезан.",
         "en": "Chicken fillet, cream, blue cheese, spinach, parmesan."
       },
-      "price": 13.59,
+      "price": 6.95,
       "weight": "300г",
       "image": ""
     },
@@ -2038,7 +2038,7 @@
         "bg": "Пилешко филе, сметана, гъби, кисели краставички.",
         "en": "Chicken fillet, cream, mushrooms and pickles."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "400г",
       "image": ""
     },
@@ -2052,7 +2052,7 @@
         "bg": "Пилешко филе, лук, чушка, бейби моркови, гъби, соев сос, индийско орехче.",
         "en": "Chicken fillet, onion, pepper, baby carrots, mushrooms, soy sauce, nutmeg."
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "",
       "image": ""
     },
@@ -2066,7 +2066,7 @@
         "bg": "Пилешко филе, сметана, синьо сирене, портокал, пушено сирене и моцарела.",
         "en": "Chicken fillet, cream, blue cheese, orange, smoked cheese and mozzarella."
       },
-      "price": 15.04,
+      "price": 7.69,
       "weight": "260г",
       "image": ""
     },
@@ -2112,7 +2112,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.0,
+      "price": 4.09,
       "weight": "300г",
       "tags": [
         "vegetarian"
@@ -2129,7 +2129,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "400г",
       "image": ""
     },
@@ -2143,7 +2143,7 @@
         "bg": "Пресни гъби, масло.",
         "en": "Fresh mushrooms, butter."
       },
-      "price": 8.59,
+      "price": 4.39,
       "weight": "",
       "tags": [
         "vegetarian"
@@ -2160,7 +2160,7 @@
         "bg": "Картофи, сметана, масло, сирене, спанак, кашкавал.",
         "en": "Potatoes, cream, butter, white cheese, spinach, yellow cheese."
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "400г",
       "tags": [
         "vegetarian"
@@ -2177,7 +2177,7 @@
         "bg": "Свинско бонфиле, лук, гъби, моркови, чушка, тиквички, бекон, домати, кашкавал.",
         "en": "Pork tenderloin, onion, mushrooms, carrots, pepper, zucchini, bacon, tomatoes, yellow cheese."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "image": "images/menu/oven-dishes/svinski_sach.jpg"
     },
@@ -2191,7 +2191,7 @@
         "bg": "Телешки джолан, свински врат, пилешко филе, бекон, гъби, прясна чушка, лук, кашкавал.",
         "en": "Beef knuckle, pork neck, chicken fillet, bacon, mushrooms, fresh pepper, onion, yellow cheese."
       },
-      "price": 21.1,
+      "price": 10.79,
       "weight": "500г",
       "image": "images/menu/oven-dishes/valche_meze.jpg"
     },
@@ -2205,7 +2205,7 @@
         "bg": "Пилешко филе, лук, гъби, картофи, пушено сирене, яйце.",
         "en": "Chicken fillet, onion, mushrooms, potatoes, smoked cheese, egg."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "500г",
       "image": "images/menu/oven-dishes/pileshki_sach.jpg"
     },
@@ -2219,7 +2219,7 @@
         "bg": "Лук, морков, чушка, гъби, тиквичка, домати.",
         "en": "Onion, carrot, pepper, mushrooms, zucchini, tomatoes."
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "",
       "tags": [
         "vegetarian"
@@ -2236,7 +2236,7 @@
         "bg": "Пилешко филе, гъби, бекон, луканка, кашкавал.",
         "en": "Chicken fillet, mushrooms, bacon, lukanka, yellow cheese."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "300г",
       "image": "images/menu/oven-dishes/bireno_meze.jpg"
     },
@@ -2250,7 +2250,7 @@
         "bg": "Свински врат, пилешко филе, гъби, лук, печени чушки, кашкавал.",
         "en": "Pork neck, chicken fillet, mushrooms, onion, roasted peppers, yellow cheese."
       },
-      "price": 17.97,
+      "price": 9.19,
       "weight": "",
       "image": ""
     },
@@ -2264,7 +2264,7 @@
         "bg": "Картофи, бекон, лук, кашкавал, масло.",
         "en": "Potatoes, bacon, onion, yellow cheese, butter."
       },
-      "price": 12.5,
+      "price": 6.39,
       "weight": "400г",
       "image": "images/menu/oven-dishes/kartofi_bekon.jpg"
     },
@@ -2278,7 +2278,7 @@
         "bg": "Картофи, сметана, пушено пиле, луканка, лук, кашкавал.",
         "en": "Potatoes, cream, smoked chicken, lukanka, onion, yellow cheese."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "400г",
       "image": "images/menu/oven-dishes/kartofi_smetana.jpg"
     },
@@ -2292,7 +2292,7 @@
         "bg": "Картофи, сирене, домати, кашкавал, масло.",
         "en": "Potatoes, white cheese, tomatoes, yellow cheese, butter."
       },
-      "price": 11.13,
+      "price": 5.69,
       "weight": "400г",
       "tags": [
         "vegetarian"
@@ -2309,7 +2309,7 @@
         "bg": "Картофи, сметана, лук, шунка, кашкавал.",
         "en": "Potatoes, cream, onion, ham, yellow cheese."
       },
-      "price": 13.08,
+      "price": 6.69,
       "weight": "",
       "image": "images/menu/oven-dishes/kartofi_shunka.jpg"
     },
@@ -2323,7 +2323,7 @@
         "bg": "Картофи, пушено пиле, кашкавал, лук, масло.",
         "en": "Potatoes, smoked chicken, yellow cheese, onion, butter."
       },
-      "price": 12.5,
+      "price": 6.39,
       "weight": "400г",
       "image": ""
     },
@@ -2337,7 +2337,7 @@
         "bg": "Броколи, картофи, сирене, кашкавал, яйце.",
         "en": "Broccoli, potatoes, white cheese, yellow cheese, egg."
       },
-      "price": 11.13,
+      "price": 5.69,
       "weight": "",
       "tags": [
         "vegetarian"
@@ -2354,7 +2354,7 @@
         "bg": "Броколи, пушено пиле, сметана, бяло сирене, кашкавал, синьо сирене.",
         "en": "Broccoli, smoked chicken, cream, white cheese, yellow cheese, blue cheese."
       },
-      "price": 12.11,
+      "price": 6.19,
       "weight": "350г",
       "image": "images/menu/oven-dishes/brokoli_vo.jpg"
     },
@@ -2384,7 +2384,7 @@
         "bg": "Питка, айсберг, домат, кюфте, чедър, бекон, карамелизиран лук, кетчуп, майонеза и барбекю сос, пържени картофи.",
         "en": "Bun, iceberg, tomato, patty, cheddar, bacon, caramelized onion, ketchup, mayo and BBQ sauce, fries."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "450г",
       "image": ""
     },
@@ -2398,7 +2398,7 @@
         "bg": "Питка, айсберг, домат, кюфте, гауда, салам Вентричина, лук, кетчуп, майонеза и барбекю сос, пържени картофи.",
         "en": "Bun, iceberg, tomato, patty, gouda, Ventricina salami, onion, ketchup, mayo and BBQ sauce, fries."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "450г",
       "image": ""
     },
@@ -2412,7 +2412,7 @@
         "bg": "Питка, кюфте, айсберг, яйце, кисели краставички, кетчуп, майонеза и барбекю сос, чедър, домат, карамелизиран лук, пържени картофи.",
         "en": "Bun, meatball, iceberg, egg, pickles, ketchup, mayo and BBQ sauce, cheddar, tomato, caramelized onion, fries."
       },
-      "price": 17.0,
+      "price": 8.69,
       "weight": "450г",
       "image": ""
     },
@@ -2426,7 +2426,7 @@
         "bg": "Пилешко филе с корнфлейкс, доматена салца, айсберг, лук, чеснов сос, сос барбекю и пържени картофи.",
         "en": "Chicken fillet with cornflakes, tomato salsa, iceberg, onion, garlic sauce, BBQ sauce and fries."
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "image": "images/menu/burgers/tortilq.jpg"
     }
@@ -2442,7 +2442,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 5.07,
+      "price": 2.59,
       "weight": "",
       "image": "images/menu/sides/parmezanovo_hlebche.jpg"
     },
@@ -2456,7 +2456,7 @@
         "bg": "Рукола и чесън.",
         "en": "Rocket and garlic."
       },
-      "price": 5.07,
+      "price": 2.59,
       "weight": "",
       "image": "images/menu/sides/italiansko_hlebche.jpg"
     },
@@ -2470,7 +2470,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 4.09,
+      "price": 2.09,
       "weight": "",
       "image": ""
     },
@@ -2484,7 +2484,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 5.07,
+      "price": 2.59,
       "weight": "",
       "image": ""
     },
@@ -2498,7 +2498,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 5.46,
+      "price": 2.79,
       "weight": "",
       "image": ""
     },
@@ -2512,7 +2512,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 5.07,
+      "price": 2.59,
       "weight": "",
       "image": ""
     }
@@ -2528,7 +2528,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.99,
+      "price": 4.09,
       "weight": "250г",
       "tags": [
         "vegetarian"
@@ -2545,7 +2545,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.99,
+      "price": 4.09,
       "weight": "250г",
       "tags": [
         "vegetarian"
@@ -2562,7 +2562,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.43,
+      "price": 3.29,
       "weight": "250г",
       "tags": [
         "vegetarian"
@@ -2579,7 +2579,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.61,
+      "price": 3.89,
       "weight": "200г",
       "tags": [
         "vegetarian"
@@ -2596,7 +2596,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.22,
+      "price": 3.69,
       "weight": "200г",
       "tags": [
         "vegetarian"
@@ -2613,7 +2613,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.59,
+      "price": 4.39,
       "weight": "250г",
       "tags": [
         "vegetarian"
@@ -2630,7 +2630,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 3.31,
+      "price": 1.69,
       "weight": "150г",
       "tags": [
         "vegetarian"
@@ -2647,7 +2647,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.63,
+      "price": 3.39,
       "weight": "250г",
       "tags": [
         "vegetarian"
@@ -2666,7 +2666,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     },
@@ -2680,7 +2680,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     },
@@ -2694,7 +2694,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "40мл",
       "image": ""
     },
@@ -2708,7 +2708,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     },
@@ -2722,7 +2722,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     },
@@ -2736,7 +2736,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     },
@@ -2750,7 +2750,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     },
@@ -2764,7 +2764,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 2.72,
+      "price": 1.39,
       "weight": "60мл",
       "image": ""
     }
@@ -2780,7 +2780,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "180г",
       "tags": [
         "popular"
@@ -2797,7 +2797,7 @@
         "bg": "Бисквити, маскарпоне, шоколад.",
         "en": "Biscuits, mascarpone, chocolate."
       },
-      "price": 10.15,
+      "price": 5.19,
       "weight": "130г",
       "image": "images/menu/desserts/biskotino.jpg"
     },
@@ -2811,7 +2811,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.0,
+      "price": 4.09,
       "weight": "200г",
       "image": "images/menu/desserts/krem_brule_s_shokolad.jpg"
     },
@@ -2825,7 +2825,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 8.98,
+      "price": 4.59,
       "weight": "160г",
       "image": "images/menu/desserts/nutela_torta.jpg"
     },
@@ -2839,7 +2839,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 9.37,
+      "price": 4.79,
       "weight": "150г",
       "image": "images/menu/desserts/torta_lint.jpg"
     },
@@ -2853,7 +2853,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.02,
+      "price": 3.59,
       "weight": "",
       "image": "images/menu/desserts/cedeno_mlqko_s_med.jpg"
     },
@@ -2867,7 +2867,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.41,
+      "price": 3.79,
       "weight": "250г",
       "image": "images/menu/desserts/cedeno_mlqko_s_gorski_plod.jpg"
     },
@@ -2881,7 +2881,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 10.15,
+      "price": 5.19,
       "weight": "300г",
       "image": "images/menu/desserts/melba.jpg"
     },
@@ -2895,7 +2895,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 7.02,
+      "price": 3.59,
       "weight": "200г",
       "image": "images/menu/desserts/krem_brule.jpg"
     },
@@ -2909,8 +2909,8 @@
         "bg": "Бял шоколадов мус, горски плодове, сладолед, сироп, сметана.",
         "en": "White chocolate mousse, forest fruits, ice cream, syrup, cream."
       },
-      "price_small": 7.02,
-      "price_large": 8.98,
+      "price_small": 3.59,
+      "price_large": 4.59,
       "weight": "190/230г",
       "image": "images/menu/desserts/alachinka_gorski_plod.jpg"
     },
@@ -2924,7 +2924,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 14.06,
+      "price": 7.19,
       "weight": "",
       "image": ""
     },
@@ -2938,7 +2938,7 @@
         "bg": "",
         "en": ""
       },
-      "price": 6.04,
+      "price": 3.09,
       "weight": "150г",
       "image": ""
     },
@@ -2952,8 +2952,8 @@
         "bg": "Палачинка, шоколадов мус, орехи, сладолед, сметана, карамел.",
         "en": "Pancake, chocolate mousse, walnuts, ice cream, cream, caramel."
       },
-      "price_small": 7.02,
-      "price_large": 8.98,
+      "price_small": 3.59,
+      "price_large": 4.59,
       "weight": "190/230г",
       "image": "images/menu/desserts/alachinka_moka.jpg"
     },
@@ -2967,7 +2967,7 @@
         "bg": "Шоколад / сладко / мед и орехи.",
         "en": "Chocolate / jam / honey and walnuts."
       },
-      "price": 6.04,
+      "price": 3.09,
       "weight": "130г",
       "image": ""
     },

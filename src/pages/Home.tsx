@@ -213,8 +213,8 @@ export function Home() {
                     <h3 className="text-xl sm:text-2xl leading-snug">{dish.name[language]}</h3>
                     <span className="text-brand-accent font-bold text-base sm:text-xl shrink-0">
                       {dish.price_small != null && dish.price_large != null
-                        ? `${(dish.price_small / 1.95583).toFixed(2)} / ${(dish.price_large / 1.95583).toFixed(2)} €`
-                        : dish.price ? `${(dish.price / 1.95583).toFixed(2)} €` : '—'}
+                        ? `${dish.price_small.toFixed(2)} / ${dish.price_large.toFixed(2)} €`
+                        : dish.price ? `${dish.price.toFixed(2)} €` : '—'}
                     </span>
                   </div>
                   <p className="text-brand-muted text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-2">
