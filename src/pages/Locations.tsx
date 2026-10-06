@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Clock, FileText, ExternalLink } from 'lucide-react';
-import { LOCATIONS, DELIVERY_LINKS } from '../data/appData';
+import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { useTranslation } from '../contexts/LanguageContext';
 import { splitPhones } from '../lib/utils';
 
@@ -21,6 +21,9 @@ function isOpenNow(hoursStr: string): boolean {
 
 export function Locations() {
   const { t, language } = useTranslation();
+  const info = useRestaurantInfo();
+  const locations = info?.locations ?? [];
+  const delivery = info?.delivery;
 
   return (
     <div className="pt-24 pb-24 min-h-screen">
@@ -42,7 +45,7 @@ export function Locations() {
           </div>
           <div className="grid grid-cols-2 sm:flex sm:items-center gap-3">
             <a
-              href={DELIVERY_LINKS.wolt}
+              href={delivery?.wolt}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#009DE0] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
@@ -50,7 +53,7 @@ export function Locations() {
               Wolt <ExternalLink size={14} />
             </a>
             <a
-              href={DELIVERY_LINKS.takeaway}
+              href={delivery?.takeaway}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#E96B2B] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
@@ -58,7 +61,7 @@ export function Locations() {
               Takeaway <ExternalLink size={14} />
             </a>
             <a
-              href={DELIVERY_LINKS.glovo}
+              href={delivery?.glovo}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#FFC244] text-brand-ink px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
@@ -66,7 +69,7 @@ export function Locations() {
               Glovo <ExternalLink size={14} />
             </a>
             <a
-              href={DELIVERY_LINKS.bolt}
+              href={delivery?.bolt}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#34D186] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
@@ -77,7 +80,7 @@ export function Locations() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {LOCATIONS.map((loc) => (
+          {locations.map((loc) => (
             <div key={loc.id} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
               <div className="h-48 bg-gray-200 relative">
                 <img
@@ -181,7 +184,7 @@ export function Locations() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {LOCATIONS.map((loc) => (
+            {locations.map((loc) => (
               <div key={loc.id} className="rounded-3xl overflow-hidden shadow-sm border border-gray-100">
                 <div className="bg-brand-ink text-white px-5 py-3 flex items-center gap-2">
                   <MapPin size={16} className="text-brand-secondary shrink-0" />
@@ -197,12 +200,12 @@ export function Locations() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="bg-white px-5 py-3 flex justify-end">
+                <div className="bg-white px-5 py-3 flex justify-center">
                   <a
                     href={loc.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-brand-accent hover:text-brand-ink transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-accent hover:text-brand-ink transition-colors"
                   >
                     {t('locations.directions')} <ExternalLink size={12} />
                   </a>

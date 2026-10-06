@@ -106,10 +106,12 @@ export function Menu() {
     return lunchMenuEnabled ? ['Lunch Menu', ...cats] : cats;
   }, [menuData, lunchMenuEnabled]);
 
-  // Auto-select first category when menu loads and no category is in URL
+  // Auto-select first data category when menu loads and no category is in URL.
+  // Skip 'Lunch Menu' — it's an external PDF link, not a filterable category.
   useEffect(() => {
-    if (!activeCategory && navCategories.length > 0) {
-      setSearchParams({ category: navCategories[0] }, { replace: true });
+    const first = navCategories.find(c => c !== 'Lunch Menu');
+    if (!activeCategory && first) {
+      setSearchParams({ category: first }, { replace: true });
     }
   }, [activeCategory, navCategories, setSearchParams]);
 

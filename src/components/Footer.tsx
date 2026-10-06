@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, MapPin, Phone, ExternalLink, Mail, Truck } from 'lucide-react';
-import { LOCATIONS, SOCIAL_LINKS, DELIVERY_LINKS } from '../data/appData';
+import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { useTranslation } from '../contexts/LanguageContext';
 import { splitPhones } from '../lib/utils';
 
 export function Footer() {
   const { t, language } = useTranslation();
+  const info = useRestaurantInfo();
+  const locations = info?.locations ?? [];
+  const social = info?.social;
+  const delivery = info?.delivery;
 
   return (
     <footer className="bg-brand-ink text-white pt-16 pb-8">
@@ -26,15 +30,15 @@ export function Footer() {
 
             {/* Social icons */}
             <div className="flex gap-3">
-              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer"
+              <a href={social?.facebook} target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full hover:bg-brand-accent transition-colors">
                 <Facebook size={17} />
               </a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer"
+              <a href={social?.instagram} target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full hover:bg-brand-accent transition-colors">
                 <Instagram size={17} />
               </a>
-              <a href={`mailto:${SOCIAL_LINKS.email}`}
+              <a href={social?.email ? `mailto:${social.email}` : '#'}
                 className="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full hover:bg-brand-accent transition-colors">
                 <Mail size={17} />
               </a>
@@ -48,19 +52,19 @@ export function Footer() {
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-secondary flex items-center gap-2 opacity-80">
                 <Truck size={13} /> {t('footer.delivery')}
               </p>
-              <a href={DELIVERY_LINKS.wolt} target="_blank" rel="noopener noreferrer"
+              <a href={delivery?.wolt} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Wolt <ExternalLink size={11} />
               </a>
-              <a href={DELIVERY_LINKS.takeaway} target="_blank" rel="noopener noreferrer"
+              <a href={delivery?.takeaway} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Takeaway.com <ExternalLink size={11} />
               </a>
-              <a href={DELIVERY_LINKS.glovo} target="_blank" rel="noopener noreferrer"
+              <a href={delivery?.glovo} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Glovo <ExternalLink size={11} />
               </a>
-              <a href={DELIVERY_LINKS.bolt} target="_blank" rel="noopener noreferrer"
+              <a href={delivery?.bolt} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Bolt Food <ExternalLink size={11} />
               </a>
@@ -87,7 +91,7 @@ export function Footer() {
 
             {/* Location cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
-              {LOCATIONS.map((loc) => (
+              {locations.map((loc) => (
                 <div key={loc.id} className="flex flex-col gap-5 md:px-8 first:pl-0 last:pr-0 py-4 md:py-0">
 
                   {/* Name */}

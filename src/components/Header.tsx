@@ -4,7 +4,7 @@ import { Menu, X, Phone, Calendar, Globe, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
-import { LOCATIONS } from '../data/appData';
+import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 
 const NAV_LINKS = [
   { name: 'nav.lunch', path: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`, isExternal: true },
@@ -23,6 +23,9 @@ export function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const location = useLocation();
   const { language, setLanguage, t } = useTranslation();
+  const restaurantInfo = useRestaurantInfo();
+  const locations = restaurantInfo?.locations ?? [];
+  const mainPhone = locations[0]?.phone ?? '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +60,7 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-4" aria-label="Main navigation">
           {NAV_LINKS.map((link) => (
             <div
-              key={link.path}
+              key={link.name}
               className="relative"
               onMouseEnter={() => link.hasDropdown && setHoveredLink(link.name)}
               onMouseLeave={() => setHoveredLink(null)}
@@ -118,7 +121,7 @@ export function Header() {
                       className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max min-w-[280px] bg-white shadow-2xl rounded-2xl overflow-hidden border border-gray-100"
                     >
                       <div className="py-2">
-                        {LOCATIONS.map((loc) => (
+                        {locations.map((loc) => (
                           <Link
                             key={loc.id}
                             to={`/locations#${loc.id}`}
@@ -165,7 +168,7 @@ export function Header() {
           </div>
 
           <a
-            href={`tel:${LOCATIONS[0].phone.replace(/[\s\/]/g, '')}`}
+            href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`}
             className={cn(
               "p-2 rounded-full transition-colors",
               isScrolled || location.pathname !== '/' ? "bg-brand-bg text-brand-ink hover:bg-brand-accent hover:text-white" : "bg-white/10 text-white hover:bg-white/20"
@@ -217,7 +220,7 @@ export function Header() {
               {NAV_LINKS.map((link) => (
                 link.isExternal ? (
                   <a
-                    key={link.path}
+                    key={link.name}
                     href={link.path}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -227,7 +230,7 @@ export function Header() {
                   </a>
                 ) : (
                 <Link
-                  key={link.path}
+                  key={link.name}
                   to={link.path}
                   className={cn(
                     "py-3 text-lg font-medium border-b border-gray-50 last:border-0",
@@ -240,7 +243,7 @@ export function Header() {
               ))}
               <div className="mt-4 flex flex-col gap-3">
                 <a
-                  href={`tel:${LOCATIONS[0].phone.replace(/[\s\/]/g, '')}`}
+                  href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`}
                   className="flex items-center justify-center gap-2 bg-brand-bg text-brand-ink py-3 rounded-xl font-semibold"
                 >
                   <Phone size={20} /> {t('nav.call')}

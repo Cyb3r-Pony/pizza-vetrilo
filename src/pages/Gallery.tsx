@@ -23,14 +23,16 @@ export function Gallery() {
   const { t, language } = useTranslation();
 
   const [galleryData, setGalleryData] = useState<GalleryData | null>(null);
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}gallery.json`)
-      .then(r => (r.ok ? r.json() : null))
-      .then((data: GalleryData | null) => {
-        if (data) setGalleryData(data);
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
       })
-      .catch(() => { /* silently fail */ });
+      .then((data: GalleryData) => setGalleryData(data))
+      .catch(() => setFetchError(true));
   }, []);
 
   const navCategories = galleryData ? galleryData.categories : [];
@@ -68,9 +70,20 @@ export function Gallery() {
       </div>
 
       {/* Loading state */}
-      {!galleryData && (
+      {!galleryData && !fetchError && (
         <div className="flex justify-center py-20">
           <div className="w-10 h-10 border-4 border-brand-accent border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+
+      {/* Fetch error */}
+      {fetchError && (
+        <div className="text-center py-20">
+          <p className="text-brand-muted text-lg">
+            {language === 'bg'
+              ? 'Галерията не може да бъде заредена. Моля, опитайте отново.'
+              : 'The gallery could not be loaded. Please try again.'}
+          </p>
         </div>
       )}
 

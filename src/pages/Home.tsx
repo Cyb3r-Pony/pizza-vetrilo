@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MenuItem, MenuData, LOCATIONS } from '../data/appData';
+import { MenuItem, MenuData } from '../data/appData';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
+import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 
 const CATEGORY_KEYS: Array<keyof Omit<MenuData, 'categories'>> = [
   'pizza', 'salads', 'starters', 'soups', 'pasta', 'risotto',
@@ -25,6 +26,9 @@ const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.orig
 export function Home() {
   const { t, language } = useTranslation();
   const { lunchMenuEnabled } = useSiteConfig();
+  const restaurantInfo = useRestaurantInfo();
+  const locations = restaurantInfo?.locations ?? [];
+  const mainPhone = locations[0]?.phone ?? '';
   const [featuredDishes, setFeaturedDishes] = useState<MenuItem[]>([]);
 
   useEffect(() => {
@@ -109,7 +113,7 @@ export function Home() {
 
       {/* Quick Actions Bar */}
       <div className="bg-white shadow-xl relative z-20 -mt-6 sm:-mt-12 mx-4 lg:mx-auto max-w-5xl rounded-2xl grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100 overflow-hidden">
-        <a href={`tel:${LOCATIONS[0].phone.replace(/[\s\/]/g, '')}`} className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
+        <a href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`} className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
           <Phone size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
           <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.call')}</span>
         </a>
@@ -260,7 +264,7 @@ export function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            {LOCATIONS.map((loc) => (
+            {locations.map((loc) => (
               <div
                 key={loc.id}
                 className="group relative bg-white/6 backdrop-blur-sm border border-white/12 hover:border-brand-secondary/60 p-9 rounded-3xl transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,0,0,0.4)]"

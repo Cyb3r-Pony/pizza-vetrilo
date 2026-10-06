@@ -1,16 +1,15 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, loadEnv} from 'vite';
+import {defineConfig} from 'vite';
 
-export default defineConfig(({mode}) => {
-  const env = loadEnv(mode, '.', '');
+export default defineConfig(() => {
   return {
-    base: '/pizza-vetrilo/',
+    // Default build targets the domain root (Superhosting: https://pizzavetrilo.bg/).
+    // Set DEPLOY_TARGET=gh (GitHub Actions workflow / `npm run build:gh`)
+    // to build for GitHub Pages at /pizza-vetrilo/.
+    base: process.env.DEPLOY_TARGET === 'gh' ? '/pizza-vetrilo/' : '/',
     plugins: [react(), tailwindcss()],
-    define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

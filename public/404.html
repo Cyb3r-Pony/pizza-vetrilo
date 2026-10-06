@@ -5,9 +5,12 @@
     <title>Pizza Vetrilo</title>
     <script>
       // Store the full URL and redirect to the app root
-      // The app's index.html will pick this up and restore the route
+      // The app's index.html will pick this up and restore the route.
+      // Only GitHub Pages uses this file; on Superhosting the .htaccess
+      // rewrite serves index.html directly. Base path is chosen by host.
+      var base = location.hostname.endsWith('github.io') ? '/pizza-vetrilo/' : '/';
       sessionStorage.redirect = location.href;
-      location.replace(location.origin + '/pizza-vetrilo/');
+      location.replace(location.origin + base);
     </script>
   </head>
   <body></body>
