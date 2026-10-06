@@ -456,6 +456,33 @@
       "category": "Interior"
     },
     {
+      "id": "g-i1-1",
+      "url": "images/restaurant/restaurant-1/image-1.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i1-2",
+      "url": "images/restaurant/restaurant-1/image-2.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Interior"
+    },
+    {
+      "id": "g-i1-3",
+      "url": "images/restaurant/restaurant-1/image-3.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Interior"
+    },
+    {
       "id": "g-e3-1",
       "url": "images/restaurant/restaurant-3-events/image-1.jpeg",
       "caption": {
@@ -497,6 +524,60 @@
       "caption": {
         "bg": "Ресторант 3 - Младост",
         "en": "Restaurant 3 - Mladost"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e1-1",
+      "url": "images/restaurant/restaurant-1-events/image-1.png",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e1-2",
+      "url": "images/restaurant/restaurant-1-events/image-2.png",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e1-3",
+      "url": "images/restaurant/restaurant-1-events/image-3.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e1-4",
+      "url": "images/restaurant/restaurant-1-events/image-4.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e1-5",
+      "url": "images/restaurant/restaurant-1-events/image-5.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
+      },
+      "category": "Events"
+    },
+    {
+      "id": "g-e1-6",
+      "url": "images/restaurant/restaurant-1-events/image-6.jpeg",
+      "caption": {
+        "bg": "Ресторант 1 - Борово",
+        "en": "Restaurant 1 - Borovo"
       },
       "category": "Events"
     }

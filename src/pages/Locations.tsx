@@ -86,7 +86,7 @@ export function Locations() {
                 <img
                   src={
                     loc.id === 'v1'
-                      ? 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800'
+                      ? `${window.location.origin}${import.meta.env.BASE_URL}images/restaurant/restaurant-1/image-1.jpeg`
                       : loc.id === 'v2'
                       ? `${window.location.origin}${import.meta.env.BASE_URL}images/restaurant/restaurant-2/image-3.jpeg`
                       : 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800'
