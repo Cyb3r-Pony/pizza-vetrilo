@@ -1,48 +1,9 @@
-# Pizza Vetrilo — Apache config for Superhosting.BG
-# (Ignored by GitHub Pages; only active on Apache hosting.)
+Options -MultiViews
+RewriteEngine On
 
-# --- Force HTTPS ---
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
+# Serve existing files and directories as-is
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
-# --- SPA routing: serve index.html for all non-file paths ---
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
-
-# --- Block hidden/sensitive files (.git, .env, .DS_Store, ...) ---
-RedirectMatch 404 /\.(?!well-known)
-
-# --- Security headers ---
-<IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-</IfModule>
-
-# --- Compression ---
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
-</IfModule>
-
-# --- Caching ---
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/jpeg "access plus 1 month"
-  ExpiresByType image/png  "access plus 1 month"
-  ExpiresByType image/webp "access plus 1 month"
-  ExpiresByType application/pdf "access plus 1 week"
-  ExpiresByType text/css   "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  # Keep JSON short so menu.json / site-config.json edits via FTP show quickly
-  ExpiresByType application/json "access plus 1 hour"
-</IfModule>
+# Otherwise route everything to index.html (React Router handles the URL)
+RewriteRule ^ index.html [QSA,L]
