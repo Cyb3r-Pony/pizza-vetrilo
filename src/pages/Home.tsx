@@ -187,10 +187,10 @@ export function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             {featuredDishes.map((dish) => (
-              <div key={dish.id} className="group bg-brand-bg rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
-                <div className="h-64 overflow-hidden relative">
+              <div key={dish.id} className="group bg-brand-bg rounded-2xl sm:rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                <div className="h-52 sm:h-64 overflow-hidden relative">
                   <img
                     src={dish.image
                       ? (dish.image.startsWith('http') ? dish.image : `${window.location.origin}${import.meta.env.BASE_URL}${dish.image}`)
@@ -200,7 +200,7 @@ export function Home() {
                     referrerPolicy="no-referrer"
                     onError={(e) => { const t = e.currentTarget; if (!t.src.includes('Vetrilo-logo')) t.src = LOGO_PLACEHOLDER; }}
                   />
-                  <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                     {dish.tags?.map(tag => (
                       <span key={tag} className="bg-brand-accent text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full">
                         {tag}
@@ -208,21 +208,21 @@ export function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="p-8">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-2xl">{dish.name[language]}</h3>
-                    <span className="text-brand-accent font-bold text-xl">
+                <div className="p-5 sm:p-8">
+                  <div className="flex justify-between items-start gap-2 mb-3 sm:mb-4">
+                    <h3 className="text-xl sm:text-2xl leading-snug">{dish.name[language]}</h3>
+                    <span className="text-brand-accent font-bold text-base sm:text-xl shrink-0">
                       {dish.price_small != null && dish.price_large != null
-                        ? `${dish.price_small.toFixed(2)} / ${dish.price_large.toFixed(2)} lv.`
-                        : dish.price ? `${dish.price.toFixed(2)} lv.` : '—'}
+                        ? `${dish.price_small.toFixed(2)} / ${dish.price_large.toFixed(2)} лв.`
+                        : dish.price ? `${dish.price.toFixed(2)} лв.` : '—'}
                     </span>
                   </div>
-                  <p className="text-brand-muted text-sm leading-relaxed mb-6 line-clamp-2">
+                  <p className="text-brand-muted text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-2">
                     {dish.description[language]}
                   </p>
-                  <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+                  <div className="flex justify-between items-center pt-4 sm:pt-6 border-t border-gray-200">
                     <span className="text-xs text-brand-muted font-medium uppercase tracking-widest">{dish.weight}</span>
-                    <Link to={`/menu?category=${dish.category || 'Salads'}`} className="text-brand-ink font-bold text-sm uppercase tracking-widest hover:text-brand-accent transition-colors">
+                    <Link to={`/menu?category=${dish.category || 'Salads'}`} className="text-brand-ink font-bold text-sm uppercase tracking-widest hover:text-brand-accent active:text-brand-accent transition-colors">
                       {t('menu.moreInfo')}
                     </Link>
                   </div>
@@ -234,7 +234,7 @@ export function Home() {
       </section>
 
       {/* Locations Preview */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-16 sm:py-28 overflow-hidden">
         {/* Background image — warm restaurant interior */}
         <div className="absolute inset-0">
           <img
@@ -267,14 +267,14 @@ export function Home() {
             {locations.map((loc) => (
               <div
                 key={loc.id}
-                className="group relative bg-white/6 backdrop-blur-sm border border-white/12 hover:border-brand-secondary/60 p-9 rounded-3xl transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,0,0,0.4)]"
+                className="group relative bg-white/6 backdrop-blur-sm border border-white/12 hover:border-brand-secondary/60 p-5 sm:p-9 rounded-2xl sm:rounded-3xl transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,0,0,0.4)]"
               >
                 {/* Subtle top accent line that appears on hover */}
                 <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-brand-secondary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
 
-                <h3 className="text-xl font-bold text-white mb-6 tracking-tight">{loc.name[language]}</h3>
+                <h3 className="text-xl font-bold text-white mb-4 sm:mb-6 tracking-tight">{loc.name[language]}</h3>
 
-                <div className="space-y-3 mb-9">
+                <div className="space-y-3 mb-5 sm:mb-9">
                   <p className="text-white/60 text-sm flex items-start gap-3 leading-relaxed">
                     <Calendar size={16} className="shrink-0 mt-0.5 text-brand-secondary" />
                     {loc.hours[language]}

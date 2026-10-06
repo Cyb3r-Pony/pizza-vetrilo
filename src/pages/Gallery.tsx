@@ -108,8 +108,8 @@ export function Gallery() {
                     key={item.id}
                     initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: i * 0.04 }}
-                    className="group relative aspect-[4/3] rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-shadow"
+                    transition={{ duration: 0.3, delay: Math.min(i * 0.04, 0.25) }}
+                    className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-shadow"
                     onClick={() => setSelectedImage(src)}
                   >
                     <img
@@ -119,12 +119,23 @@ export function Gallery() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                      <div className="translate-y-4 group-hover:translate-y-0 transition-transform">
-                        <span className="text-brand-secondary text-[10px] uppercase tracking-widest font-bold mb-2 block">
+                    {/* Caption: always visible on mobile, hover-only on desktop */}
+                    <div className="absolute inset-0 flex items-end">
+                      {/* Mobile: persistent gradient + caption */}
+                      <div className="sm:hidden w-full bg-gradient-to-t from-black/70 via-black/20 to-transparent pt-16 pb-4 px-4">
+                        <span className="text-brand-secondary text-[10px] uppercase tracking-widest font-bold mb-1 block">
                           {t(`cat.${item.category}`)}
                         </span>
-                        <p className="text-white text-lg font-serif">{item.caption[language]}</p>
+                        <p className="text-white text-sm font-serif leading-snug">{item.caption[language]}</p>
+                      </div>
+                      {/* Desktop: hover-only */}
+                      <div className="hidden sm:flex w-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity items-end p-8 absolute inset-0">
+                        <div className="translate-y-4 group-hover:translate-y-0 transition-transform">
+                          <span className="text-brand-secondary text-[10px] uppercase tracking-widest font-bold mb-2 block">
+                            {t(`cat.${item.category}`)}
+                          </span>
+                          <p className="text-white text-lg font-serif">{item.caption[language]}</p>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
