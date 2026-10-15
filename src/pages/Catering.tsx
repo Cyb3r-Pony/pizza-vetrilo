@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, Send, CheckCircle, ChevronDown } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { EMAIL_REGEX, PHONE_REGEX } from '../lib/utils';
+
+interface GalleryItem {
+  id: string;
+  url: string;
+  category: string;
+  caption: Record<string, string>;
+}
 
 const EVENT_TYPES = [
   { name: 'Team building', img: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800' },
@@ -23,8 +30,20 @@ const SERVICES = [
 ];
 
 export function Catering() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const [eventPhotos, setEventPhotos] = useState<GalleryItem[]>([]);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', eventType: '', guestCount: '', notes: '' });
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}gallery.json`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data?.items) {
+          setEventPhotos(data.items.filter((i: GalleryItem) => i.category === 'Events'));
+        }
+      })
+      .catch(() => {});
+  }, []);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -137,6 +156,37 @@ export function Catering() {
           ))}
         </div>
       </section>
+
+      {/* Events Photo Gallery */}
+      {eventPhotos.length > 0 && (
+        <section className="pb-16 sm:pb-24 container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {eventPhotos.map((photo) => {
+              const src = photo.url.startsWith('http')
+                ? photo.url
+                : `${window.location.origin}${import.meta.env.BASE_URL}${photo.url}`;
+              return (
+                <div key={photo.id} className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
+                  <img
+                    src={src}
+                    alt={photo.caption?.[language] ?? ''}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  {photo.caption?.[language] && (
+                    <div className="absolute inset-0 flex items-end">
+                      <div className="w-full bg-gradient-to-t from-black/60 via-black/10 to-transparent pt-12 pb-4 px-4">
+                        <p className="text-white text-sm font-serif leading-snug">{photo.caption[language]}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Services & Form */}
       <section className="py-24 bg-white">

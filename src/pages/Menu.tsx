@@ -203,7 +203,7 @@ export function Menu() {
                     rel="noopener noreferrer"
                     className="whitespace-nowrap shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 bg-brand-secondary text-white hover:bg-opacity-90"
                   >
-                    {t(`cat.${cat}`)} <ExternalLink size={11} />
+                    {menuData?.categoryLabels?.[cat]?.[language as 'bg'|'en'] ?? t(`cat.${cat}`)} <ExternalLink size={11} />
                   </a>
                 );
               }
@@ -219,7 +219,7 @@ export function Menu() {
                       : "bg-brand-bg text-brand-ink hover:bg-gray-200 active:bg-gray-300"
                   )}
                 >
-                  {t(`cat.${cat}`)}
+                  {menuData?.categoryLabels?.[cat]?.[language as 'bg'|'en'] ?? t(`cat.${cat}`)}
                 </button>
               );
             })}

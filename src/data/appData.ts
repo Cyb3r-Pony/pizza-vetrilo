@@ -19,6 +19,7 @@ export interface MenuItem {
 // MenuData mirrors the shape of /public/menu/menu.json.
 export interface MenuData {
   categories: string[];
+  categoryLabels?: Record<string, { bg: string; en: string }>;
   pizza: MenuItem[];
   salads: MenuItem[];
   starters: MenuItem[];
