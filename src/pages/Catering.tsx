@@ -110,7 +110,7 @@ export function Catering() {
   return (
     <div className="pt-24 pb-24 min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] sm:h-[60vh] flex items-center justify-center text-white overflow-hidden py-16 sm:py-0">
+      <section className="relative min-h-[50vh] sm:h-[60vh] flex items-center justify-center text-white overflow-hidden py-16 sm:py-0 bg-gray-900">
         <img
           src={heroImageSrc}
           alt=""
@@ -121,8 +121,8 @@ export function Catering() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
           >
             <h1 className="text-3xl sm:text-5xl md:text-7xl mb-4 sm:mb-6">{t('catering.heroTitle')}</h1>
             <p className="text-base sm:text-xl md:text-2xl text-brand-secondary max-w-2xl mx-auto font-light mb-6 sm:mb-10">
