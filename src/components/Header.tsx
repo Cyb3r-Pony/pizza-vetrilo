@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
+import { useSiteConfig } from '../hooks/useSiteConfig';
 
-const NAV_LINKS = [
-  { name: 'nav.lunch', path: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`, isExternal: true },
+const ALL_NAV_LINKS = [
+  { name: 'nav.lunch', path: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`, isExternal: true, hiddenWhenLunchOff: true },
   { name: 'nav.menu', path: '/menu?category=Salads' },
   { name: 'nav.locations', path: '/locations', hasDropdown: true },
   { name: 'nav.delivery', path: '/locations' },
@@ -23,9 +24,11 @@ export function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const location = useLocation();
   const { language, setLanguage, t } = useTranslation();
+  const { lunchMenuEnabled } = useSiteConfig();
   const restaurantInfo = useRestaurantInfo();
   const locations = restaurantInfo?.locations ?? [];
   const mainPhone = locations[0]?.phone ?? '';
+  const NAV_LINKS = ALL_NAV_LINKS.filter(l => !l.hiddenWhenLunchOff || lunchMenuEnabled);
 
   useEffect(() => {
     const handleScroll = () => {
