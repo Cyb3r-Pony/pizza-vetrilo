@@ -4,5 +4,16 @@
   "announcement": {
     "bg": "",
     "en": ""
-  }
+  },
+  "heroText": {
+    "bg": {
+      "title": "Твоето място за нещо вкусно",
+      "subtitle": "За бърз обяд, вкусна вечеря или споделен момент с любимите хора – във „Ветрило" ще откриете храна, която носи удоволствие."
+    },
+    "en": {
+      "title": "Your place for something delicious",
+      "subtitle": "For a quick lunch, a tasty dinner or a shared moment with the people you love – at Vetrilo you'll find food that brings joy."
+    }
+  },
+  "cateringHeroImage": "images/catering/hero.jpg"
 }

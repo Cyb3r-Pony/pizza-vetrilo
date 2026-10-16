@@ -10,6 +10,20 @@ export interface SiteConfig {
    * Leave both values empty ("") to hide the banner.
    */
   announcement?: Record<string, string>;
+  /**
+   * Hero section text on the Home page.
+   * Edit in site-config.json — no rebuild needed.
+   */
+  heroText?: {
+    bg: { title: string; subtitle: string };
+    en: { title: string; subtitle: string };
+  };
+  /**
+   * Path to the Catering page hero banner image.
+   * Use a local path like "images/catering/hero.jpg" — upload the file via
+   * Superhosting File Manager and update this value, no rebuild needed.
+   */
+  cateringHeroImage?: string;
 }
 
 const DEFAULT_CONFIG: SiteConfig = {

@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, Send, CheckCircle, ChevronDown } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { useSiteConfig } from '../hooks/useSiteConfig';
 import { EMAIL_REGEX, PHONE_REGEX } from '../lib/utils';
+
+const FALLBACK_HERO = 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000';
 
 interface GalleryItem {
   id: string;
@@ -31,6 +34,10 @@ const SERVICES = [
 
 export function Catering() {
   const { t, language } = useTranslation();
+  const { cateringHeroImage } = useSiteConfig();
+  const heroImageSrc = cateringHeroImage
+    ? `${window.location.origin}${import.meta.env.BASE_URL}${cateringHeroImage}`
+    : FALLBACK_HERO;
   const [eventPhotos, setEventPhotos] = useState<GalleryItem[]>([]);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', eventType: '', guestCount: '', notes: '' });
 
@@ -105,7 +112,7 @@ export function Catering() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] sm:h-[60vh] flex items-center justify-center text-white overflow-hidden py-16 sm:py-0">
         <img
-          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000"
+          src={heroImageSrc}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover"

@@ -25,7 +25,9 @@ const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.orig
 
 export function Home() {
   const { t, language } = useTranslation();
-  const { lunchMenuEnabled } = useSiteConfig();
+  const { lunchMenuEnabled, heroText } = useSiteConfig();
+  const heroTitle = heroText?.[language as 'bg'|'en']?.title ?? t('hero.title');
+  const heroSubtitle = heroText?.[language as 'bg'|'en']?.subtitle ?? t('hero.subtitle');
   const restaurantInfo = useRestaurantInfo();
   const locations = restaurantInfo?.locations ?? [];
   const mainPhone = locations[0]?.phone ?? '';
@@ -71,11 +73,10 @@ export function Home() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 leading-tight">
-              {t('hero.title')} <br />
-              <span className="text-brand-secondary">{t('hero.subtitle')}</span>
+              {heroTitle}
             </h1>
             <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-10 text-white/80 max-w-2xl mx-auto font-light">
-              {t('hero.tagline')}
+              {heroSubtitle}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               {lunchMenuEnabled && (
