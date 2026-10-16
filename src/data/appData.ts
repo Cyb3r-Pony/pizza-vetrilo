@@ -14,6 +14,21 @@ export interface MenuItem {
   tags?: string[];
   image?: string;
   hidden?: boolean;
+  /** true = show in "Chef's Favorites" on the Home page; false = never show there. */
+  popular?: boolean;
+}
+
+/** An item is a Chef's Favorite if "popular": true, or it has the "popular" tag (unless "popular": false). */
+export function isPopular(item: MenuItem): boolean {
+  if (item.popular === true) return true;
+  if (item.popular === false) return false;
+  return !!item.tags?.includes('popular');
+}
+
+/** Tags to display as badges — includes "popular" for items marked "popular": true, excludes it for "popular": false. */
+export function displayTags(item: MenuItem): string[] {
+  const tags = (item.tags ?? []).filter(t => t !== 'popular');
+  return isPopular(item) ? ['popular', ...tags] : tags;
 }
 
 // MenuData mirrors the shape of /public/menu/menu.json.

@@ -4,7 +4,7 @@ import { CheckCircle2, Send, CheckCircle, ChevronDown } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
-import { EMAIL_REGEX, PHONE_REGEX } from '../lib/utils';
+import { EMAIL_REGEX, PHONE_REGEX, resolveAsset, NO_CACHE } from '../lib/utils';
 
 const FALLBACK_HERO = 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000';
 
@@ -35,16 +35,15 @@ const SERVICES = [
 
 export function Catering() {
   const { t, language } = useTranslation();
-  const { cateringHeroImage } = useSiteConfig();
+  const { cateringHeroImage, loaded: configLoaded } = useSiteConfig();
   const restaurantInfo = useRestaurantInfo();
-  const heroImageSrc = cateringHeroImage
-    ? `${window.location.origin}${import.meta.env.BASE_URL}${cateringHeroImage}`
-    : FALLBACK_HERO;
+  // Wait for site-config.json so the stock fallback photo never flashes before the real one.
+  const heroImageSrc = resolveAsset(cateringHeroImage) || FALLBACK_HERO;
   const [eventPhotos, setEventPhotos] = useState<GalleryItem[]>([]);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', eventType: '', guestCount: '', notes: '' });
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}gallery.json`)
+    fetch(`${import.meta.env.BASE_URL}gallery.json`, NO_CACHE)
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         if (data?.items) {
@@ -114,13 +113,16 @@ export function Catering() {
     <div className="pt-24 pb-24 min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[50vh] sm:h-[60vh] flex items-center justify-center text-white overflow-hidden py-16 sm:py-0 bg-gray-900">
-        <img
-          src={heroImageSrc}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-[center_65%]"
-          referrerPolicy="no-referrer"
-        />
+        {configLoaded && (
+          <img
+            src={heroImageSrc}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-[center_65%]"
+            referrerPolicy="no-referrer"
+            onError={(e) => { if (e.currentTarget.src !== FALLBACK_HERO) e.currentTarget.src = FALLBACK_HERO; }}
+          />
+        )}
         <div className="absolute inset-0 bg-black/60" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
@@ -172,9 +174,7 @@ export function Catering() {
         <section className="pb-16 sm:pb-24 container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {eventPhotos.map((photo) => {
-              const src = photo.url.startsWith('http')
-                ? photo.url
-                : `${window.location.origin}${import.meta.env.BASE_URL}${photo.url}`;
+              const src = resolveAsset(photo.url);
               return (
                 <div key={photo.id} className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
                   <img

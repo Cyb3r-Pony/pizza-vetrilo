@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MenuItem, MenuData } from '../data/appData';
+import { MenuItem, MenuData, isPopular, displayTags } from '../data/appData';
+import { resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
@@ -25,16 +26,19 @@ const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.orig
 
 export function Home() {
   const { t, language } = useTranslation();
-  const { lunchMenuEnabled, heroText } = useSiteConfig();
-  const heroTitle = heroText?.[language as 'bg'|'en']?.title ?? t('hero.title');
-  const heroSubtitle = heroText?.[language as 'bg'|'en']?.subtitle ?? t('hero.subtitle');
+  const { lunchMenuEnabled, heroText, loaded: configLoaded } = useSiteConfig();
+  // Wait for site-config.json before showing text, so the old default title never flashes.
+  // Empty strings in the JSON fall back to the built-in text.
+  const heroLang = heroText?.[language as 'bg'|'en'];
+  const heroTitle = configLoaded ? (heroLang?.title?.trim() || t('hero.title')) : '\u00A0';
+  const heroSubtitle = configLoaded ? (heroLang?.subtitle?.trim() || t('hero.subtitle')) : '\u00A0';
   const restaurantInfo = useRestaurantInfo();
   const locations = restaurantInfo?.locations ?? [];
   const mainPhone = locations[0]?.phone ?? '';
   const [featuredDishes, setFeaturedDishes] = useState<MenuItem[]>([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}menu/menu.json`)
+    fetch(`${import.meta.env.BASE_URL}menu/menu.json`, NO_CACHE)
       .then(r => r.ok ? r.json() : null)
       .then((data: MenuData | null) => {
         if (!data) return;
@@ -46,7 +50,8 @@ export function Home() {
             arr.forEach(item => { if (!item.hidden) all.push({ ...item, category: KEY_TO_CATEGORY[key] ?? '' }); });
           }
         }
-        setFeaturedDishes(all.filter(item => item.tags?.includes('popular')).slice(0, 6));
+        // Show every dish marked as a Chef's Favorite ("popular": true or the "popular" tag) — no hidden limit.
+        setFeaturedDishes(all.filter(isPopular));
       })
       .catch(() => { /* silently fail — section stays hidden */ });
   }, []);
@@ -175,7 +180,8 @@ export function Home() {
         </div>
       </section>
 
-      {/* Featured Dishes */}
+      {/* Featured Dishes — hidden entirely if no dish is marked popular */}
+      {featuredDishes.length > 0 && (
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-10 sm:mb-16 gap-6">
@@ -193,18 +199,16 @@ export function Home() {
               <div key={dish.id} className="group bg-brand-bg rounded-2xl sm:rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
                 <div className="h-52 sm:h-64 overflow-hidden relative">
                   <img
-                    src={dish.image
-                      ? (dish.image.startsWith('http') ? dish.image : `${window.location.origin}${import.meta.env.BASE_URL}${dish.image}`)
-                      : LOGO_PLACEHOLDER}
+                    src={resolveAsset(dish.image) || LOGO_PLACEHOLDER}
                     alt={dish.name[language]}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                     onError={(e) => { const t = e.currentTarget; if (!t.src.includes('Vetrilo-logo')) t.src = LOGO_PLACEHOLDER; }}
                   />
                   <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-                    {dish.tags?.map(tag => (
-                      <span key={tag} className="bg-brand-accent text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full">
-                        {tag}
+                    {displayTags(dish).map(tag => (
+                      <span key={tag} className={`${tag === 'spicy' ? 'bg-red-600' : 'bg-brand-accent'} text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full`}>
+                        {t(`tag.${tag}`) === `tag.${tag}` ? tag : t(`tag.${tag}`)}
                       </span>
                     ))}
                   </div>
@@ -213,9 +217,10 @@ export function Home() {
                   <div className="flex justify-between items-start gap-2 mb-3 sm:mb-4">
                     <h3 className="text-xl sm:text-2xl leading-snug">{dish.name[language]}</h3>
                     <span className="text-brand-accent font-bold text-base sm:text-xl shrink-0">
-                      {dish.price_small != null && dish.price_large != null
-                        ? `${dish.price_small.toFixed(2)} / ${dish.price_large.toFixed(2)} €`
-                        : dish.price ? `${dish.price.toFixed(2)} €` : '—'}
+                      {(() => {
+                        const s = toPrice(dish.price_small), l = toPrice(dish.price_large), p = toPrice(dish.price);
+                        return s != null && l != null ? `${s.toFixed(2)} / ${l.toFixed(2)} €` : p ? `${p.toFixed(2)} €` : '—';
+                      })()}
                     </span>
                   </div>
                   <p className="text-brand-muted text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-2">
@@ -233,6 +238,7 @@ export function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Locations Preview */}
       <section className="relative py-16 sm:py-28 overflow-hidden">

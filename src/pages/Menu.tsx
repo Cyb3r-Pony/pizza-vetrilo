@@ -2,8 +2,8 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ChevronUp, Info, ExternalLink } from 'lucide-react';
-import { MenuItem, MenuData } from '../data/appData';
-import { cn } from '../lib/utils';
+import { MenuItem, MenuData, displayTags } from '../data/appData';
+import { cn, resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 
@@ -29,9 +29,7 @@ const CATEGORY_KEY_MAP: Record<string, keyof Omit<MenuData, 'categories'>> = {
 const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.origin : ''}${import.meta.env.BASE_URL}images/restaurant/general/Vetrilo-logo.png`;
 
 function resolveImage(src?: string) {
-  if (!src) return LOGO_PLACEHOLDER;
-  if (src.startsWith("http")) return src;
-  return `${window.location.origin}${import.meta.env.BASE_URL}${src}`;
+  return resolveAsset(src) || LOGO_PLACEHOLDER;
 }
 
 export function Menu() {
@@ -46,7 +44,7 @@ export function Menu() {
   const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}menu/menu.json`)
+    fetch(`${import.meta.env.BASE_URL}menu/menu.json`, NO_CACHE)
       .then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
@@ -301,8 +299,10 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
   language: string;
   t: (key: string) => string;
 }) {
-  const hasDual = item.price_small != null && item.price_large != null;
-  const singlePrice = item.price ?? 0;
+  const priceSmall = toPrice(item.price_small);
+  const priceLarge = toPrice(item.price_large);
+  const hasDual = priceSmall != null && priceLarge != null;
+  const singlePrice = toPrice(item.price) ?? 0;
 
   return (
     <div className={cn(
@@ -324,12 +324,12 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
           }}
         />
         <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-          {item.tags?.map(tag => (
+          {displayTags(item).map(tag => (
             <span key={tag} className={cn(
               "text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full text-white",
               tag === 'spicy' ? 'bg-red-600' : 'bg-brand-accent'
             )}>
-              {tag}
+              {t(`tag.${tag}`) === `tag.${tag}` ? tag : t(`tag.${tag}`)}
             </span>
           ))}
         </div>
@@ -341,7 +341,7 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
           <div className="flex flex-col items-end shrink-0">
             {hasDual ? (
               <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">
-                {item.price_small!.toFixed(2)} / {item.price_large!.toFixed(2)} €
+                {priceSmall!.toFixed(2)} / {priceLarge!.toFixed(2)} €
               </span>
             ) : singlePrice > 0 ? (
               <span className="text-brand-accent font-bold text-sm sm:text-base leading-tight">{singlePrice.toFixed(2)} €</span>
@@ -386,7 +386,7 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
                   <div className="text-right">
                     {hasDual ? (
                       <span className="font-bold text-brand-accent block">
-                        {item.price_small!.toFixed(2)} / {item.price_large!.toFixed(2)} €
+                        {priceSmall!.toFixed(2)} / {priceLarge!.toFixed(2)} €
                       </span>
                     ) : singlePrice > 0 ? (
                       <span className="font-bold text-brand-accent block">{singlePrice.toFixed(2)} €</span>

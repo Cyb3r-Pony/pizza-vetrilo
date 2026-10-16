@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import { GalleryItem } from '../data/appData';
-import { cn } from '../lib/utils';
+import { cn, resolveAsset, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 
 interface GalleryData {
@@ -11,10 +11,7 @@ interface GalleryData {
 }
 
 function resolveUrl(src: string): string {
-  if (!src) return '';
-  if (src.startsWith('http')) return src;
-  // Local path — relative to public root (e.g. "images/restaurant/general/exterior.jpg")
-  return `${window.location.origin}${import.meta.env.BASE_URL}${src}`;
+  return resolveAsset(src);
 }
 
 export function Gallery() {
@@ -26,7 +23,7 @@ export function Gallery() {
   const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}gallery.json`)
+    fetch(`${import.meta.env.BASE_URL}gallery.json`, NO_CACHE)
       .then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
@@ -38,7 +35,9 @@ export function Gallery() {
   const navCategories = galleryData ? galleryData.categories : [];
   const allItems = galleryData?.items ?? [];
 
-  const filteredItems = allItems.filter(item => item.category === activeCategory);
+  // If the admin renamed/removed the "Food" category, fall back to the first one listed.
+  const currentCategory = navCategories.includes(activeCategory) ? activeCategory : (navCategories[0] ?? activeCategory);
+  const filteredItems = allItems.filter(item => item.category === currentCategory);
 
   return (
     <div className="pt-24 pb-24 min-h-screen">
@@ -59,7 +58,7 @@ export function Gallery() {
             onClick={() => setActiveCategory(cat)}
             className={cn(
               "px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-all",
-              activeCategory === cat
+              currentCategory === cat
                 ? "bg-brand-accent text-white shadow-lg shadow-brand-accent/20"
                 : "bg-brand-bg text-brand-ink hover:bg-gray-200"
             )}

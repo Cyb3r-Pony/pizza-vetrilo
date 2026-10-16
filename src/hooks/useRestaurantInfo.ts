@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { NO_CACHE } from '../lib/utils';
 
 export interface LocationInfo {
   id: string;
@@ -33,9 +34,12 @@ let _promise: Promise<RestaurantInfo> | null = null;
 
 function load(): Promise<RestaurantInfo> {
   if (!_promise) {
-    _promise = fetch(`${import.meta.env.BASE_URL}restaurant-info.json`)
+    _promise = fetch(`${import.meta.env.BASE_URL}restaurant-info.json`, NO_CACHE)
       .then(r => (r.ok ? r.json() : null))
-      .catch(() => null);
+      .catch(err => {
+        console.error('restaurant-info.json could not be read — check the JSON syntax.', err);
+        return null;
+      });
   }
   return _promise!;
 }
