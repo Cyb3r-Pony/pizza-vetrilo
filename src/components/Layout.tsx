@@ -15,7 +15,7 @@ export function Layout() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <Outlet />
+        <Outlet key={pathname} />
       </main>
       <Footer />
     </div>
