@@ -68,8 +68,8 @@ export function Home() {
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 leading-tight">
