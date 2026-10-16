@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { CheckCircle2, Send, CheckCircle, ChevronDown } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
+import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { EMAIL_REGEX, PHONE_REGEX } from '../lib/utils';
 
 const FALLBACK_HERO = 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000';
@@ -35,6 +36,7 @@ const SERVICES = [
 export function Catering() {
   const { t, language } = useTranslation();
   const { cateringHeroImage } = useSiteConfig();
+  const restaurantInfo = useRestaurantInfo();
   const heroImageSrc = cateringHeroImage
     ? `${window.location.origin}${import.meta.env.BASE_URL}${cateringHeroImage}`
     : FALLBACK_HERO;
@@ -76,7 +78,8 @@ export function Catering() {
         `Запитване за кетъринг\n\nИме: ${formData.name}\nТелефон: ${formData.phone}\nИмейл: ${formData.email}\nТип събитие: ${formData.eventType}\nБрой гости: ${formData.guestCount}\n\nБележки:\n${formData.notes || '—'}`
       );
       const subject = encodeURIComponent(`Кетъринг запитване — ${formData.eventType}`);
-      window.location.href = `mailto:vetrilo2005@abv.bg?subject=${subject}&body=${body}`;
+      const to = restaurantInfo?.social?.email || 'vetrilo2005@abv.bg';
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
       setSubmitted(true);
     }
   };
@@ -115,7 +118,7 @@ export function Catering() {
           src={heroImageSrc}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-[center_65%]"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-black/60" />
