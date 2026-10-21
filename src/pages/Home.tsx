@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MenuItem, MenuData, isPopular, displayTags, getCategoryItems } from '../data/appData';
+import { MenuItem, MenuData, isPopular, displayTags, getCategoryItems, categoryLabel } from '../data/appData';
 import { resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
@@ -24,12 +24,14 @@ export function Home() {
   const locations = restaurantInfo?.locations ?? [];
   const mainPhone = locations[0]?.phone ?? '';
   const [featuredDishes, setFeaturedDishes] = useState<MenuItem[]>([]);
+  const [menuData, setMenuData] = useState<MenuData | null>(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}menu/menu.json`, NO_CACHE)
       .then(r => r.ok ? r.json() : null)
       .then((data: MenuData | null) => {
         if (!data) return;
+        setMenuData(data);
         const all: MenuItem[] = [];
         // Walk every category listed in menu.json (including newly added ones)
         for (const cat of data.categories ?? []) {
@@ -149,7 +151,10 @@ export function Home() {
             { name: 'Salads', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800' },
             { name: 'Desserts', img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&q=80&w=800' },
             ...(lunchMenuEnabled ? [{ name: 'Lunch Menu', img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800', href: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf` }] : []),
-          ].map((cat) => {
+          ]
+            // Hide cards for categories the admin removed from menu.json → "categories"
+            .filter(cat => !!(cat as { href?: string }).href || !menuData?.categories || menuData.categories.includes(cat.name))
+            .map((cat) => {
             const cardContent = (
               <>
                 <img
@@ -160,7 +165,7 @@ export function Home() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-white text-xl sm:text-3xl md:text-4xl">{t(`cat.${cat.name}`)}</h3>
+                  <h3 className="text-white text-xl sm:text-3xl md:text-4xl">{categoryLabel(menuData, cat.name, language, t)}</h3>
                 </div>
               </>
             );
@@ -193,11 +198,12 @@ export function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             {featuredDishes.map((dish) => (
-              <div key={dish.id} className="group bg-brand-bg rounded-2xl sm:rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+              <div key={dish.uid ?? dish.id} className="group bg-brand-bg rounded-2xl sm:rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
                 <div className="h-52 sm:h-64 overflow-hidden relative">
                   <img
                     src={resolveAsset(dish.image) || LOGO_PLACEHOLDER}
                     alt={dish.name[language]}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                     onError={(e) => { const t = e.currentTarget; if (!t.src.includes('Vetrilo-logo')) t.src = LOGO_PLACEHOLDER; }}

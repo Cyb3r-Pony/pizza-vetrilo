@@ -30,14 +30,18 @@ export function Footer() {
 
             {/* Social icons */}
             <div className="flex gap-3">
-              <a href={social?.facebook} target="_blank" rel="noopener noreferrer"
+              {social?.facebook && (
+              <a href={social.facebook} target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full hover:bg-brand-accent transition-colors">
                 <Facebook size={17} />
               </a>
-              <a href={social?.instagram} target="_blank" rel="noopener noreferrer"
+              )}
+              {social?.instagram && (
+              <a href={social.instagram} target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full hover:bg-brand-accent transition-colors">
                 <Instagram size={17} />
               </a>
+              )}
               <a href={social?.email ? `mailto:${social.email}` : '#'}
                 className="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full hover:bg-brand-accent transition-colors">
                 <Mail size={17} />
@@ -52,22 +56,30 @@ export function Footer() {
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-secondary flex items-center gap-2 opacity-80">
                 <Truck size={13} /> {t('footer.delivery')}
               </p>
-              <a href={delivery?.wolt} target="_blank" rel="noopener noreferrer"
+              {delivery?.wolt && (
+              <a href={delivery.wolt} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Wolt <ExternalLink size={11} />
               </a>
-              <a href={delivery?.takeaway} target="_blank" rel="noopener noreferrer"
+              )}
+              {delivery?.takeaway && (
+              <a href={delivery.takeaway} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Takeaway.com <ExternalLink size={11} />
               </a>
-              <a href={delivery?.glovo} target="_blank" rel="noopener noreferrer"
+              )}
+              {delivery?.glovo && (
+              <a href={delivery.glovo} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Glovo <ExternalLink size={11} />
               </a>
-              <a href={delivery?.bolt} target="_blank" rel="noopener noreferrer"
+              )}
+              {delivery?.bolt && (
+              <a href={delivery.bolt} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-accent transition-colors">
                 Bolt Food <ExternalLink size={11} />
               </a>
+              )}
             </div>
           </div>
 

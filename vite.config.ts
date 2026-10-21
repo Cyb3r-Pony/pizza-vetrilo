@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    // Default build targets the domain root (Superhosting: https://pizzavetrilo.bg/).
+    // Default build targets the domain root (Superhosting: https://www.pizza-vetrilo.com/).
     // Set DEPLOY_TARGET=gh (GitHub Actions workflow / `npm run build:gh`)
     // to build for GitHub Pages at /pizza-vetrilo/.
     base: process.env.DEPLOY_TARGET === 'gh' ? '/pizza-vetrilo/' : '/',

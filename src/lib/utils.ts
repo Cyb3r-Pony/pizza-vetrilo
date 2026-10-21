@@ -38,7 +38,8 @@ export const PHONE_REGEX = /^\+?[\d\s\-\/]{7,}$/;
  * numbers ["02/ 958 84 51", "0879 812145"], correctly handling area codes
  * that contain a slash (e.g. "02/").
  */
-export function splitPhones(phoneStr: string): string[] {
+export function splitPhones(phoneStr?: string | null): string[] {
+  if (!phoneStr || typeof phoneStr !== 'string') return [];
   const parts = phoneStr.split(' / ');
   const result: string[] = [];
   let current = '';
@@ -54,5 +55,5 @@ export function splitPhones(phoneStr: string): string[] {
     }
   }
   if (current) result.push(current);
-  return result;
+  return result.map(p => p.trim()).filter(Boolean);
 }

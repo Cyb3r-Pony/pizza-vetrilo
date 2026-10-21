@@ -32,8 +32,13 @@ export function Gallery() {
       .catch(() => setFetchError(true));
   }, []);
 
-  const navCategories = galleryData ? galleryData.categories : [];
-  const allItems = galleryData?.items ?? [];
+  const navCategories = Array.isArray(galleryData?.categories) ? galleryData!.categories : [];
+  // Skip broken entries (no "url") so one typo can't break the page.
+  const allItems = (Array.isArray(galleryData?.items) ? galleryData!.items : []).filter(i => i && i.url);
+  // New categories without a built-in translation show their name as written in gallery.json.
+  const catLabel = (c: string) => { const k = `cat.${c}`; const v = t(k); return v === k ? c : v; };
+  const caption = (item: GalleryItem) =>
+    typeof item.caption === 'string' ? item.caption : (item.caption?.[language] || item.caption?.bg || '');
 
   // If the admin renamed/removed the "Food" category, fall back to the first one listed.
   const currentCategory = navCategories.includes(activeCategory) ? activeCategory : (navCategories[0] ?? activeCategory);
@@ -63,7 +68,7 @@ export function Gallery() {
                 : "bg-brand-bg text-brand-ink hover:bg-gray-200"
             )}
           >
-            {t(`cat.${cat}`)}
+            {catLabel(cat)}
           </button>
         ))}
       </div>
@@ -79,9 +84,7 @@ export function Gallery() {
       {fetchError && (
         <div className="text-center py-20">
           <p className="text-brand-muted text-lg">
-            {language === 'bg'
-              ? 'Галерията не може да бъде заредена. Моля, опитайте отново.'
-              : 'The gallery could not be loaded. Please try again.'}
+            {t('gallery.loadError')}
           </p>
         </div>
       )}
@@ -93,7 +96,7 @@ export function Gallery() {
               instead of animating individual cards repositioning (which looks jittery). */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeCategory}
+              key={currentCategory}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
@@ -104,7 +107,7 @@ export function Gallery() {
                 const src = resolveUrl(item.url);
                 return (
                   <motion.div
-                    key={item.id}
+                    key={`${item.id}-${i}`}
                     initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: Math.min(i * 0.04, 0.25) }}
@@ -113,7 +116,7 @@ export function Gallery() {
                   >
                     <img
                       src={src}
-                      alt={item.caption[language]}
+                      alt={caption(item)}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       referrerPolicy="no-referrer"
@@ -123,17 +126,17 @@ export function Gallery() {
                       {/* Mobile: persistent gradient + caption */}
                       <div className="sm:hidden w-full bg-gradient-to-t from-black/70 via-black/20 to-transparent pt-16 pb-4 px-4">
                         <span className="text-brand-secondary text-[10px] uppercase tracking-widest font-bold mb-1 block">
-                          {t(`cat.${item.category}`)}
+                          {catLabel(item.category)}
                         </span>
-                        <p className="text-white text-sm font-serif leading-snug">{item.caption[language]}</p>
+                        <p className="text-white text-sm font-serif leading-snug">{caption(item)}</p>
                       </div>
                       {/* Desktop: hover-only */}
                       <div className="hidden sm:flex w-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity items-end p-8 absolute inset-0">
                         <div className="translate-y-4 group-hover:translate-y-0 transition-transform">
                           <span className="text-brand-secondary text-[10px] uppercase tracking-widest font-bold mb-2 block">
-                            {t(`cat.${item.category}`)}
+                            {catLabel(item.category)}
                           </span>
-                          <p className="text-white text-lg font-serif">{item.caption[language]}</p>
+                          <p className="text-white text-lg font-serif">{caption(item)}</p>
                         </div>
                       </div>
                     </div>

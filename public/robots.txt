@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://pizzavetrilo.bg/sitemap.xml
+Sitemap: https://www.pizza-vetrilo.com/sitemap.xml
 
 # ──────────────────────────────────────────────
 # AI crawler allowlist — major providers

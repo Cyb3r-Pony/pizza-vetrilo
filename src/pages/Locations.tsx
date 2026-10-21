@@ -2,16 +2,24 @@ import React from 'react';
 import { MapPin, Phone, Clock, FileText, ExternalLink } from 'lucide-react';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { useTranslation } from '../contexts/LanguageContext';
-import { splitPhones } from '../lib/utils';
+import { splitPhones, resolveAsset } from '../lib/utils';
 
 /** Parses a hours string like "11:00 - 23:00" or "11:00 – 23:00" and returns whether we are currently within that range. */
 function isOpenNow(hoursStr: string): boolean {
+  if (!hoursStr) return false;
   const match = hoursStr.match(/(\d{1,2}):(\d{2})\s*[-–]\s*(\d{1,2}):(\d{2})/);
   if (!match) return false;
   const openMinutes = parseInt(match[1]) * 60 + parseInt(match[2]);
   const closeMinutes = parseInt(match[3]) * 60 + parseInt(match[4]);
-  const now = new Date();
-  const totalMinutes = now.getHours() * 60 + now.getMinutes();
+  // Always use Sofia time, so visitors in other time zones see the correct status.
+  let totalMinutes: number;
+  try {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Sofia', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+    totalMinutes = Number(parts.find(p => p.type === 'hour')?.value) * 60 + Number(parts.find(p => p.type === 'minute')?.value);
+  } catch {
+    const now = new Date();
+    totalMinutes = now.getHours() * 60 + now.getMinutes();
+  }
   // Handle midnight-crossing ranges (e.g. 11:00 – 01:00)
   if (closeMinutes < openMinutes) {
     return totalMinutes >= openMinutes || totalMinutes < closeMinutes;
@@ -44,48 +52,58 @@ export function Locations() {
             <p className="text-brand-muted text-sm">{t('locations.deliveryDesc')}</p>
           </div>
           <div className="grid grid-cols-2 sm:flex sm:items-center gap-3">
+            {delivery?.wolt && (
             <a
-              href={delivery?.wolt}
+              href={delivery.wolt}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#009DE0] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
             >
               Wolt <ExternalLink size={14} />
             </a>
+            )}
+            {delivery?.takeaway && (
             <a
-              href={delivery?.takeaway}
+              href={delivery.takeaway}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#E96B2B] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
             >
               Takeaway <ExternalLink size={14} />
             </a>
+            )}
+            {delivery?.glovo && (
             <a
-              href={delivery?.glovo}
+              href={delivery.glovo}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#FFC244] text-brand-ink px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
             >
               Glovo <ExternalLink size={14} />
             </a>
+            )}
+            {delivery?.bolt && (
             <a
-              href={delivery?.bolt}
+              href={delivery.bolt}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#34D186] text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-opacity-90 transition-all"
             >
               Bolt Food <ExternalLink size={14} />
             </a>
+            )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {locations.map((loc) => (
-            <div key={loc.id} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+            <div key={loc.id} id={loc.id} className="scroll-mt-28 bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
               <div className="h-48 bg-gray-200 relative">
                 <img
                   src={
-                    loc.id === 'v1'
+                    loc.image
+                      ? resolveAsset(loc.image)
+                      : loc.id === 'v1'
                       ? `${window.location.origin}${import.meta.env.BASE_URL}images/restaurant/restaurant-1/image-1.jpeg`
                       : loc.id === 'v2'
                       ? `${window.location.origin}${import.meta.env.BASE_URL}images/restaurant/restaurant-2/image-3.jpeg`
@@ -99,10 +117,10 @@ export function Locations() {
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute bottom-4 left-4">
                   {(() => {
-                    const open = isOpenNow(loc.hours['en']);
+                    const open = isOpenNow(loc.hours['en'] || loc.hours['bg']);
                     return (
                       <span className={`text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full ${open ? 'bg-green-600' : 'bg-gray-500'}`}>
-                        {open ? t('locations.openNow') : (language === 'bg' ? 'Затворено' : 'Closed')}
+                        {open ? t('locations.openNow') : t('locations.closed')}
                       </span>
                     );
                   })()}
@@ -192,7 +210,9 @@ export function Locations() {
                 </div>
                 <iframe
                   title={loc.name[language]}
-                  src={`https://maps.google.com/maps?q=${loc.coordinates.lat},${loc.coordinates.lng}&z=16&output=embed`}
+                  src={loc.coordinates.lat && loc.coordinates.lng
+                    ? `https://maps.google.com/maps?q=${loc.coordinates.lat},${loc.coordinates.lng}&z=16&output=embed`
+                    : `https://maps.google.com/maps?q=${encodeURIComponent(loc.address.bg || loc.name.bg)}&z=16&output=embed`}
                   width="100%"
                   height="340"
                   style={{ border: 0, display: 'block' }}

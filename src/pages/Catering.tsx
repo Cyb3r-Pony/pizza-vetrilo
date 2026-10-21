@@ -47,7 +47,7 @@ export function Catering() {
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         if (data?.items) {
-          setEventPhotos(data.items.filter((i: GalleryItem) => i.category === 'Events'));
+          setEventPhotos(data.items.filter((i: GalleryItem) => i && i.url && i.category === 'Events'));
         }
       })
       .catch(() => {});
@@ -173,10 +173,10 @@ export function Catering() {
       {eventPhotos.length > 0 && (
         <section className="pb-16 sm:pb-24 container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {eventPhotos.map((photo) => {
+            {eventPhotos.map((photo, idx) => {
               const src = resolveAsset(photo.url);
               return (
-                <div key={photo.id} className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
+                <div key={`${photo.id}-${idx}`} className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
                   <img
                     src={src}
                     alt={photo.caption?.[language] ?? ''}

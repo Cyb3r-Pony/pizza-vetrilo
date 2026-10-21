@@ -11,10 +11,10 @@
 
   <!-- Homepage — bilingual (BG primary, EN alternate) -->
   <url>
-    <loc>https://pizzavetrilo.bg/</loc>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://pizzavetrilo.bg/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pizzavetrilo.bg/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pizzavetrilo.bg/"/>
+    <loc>https://www.pizza-vetrilo.com/</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://www.pizza-vetrilo.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pizza-vetrilo.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pizza-vetrilo.com/"/>
     <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -26,7 +26,7 @@
 
   <!-- Menu page -->
   <url>
-    <loc>https://pizzavetrilo.bg/menu</loc>
+    <loc>https://www.pizza-vetrilo.com/menu</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -38,7 +38,7 @@
 
   <!-- Locations page (contains all 3 restaurant cards + maps) -->
   <url>
-    <loc>https://pizzavetrilo.bg/locations</loc>
+    <loc>https://www.pizza-vetrilo.com/locations</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -46,19 +46,19 @@
 
   <!-- Deep-links to individual restaurant sections -->
   <url>
-    <loc>https://pizzavetrilo.bg/locations#v1</loc>
+    <loc>https://www.pizza-vetrilo.com/locations#v1</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pizzavetrilo.bg/locations#v2</loc>
+    <loc>https://www.pizza-vetrilo.com/locations#v2</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pizzavetrilo.bg/locations#v3</loc>
+    <loc>https://www.pizza-vetrilo.com/locations#v3</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -66,7 +66,7 @@
 
   <!-- Catering page -->
   <url>
-    <loc>https://pizzavetrilo.bg/catering</loc>
+    <loc>https://www.pizza-vetrilo.com/catering</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -78,7 +78,7 @@
 
   <!-- Gallery page -->
   <url>
-    <loc>https://pizzavetrilo.bg/gallery</loc>
+    <loc>https://www.pizza-vetrilo.com/gallery</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -86,7 +86,7 @@
 
   <!-- About page -->
   <url>
-    <loc>https://pizzavetrilo.bg/about</loc>
+    <loc>https://www.pizza-vetrilo.com/about</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +94,7 @@
 
   <!-- Contact page -->
   <url>
-    <loc>https://pizzavetrilo.bg/contact</loc>
+    <loc>https://www.pizza-vetrilo.com/contact</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
@@ -105,14 +105,14 @@
   ═══════════════════════════════════ -->
 
   <url>
-    <loc>https://pizzavetrilo.bg/privacy</loc>
+    <loc>https://www.pizza-vetrilo.com/privacy</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://pizzavetrilo.bg/terms</loc>
+    <loc>https://www.pizza-vetrilo.com/terms</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

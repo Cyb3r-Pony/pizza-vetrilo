@@ -113,22 +113,26 @@ export function Contact() {
         <div className="text-center mb-16">
           <h2 className="text-3xl mb-8">{t('contact.followUs')}</h2>
           <div className="flex justify-center gap-4">
+            {social?.facebook && (
             <a
-              href={social?.facebook}
+              href={social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 bg-brand-ink text-white px-6 py-3 rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-brand-accent transition-colors"
             >
               <Facebook size={20} /> Facebook
             </a>
+            )}
+            {social?.instagram && (
             <a
-              href={social?.instagram}
+              href={social.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 bg-brand-ink text-white px-6 py-3 rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-brand-accent transition-colors"
             >
               <Instagram size={20} /> Instagram
             </a>
+            )}
           </div>
         </div>
 

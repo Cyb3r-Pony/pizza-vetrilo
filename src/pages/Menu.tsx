@@ -253,7 +253,7 @@ export function Menu() {
         {fetchError && (
           <div className="text-center py-20">
             <p className="text-brand-muted text-lg">
-              Менюто не може да бъде заредено. Моля, опитайте отново.
+              {t('menu.loadError')}
             </p>
           </div>
         )}
@@ -271,10 +271,10 @@ export function Menu() {
               >
                 {filteredItems.map((item) => (
                   <DishCard
-                    key={item.id}
+                    key={item.uid ?? item.id}
                     item={item}
-                    isExpanded={expandedDish === item.id}
-                    onToggle={() => setExpandedDish(expandedDish === item.id ? null : item.id)}
+                    isExpanded={expandedDish === (item.uid ?? item.id)}
+                    onToggle={() => { const k = item.uid ?? item.id; setExpandedDish(expandedDish === k ? null : k); }}
                     language={language}
                     t={t}
                   />
@@ -316,6 +316,7 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
         <img
           src={resolveImage(item.image)}
           alt={item.name[language]}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           referrerPolicy="no-referrer"
           onError={(e) => {

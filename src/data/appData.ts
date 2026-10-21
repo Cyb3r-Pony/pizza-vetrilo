@@ -16,6 +16,8 @@ export interface MenuItem {
   hidden?: boolean;
   /** true = show in "Chef's Favorites" on the Home page; false = never show there. */
   popular?: boolean;
+  /** Unique render key assigned by the app (safe even if two dishes share an "id"). */
+  uid?: string;
 }
 
 /** An item is a Chef's Favorite if "popular": true, or it has the "popular" tag (unless "popular": false). */
@@ -49,6 +51,35 @@ const LEGACY_SECTION_KEYS: Record<string, string> = {
   'Breads': 'breads', 'Garnishes': 'garnishes', 'Sauces': 'sauces', 'Desserts': 'desserts',
 };
 
+/** Text that may be written as "text" or { "bg": "...", "en": "..." } → always { bg, en }. */
+function i18n(v: unknown): Record<string, string> {
+  if (typeof v === 'string') return { bg: v, en: v };
+  if (v && typeof v === 'object') {
+    const o = v as Record<string, unknown>;
+    const bg = typeof o.bg === 'string' ? o.bg : typeof o.en === 'string' ? o.en : '';
+    const en = typeof o.en === 'string' ? o.en : bg;
+    return { bg, en };
+  }
+  return { bg: '', en: '' };
+}
+
+/** Guards against missing/mistyped fields in menu.json so one bad dish can't crash the page. */
+function normalizeItem(i: MenuItem, category: string, idx: number): MenuItem {
+  const raw = i as unknown as Record<string, unknown>;
+  return {
+    ...i,
+    id: String(raw.id ?? `${category}-${idx}`),
+    uid: `${category}#${idx}`,
+    name: i18n(raw.name),
+    description: i18n(raw.description),
+    weight: raw.weight == null ? '' : String(raw.weight),
+    tags: Array.isArray(raw.tags) ? (raw.tags as unknown[]).map(String) : undefined,
+    image: typeof raw.image === 'string' ? raw.image : undefined,
+    hidden: raw.hidden === true || raw.hidden === 'true',
+    popular: raw.popular === true || raw.popular === 'true' ? true : raw.popular === false || raw.popular === 'false' ? false : undefined,
+  };
+}
+
 /**
  * Returns the dishes of a category. The dish list can be stored under:
  *   - the exact category name   ("Grill Specials": [...])   <- recommended for new categories
@@ -60,7 +91,12 @@ export function getCategoryItems(data: MenuData | null | undefined, category: st
   const slug = category.trim().toLowerCase().replace(/\s+/g, '-');
   for (const key of [category, slug, LEGACY_SECTION_KEYS[category]]) {
     const arr = key ? data[key] : undefined;
-    if (Array.isArray(arr)) return arr.filter((i): i is MenuItem => !!i && typeof i === 'object');
+    if (Array.isArray(arr)) {
+      return arr
+        .filter((i): i is MenuItem => !!i && typeof i === 'object')
+        .map((i, idx) => normalizeItem(i, category, idx))
+        .filter(i => i.name.bg || i.name.en); // skip dishes with no name at all
+    }
   }
   return [];
 }
@@ -100,7 +136,7 @@ export interface Location {
 export interface GalleryItem {
   id: string;
   url: string;
-  caption: Record<string, string>;
+  caption?: Record<string, string> | string;
   category: string;
 }
 
