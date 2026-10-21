@@ -15,5 +15,15 @@
       "subtitle": "For a quick lunch, a tasty dinner or a shared moment with the people you love – at Vetrilo you'll find food that brings joy."
     }
   },
-  "cateringHeroImage": "images/catering/hero.jpg"
+  "cateringHeroImage": "images/catering/hero.jpg",
+  "specialButtons": [
+    {
+      "enabled": true,
+      "label": {
+        "bg": "Новогодишен куверт 2027",
+        "en": "New Year's Eve 2027"
+      },
+      "pdf": "menu/Novogodishen_kuvert_Vetrilo_2027.pdf"
+    }
+  ]
 }

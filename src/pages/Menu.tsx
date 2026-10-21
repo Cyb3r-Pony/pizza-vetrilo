@@ -2,28 +2,12 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ChevronUp, Info, ExternalLink } from 'lucide-react';
-import { MenuItem, MenuData, displayTags } from '../data/appData';
+import { MenuItem, MenuData, displayTags, getCategoryItems, categoryLabel } from '../data/appData';
 import { cn, resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
-import { useSiteConfig } from '../hooks/useSiteConfig';
+import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 
-const CATEGORY_KEY_MAP: Record<string, keyof Omit<MenuData, 'categories'>> = {
-  "Pizza": "pizza",
-  "Salads": "salads",
-  "Starters": "starters",
-  "Soups": "soups",
-  "Pasta": "pasta",
-  "Risotto": "risotto",
-  "Fish": "fish",
-  "BBQ": "bbq",
-  "Main Dishes": "main-dishes",
-  "Oven Dishes": "oven-dishes",
-  "Burgers": "burgers",
-  "Breads": "breads",
-  "Garnishes": "garnishes",
-  "Sauces": "sauces",
-  "Desserts": "desserts"
-};
+
 
 
 const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.origin : ''}${import.meta.env.BASE_URL}images/restaurant/general/Vetrilo-logo.png`;
@@ -37,7 +21,9 @@ export function Menu() {
   const activeCategory = searchParams.get('category') || '';
   const [expandedDish, setExpandedDish] = useState<string | null>(null);
   const { t, language } = useTranslation();
-  const { lunchMenuEnabled } = useSiteConfig();
+  const siteConfig = useSiteConfig();
+  const { lunchMenuEnabled } = siteConfig;
+  const specialButtons = getSpecialButtons(siteConfig, language);
 
   const [menuData, setMenuData] = useState<MenuData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -118,17 +104,13 @@ export function Menu() {
   useEffect(() => {
     const id = requestAnimationFrame(updateNavScrollState);
     return () => cancelAnimationFrame(id);
-  }, [menuData, lunchMenuEnabled]);
+  }, [menuData, lunchMenuEnabled, specialButtons.length]);
 
   const allItems = useMemo<MenuItem[]>(() => {
     if (!menuData) return [];
     const items: MenuItem[] = [];
-    for (const cat of menuData.categories) {
-      const key = CATEGORY_KEY_MAP[cat];
-      if (!key) continue;
-      const arr = menuData[key];
-      if (!Array.isArray(arr)) continue;
-      for (const item of arr) {
+    for (const cat of menuData.categories ?? []) {
+      for (const item of getCategoryItems(menuData, cat)) {
         if (!item.hidden) items.push({ ...item, category: cat });
       }
     }
@@ -136,21 +118,36 @@ export function Menu() {
   }, [menuData]);
 
   const navCategories = useMemo<string[]>(() => {
-    const cats = menuData ? [...menuData.categories] : [];
+    const cats = menuData?.categories ? [...menuData.categories] : [];
     return lunchMenuEnabled ? ['Lunch Menu', ...cats] : cats;
   }, [menuData, lunchMenuEnabled]);
 
   useEffect(() => {
     const first = navCategories.find(c => c !== 'Lunch Menu');
-    if (!activeCategory && first) {
+    // Also redirect when the link points to a category the admin removed or renamed.
+    const unknown = !!menuData && !!activeCategory && !menuData.categories?.includes(activeCategory);
+    if ((!activeCategory || unknown) && first) {
       setSearchParams({ category: first }, { replace: true });
     }
-  }, [activeCategory, navCategories, setSearchParams]);
+  }, [activeCategory, navCategories, menuData, setSearchParams]);
 
   const filteredItems = useMemo(() => {
     if (!activeCategory) return [];
     return allItems.filter(item => item.category === activeCategory);
   }, [activeCategory, allItems]);
+
+  // Seasonal PDF buttons from site-config.json ("specialButtons"), shown right after "Lunch Menu".
+  const specialButtonLinks = specialButtons.map(btn => (
+    <a
+      key={btn.url + btn.label}
+      href={btn.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whitespace-nowrap shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 bg-brand-accent text-white hover:bg-opacity-90"
+    >
+      {btn.label} <ExternalLink size={11} />
+    </a>
+  ));
 
   const handleCategoryChange = (cat: string) => {
     setSearchParams({ category: cat });
@@ -189,9 +186,13 @@ export function Menu() {
             className="no-scrollbar flex gap-2 overflow-x-auto pb-1"
             onScroll={updateNavScrollState}
           >
+            {!lunchMenuEnabled && specialButtonLinks}
             {navCategories.map((cat) => {
               const isActive = activeCategory === cat;
               if (cat === 'Lunch Menu') {
+                const lunchLabel = menuData?.categoryLabels?.[cat]?.[language as 'bg'|'en'] || t(`cat.${cat}`);
+                return (
+                  <React.Fragment key={cat}>
                 return (
                   <a
                     key={cat}
@@ -201,8 +202,10 @@ export function Menu() {
                     rel="noopener noreferrer"
                     className="whitespace-nowrap shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 bg-brand-secondary text-white hover:bg-opacity-90"
                   >
-                    {menuData?.categoryLabels?.[cat]?.[language as 'bg'|'en'] ?? t(`cat.${cat}`)} <ExternalLink size={11} />
+                    {lunchLabel} <ExternalLink size={11} />
                   </a>
+                  {specialButtonLinks}
+                  </React.Fragment>
                 );
               }
               return (
@@ -217,7 +220,7 @@ export function Menu() {
                       : "bg-brand-bg text-brand-ink hover:bg-gray-200 active:bg-gray-300"
                   )}
                 >
-                  {menuData?.categoryLabels?.[cat]?.[language as 'bg'|'en'] ?? t(`cat.${cat}`)}
+                  {categoryLabel(menuData, cat, language, t)}
                 </button>
               );
             })}

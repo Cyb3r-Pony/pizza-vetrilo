@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NO_CACHE } from '../lib/utils';
+import { NO_CACHE, resolveAsset } from '../lib/utils';
 
 export interface SiteConfig {
   /** Set to false to hide the Lunch Menu button site-wide without a rebuild. */
@@ -23,8 +23,39 @@ export interface SiteConfig {
    * (or a full https:// link). No rebuild needed.
    */
   cateringHeroImage?: string;
+  /**
+   * Extra PDF buttons shown next to "Lunch Menu" (header, home page, menu page).
+   * Use for seasonal offers: New Year, Easter, St. George's Day, proms, etc.
+   */
+  specialButtons?: SpecialButtonConfig[];
   /** True once site-config.json has been fetched (or failed). Set by the hook. */
   loaded?: boolean;
+}
+
+export interface SpecialButtonConfig {
+  /** false = hidden. */
+  enabled?: boolean;
+  /** Button text per language. */
+  label?: { bg?: string; en?: string };
+  /** Path to the PDF, e.g. "menu/Novogodishen_kuvert_Vetrilo_2027.pdf", or a full https:// link. */
+  pdf?: string;
+}
+
+export interface SpecialButton {
+  label: string;
+  url: string;
+}
+
+/** Enabled special buttons with a label and a PDF, ready to render in the given language. */
+export function getSpecialButtons(config: SiteConfig, language: string): SpecialButton[] {
+  if (!Array.isArray(config.specialButtons)) return [];
+  return config.specialButtons
+    .filter(b => b && b.enabled !== false && b.pdf)
+    .map(b => ({
+      label: (b.label?.[language as 'bg' | 'en'] || b.label?.bg || b.label?.en || '').trim(),
+      url: resolveAsset(b.pdf),
+    }))
+    .filter(b => b.label && b.url);
 }
 
 const DEFAULT_CONFIG: SiteConfig = {

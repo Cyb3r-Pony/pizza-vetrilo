@@ -5,9 +5,20 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
-import { useSiteConfig } from '../hooks/useSiteConfig';
+import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 
-const ALL_NAV_LINKS = [
+interface NavLink {
+  name: string;
+  path: string;
+  /** Literal text (used for special buttons from site-config.json); otherwise t(name) is used. */
+  label?: string;
+  isExternal?: boolean;
+  hasDropdown?: boolean;
+  hiddenWhenLunchOff?: boolean;
+  highlight?: boolean;
+}
+
+const ALL_NAV_LINKS: NavLink[] = [
   { name: 'nav.lunch', path: `${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`, isExternal: true, hiddenWhenLunchOff: true },
   { name: 'nav.menu', path: '/menu?category=Salads' },
   { name: 'nav.locations', path: '/locations', hasDropdown: true },
@@ -24,11 +35,19 @@ export function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const location = useLocation();
   const { language, setLanguage, t } = useTranslation();
-  const { lunchMenuEnabled } = useSiteConfig();
+  const siteConfig = useSiteConfig();
+  const { lunchMenuEnabled } = siteConfig;
   const restaurantInfo = useRestaurantInfo();
   const locations = restaurantInfo?.locations ?? [];
   const mainPhone = locations[0]?.phone ?? '';
-  const NAV_LINKS = ALL_NAV_LINKS.filter(l => !l.hiddenWhenLunchOff || lunchMenuEnabled);
+  // Seasonal PDF buttons (site-config.json → "specialButtons") go right after "Lunch Menu".
+  const specialLinks: NavLink[] = getSpecialButtons(siteConfig, language).map(b => ({
+    name: `special:${b.url}:${b.label}`, path: b.url, label: b.label, isExternal: true, highlight: true,
+  }));
+  const baseLinks = ALL_NAV_LINKS.filter(l => !l.hiddenWhenLunchOff || lunchMenuEnabled);
+  const lunchIdx = baseLinks.findIndex(l => l.hiddenWhenLunchOff);
+  const NAV_LINKS: NavLink[] = [...baseLinks.slice(0, lunchIdx + 1), ...specialLinks, ...baseLinks.slice(lunchIdx + 1)];
+  const linkText = (l: NavLink) => l.label ?? t(l.name);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +83,9 @@ export function Header() {
           {NAV_LINKS.map((link) => (
             <div
               key={link.name}
-              className="relative"
+              // Special (seasonal) links only fit in the desktop bar on wide screens;
+              // they are always visible in the mobile menu, the Home hero and the Menu page.
+              className={cn("relative", link.highlight && "hidden 2xl:block")}
               onMouseEnter={() => link.hasDropdown && setHoveredLink(link.name)}
               onMouseLeave={() => setHoveredLink(null)}
               onFocus={() => link.hasDropdown && setHoveredLink(link.name)}
@@ -84,11 +105,13 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-accent",
-                    isScrolled || location.pathname !== '/' ? "text-brand-ink/80" : "text-white/80"
+                    "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-accent whitespace-nowrap",
+                    link.highlight
+                      ? "!text-brand-secondary hover:!text-brand-accent"
+                      : isScrolled || location.pathname !== '/' ? "text-brand-ink/80" : "text-white/80"
                   )}
                 >
-                  {t(link.name)}
+                  {linkText(link)}
                 </a>
               ) : (
               <Link
@@ -227,9 +250,12 @@ export function Header() {
                     href={link.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-3 text-lg font-medium border-b border-gray-50 last:border-0 text-brand-ink"
+                    className={cn(
+                      "py-3 text-lg font-medium border-b border-gray-50 last:border-0",
+                      link.highlight ? "text-brand-secondary font-semibold" : "text-brand-ink"
+                    )}
                   >
-                    {t(link.name)}
+                    {linkText(link)}
                   </a>
                 ) : (
                 <Link

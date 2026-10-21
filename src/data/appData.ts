@@ -32,24 +32,51 @@ export function displayTags(item: MenuItem): string[] {
 }
 
 // MenuData mirrors the shape of /public/menu/menu.json.
+// Besides "categories" and "categoryLabels", every other key is a list of dishes.
 export interface MenuData {
+  /** Order of categories shown in the menu. Remove a name to hide that category. */
   categories: string[];
-  categoryLabels?: Record<string, { bg: string; en: string }>;
-  pizza: MenuItem[];
-  salads: MenuItem[];
-  starters: MenuItem[];
-  soups: MenuItem[];
-  pasta: MenuItem[];
-  risotto: MenuItem[];
-  fish: MenuItem[];
-  bbq: MenuItem[];
-  "main-dishes": MenuItem[];
-  "oven-dishes": MenuItem[];
-  burgers: MenuItem[];
-  breads: MenuItem[];
-  garnishes: MenuItem[];
-  sauces: MenuItem[];
-  desserts: MenuItem[];
+  /** Display names per language, e.g. { "Pizza": { "bg": "Пица", "en": "Pizza" } } */
+  categoryLabels?: Record<string, { bg?: string; en?: string }>;
+  [section: string]: unknown;
+}
+
+// Original categories use short section keys ("Main Dishes" -> "main-dishes").
+const LEGACY_SECTION_KEYS: Record<string, string> = {
+  'Pizza': 'pizza', 'Salads': 'salads', 'Starters': 'starters', 'Soups': 'soups',
+  'Pasta': 'pasta', 'Risotto': 'risotto', 'Fish': 'fish', 'BBQ': 'bbq',
+  'Main Dishes': 'main-dishes', 'Oven Dishes': 'oven-dishes', 'Burgers': 'burgers',
+  'Breads': 'breads', 'Garnishes': 'garnishes', 'Sauces': 'sauces', 'Desserts': 'desserts',
+};
+
+/**
+ * Returns the dishes of a category. The dish list can be stored under:
+ *   - the exact category name   ("Grill Specials": [...])   <- recommended for new categories
+ *   - its lowercase-dash form   ("grill-specials": [...])
+ *   - the legacy short key      ("main-dishes" for "Main Dishes")
+ */
+export function getCategoryItems(data: MenuData | null | undefined, category: string): MenuItem[] {
+  if (!data) return [];
+  const slug = category.trim().toLowerCase().replace(/\s+/g, '-');
+  for (const key of [category, slug, LEGACY_SECTION_KEYS[category]]) {
+    const arr = key ? data[key] : undefined;
+    if (Array.isArray(arr)) return arr.filter((i): i is MenuItem => !!i && typeof i === 'object');
+  }
+  return [];
+}
+
+/** Category display name: categoryLabels from menu.json → built-in translation → the raw name. */
+export function categoryLabel(
+  data: MenuData | null | undefined,
+  category: string,
+  language: string,
+  t: (key: string) => string,
+): string {
+  const custom = data?.categoryLabels?.[category]?.[language as 'bg' | 'en']?.trim();
+  if (custom) return custom;
+  const key = `cat.${category}`;
+  const tr = t(key);
+  return tr === key ? category : tr;
 }
 
 export interface Location {

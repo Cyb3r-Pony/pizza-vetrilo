@@ -2,31 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MenuItem, MenuData, isPopular, displayTags } from '../data/appData';
+import { MenuItem, MenuData, isPopular, displayTags, getCategoryItems } from '../data/appData';
 import { resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
-import { useSiteConfig } from '../hooks/useSiteConfig';
+import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
-
-const CATEGORY_KEYS: Array<keyof Omit<MenuData, 'categories'>> = [
-  'pizza', 'salads', 'starters', 'soups', 'pasta', 'risotto',
-  'fish', 'bbq', 'main-dishes', 'oven-dishes', 'burgers', 'breads', 'garnishes', 'sauces', 'desserts'
-];
-
-// Maps each MenuData key back to the category name used in the URL (?category=...)
-const KEY_TO_CATEGORY: Partial<Record<keyof Omit<MenuData, 'categories'>, string>> = {
-  pizza: 'Pizza', salads: 'Salads', starters: 'Starters', soups: 'Soups',
-  pasta: 'Pasta', risotto: 'Risotto', fish: 'Fish', bbq: 'BBQ',
-  'main-dishes': 'Main Dishes', 'oven-dishes': 'Oven Dishes',
-  burgers: 'Burgers', breads: 'Breads', garnishes: 'Garnishes',
-  sauces: 'Sauces', desserts: 'Desserts',
-};
 
 const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.origin : ''}${import.meta.env.BASE_URL}images/restaurant/general/Vetrilo-logo.png`;
 
 export function Home() {
   const { t, language } = useTranslation();
-  const { lunchMenuEnabled, heroText, loaded: configLoaded } = useSiteConfig();
+  const siteConfig = useSiteConfig();
+  const { lunchMenuEnabled, heroText, loaded: configLoaded } = siteConfig;
+  const specialButtons = getSpecialButtons(siteConfig, language);
   // Wait for site-config.json before showing text, so the old default title never flashes.
   // Empty strings in the JSON fall back to the built-in text.
   const heroLang = heroText?.[language as 'bg'|'en'];
@@ -43,12 +31,9 @@ export function Home() {
       .then((data: MenuData | null) => {
         if (!data) return;
         const all: MenuItem[] = [];
-        for (const key of CATEGORY_KEYS) {
-          const arr = data[key];
-          if (Array.isArray(arr)) {
-            // Inject the display category name so dish cards can link to the right section
-            arr.forEach(item => { if (!item.hidden) all.push({ ...item, category: KEY_TO_CATEGORY[key] ?? '' }); });
-          }
+        // Walk every category listed in menu.json (including newly added ones)
+        for (const cat of data.categories ?? []) {
+          getCategoryItems(data, cat).forEach(item => { if (!item.hidden) all.push({ ...item, category: cat }); });
         }
         // Show every dish marked as a Chef's Favorite ("popular": true or the "popular" tag) — no hidden limit.
         setFeaturedDishes(all.filter(isPopular));
@@ -83,7 +68,7 @@ export function Home() {
             <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-10 text-white/80 max-w-2xl mx-auto font-light">
               {heroSubtitle}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 sm:gap-4">
               {lunchMenuEnabled && (
                 <a
                   href={`${import.meta.env.BASE_URL}menu/Lunch_Menu_Vetrilo.pdf`}
@@ -94,6 +79,18 @@ export function Home() {
                   {t('hero.viewLunch')}
                 </a>
               )}
+              {/* Seasonal PDF buttons from site-config.json → "specialButtons" */}
+              {specialButtons.map(btn => (
+                <a
+                  key={btn.url + btn.label}
+                  href={btn.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-brand-secondary text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all hover:-translate-y-1 shadow-lg"
+                >
+                  {btn.label}
+                </a>
+              ))}
               <Link
                 to="/menu?category=Salads"
                 className="w-full sm:w-auto bg-brand-accent text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all hover:-translate-y-1"
