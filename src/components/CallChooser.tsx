@@ -36,8 +36,9 @@ export function CallChooser({ open, onClose }: { open: boolean; onClose: () => v
     <AnimatePresence>
       {open && (
         <motion.div
-          // inset-0 = the area actually visible on screen (also on phones with an expanded address bar)
-          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/60 pt-4 sm:p-4"
+          // Centred window (not anchored to the bottom): on iPhone Safari the fixed overlay extends
+          // behind the see-through address bar / toolbar, so a bottom-anchored sheet slid under them.
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-3 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -47,17 +48,18 @@ export function CallChooser({ open, onClose }: { open: boolean; onClose: () => v
           aria-label={t('call.title')}
         >
           <motion.div
-            // Height is limited by the overlay (100%), not by "vh" — on mobile browsers 90vh can be taller
-            // than the visible area, which pushed the close button under the address bar.
-            className="relative w-full sm:max-w-3xl max-h-full overflow-y-auto overscroll-contain bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl px-6 pb-6 sm:px-8 sm:pb-8"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 40, opacity: 0 }}
+            // Height uses "dvh" = the part of the screen that is really visible (excluding browser bars),
+            // so the title and close button always fit. 75vh is the fallback for older browsers.
+            className="relative w-full sm:max-w-3xl max-h-[75vh] overflow-y-auto overscroll-contain bg-white rounded-3xl shadow-2xl px-5 pb-5 sm:px-8 sm:pb-8"
+            style={{ maxHeight: 'min(80dvh, 760px)' }}
+            initial={{ scale: 0.96, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.96, opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Sticky title bar — the close button stays visible even while scrolling the list */}
-            <div className="sticky top-0 z-10 -mx-6 sm:-mx-8 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 bg-white flex items-start justify-between gap-4">
+            <div className="sticky top-0 z-10 -mx-5 sm:-mx-8 px-5 sm:px-8 pt-5 sm:pt-8 pb-4 bg-white flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-2xl sm:text-3xl mb-1">{t('call.title')}</h2>
                 <p className="text-brand-muted text-sm">{t('call.subtitle')}</p>
@@ -72,7 +74,7 @@ export function CallChooser({ open, onClose }: { open: boolean; onClose: () => v
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-[env(safe-area-inset-bottom)]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {locations.map((loc) => {
                 const orders = splitPhones(loc.ordersPhone);
                 const reservations = splitPhones(loc.reservationPhone);
