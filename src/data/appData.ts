@@ -73,8 +73,9 @@ function normalizeItem(i: MenuItem, category: string, idx: number): MenuItem {
     name: i18n(raw.name),
     description: i18n(raw.description),
     weight: raw.weight == null ? '' : String(raw.weight),
-    tags: Array.isArray(raw.tags) ? (raw.tags as unknown[]).map(String) : undefined,
-    image: typeof raw.image === 'string' ? raw.image : undefined,
+    tags: Array.isArray(raw.tags) ? (raw.tags as unknown[]).map(t => String(t).trim()).filter(Boolean)
+      : typeof raw.tags === 'string' && raw.tags.trim() ? [raw.tags.trim()] : undefined,
+    image: typeof raw.image === 'string' && raw.image.trim() ? raw.image.trim() : undefined,
     hidden: raw.hidden === true || raw.hidden === 'true',
     popular: raw.popular === true || raw.popular === 'true' ? true : raw.popular === false || raw.popular === 'false' ? false : undefined,
   };
@@ -99,6 +100,28 @@ export function getCategoryItems(data: MenuData | null | undefined, category: st
     }
   }
   return [];
+}
+
+/**
+ * Makes menu.json safe to use: "categories" is always a clean list of names (no duplicates,
+ * no empty entries). If "categories" is missing or broken, every dish section found in the
+ * file is shown, in the standard order.
+ */
+export function normalizeMenuData(raw: unknown): MenuData | null {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+  const data = raw as MenuData;
+  let cats = Array.isArray(data.categories)
+    ? data.categories.filter((c): c is string => typeof c === 'string').map(c => c.trim()).filter(Boolean)
+    : [];
+  if (cats.length === 0) {
+    const legacy = Object.keys(LEGACY_SECTION_KEYS).filter(c => getCategoryItems(data, c).length > 0);
+    const extra = Object.keys(data).filter(k => k !== 'categories' && k !== 'categoryLabels' && Array.isArray(data[k])
+      && !Object.values(LEGACY_SECTION_KEYS).includes(k) && !legacy.includes(k));
+    cats = [...legacy, ...extra];
+  }
+  const labels = data.categoryLabels && typeof data.categoryLabels === 'object' && !Array.isArray(data.categoryLabels)
+    ? data.categoryLabels : undefined;
+  return { ...data, categories: [...new Set(cats)], categoryLabels: labels };
 }
 
 /** Category display name: categoryLabels from menu.json → built-in translation → the raw name. */

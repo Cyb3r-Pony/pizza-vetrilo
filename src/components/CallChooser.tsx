@@ -36,7 +36,8 @@ export function CallChooser({ open, onClose }: { open: boolean; onClose: () => v
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/60 p-0 sm:p-4"
+          // inset-0 = the area actually visible on screen (also on phones with an expanded address bar)
+          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/60 pt-4 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -46,25 +47,32 @@ export function CallChooser({ open, onClose }: { open: boolean; onClose: () => v
           aria-label={t('call.title')}
         >
           <motion.div
-            className="relative w-full sm:max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl p-6 sm:p-8"
+            // Height is limited by the overlay (100%), not by "vh" — on mobile browsers 90vh can be taller
+            // than the visible area, which pushed the close button under the address bar.
+            className="relative w-full sm:max-w-3xl max-h-full overflow-y-auto overscroll-contain bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl px-6 pb-6 sm:px-8 sm:pb-8"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 40, opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full text-brand-muted hover:bg-brand-bg hover:text-brand-ink transition-colors"
-              aria-label={t('call.close')}
-            >
-              <X size={22} />
-            </button>
+            {/* Sticky title bar — the close button stays visible even while scrolling the list */}
+            <div className="sticky top-0 z-10 -mx-6 sm:-mx-8 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 bg-white flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-2xl sm:text-3xl mb-1">{t('call.title')}</h2>
+                <p className="text-brand-muted text-sm">{t('call.subtitle')}</p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="shrink-0 p-2 -mt-1 rounded-full bg-brand-bg text-brand-ink hover:bg-brand-accent hover:text-white transition-colors"
+                aria-label={t('call.close')}
+              >
+                <X size={22} />
+              </button>
+            </div>
 
-            <h2 className="text-2xl sm:text-3xl mb-1 pr-10">{t('call.title')}</h2>
-            <p className="text-brand-muted text-sm mb-6">{t('call.subtitle')}</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-[env(safe-area-inset-bottom)]">
               {locations.map((loc) => {
                 const orders = splitPhones(loc.ordersPhone);
                 const reservations = splitPhones(loc.reservationPhone);

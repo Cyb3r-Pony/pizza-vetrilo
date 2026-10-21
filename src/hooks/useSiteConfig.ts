@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NO_CACHE, resolveAsset } from '../lib/utils';
+import { fetchJson, resolveAsset } from '../lib/utils';
 
 export interface SiteConfig {
   /** Set to false to hide the Lunch Menu button site-wide without a rebuild. */
@@ -68,9 +68,8 @@ let _promise: Promise<SiteConfig> | null = null;
 
 function load(): Promise<SiteConfig> {
   if (!_promise) {
-    _promise = fetch(`${import.meta.env.BASE_URL}site-config.json`, NO_CACHE)
-      .then(r => (r.ok ? r.json() : DEFAULT_CONFIG))
-      .then((c: SiteConfig) => ({ ...DEFAULT_CONFIG, ...c, loaded: true }))
+    _promise = fetchJson<SiteConfig>('site-config.json')
+      .then(c => ({ ...DEFAULT_CONFIG, ...(c && typeof c === 'object' ? c : {}), loaded: true }))
       .catch(err => {
         // Most common cause: a typo in site-config.json (missing comma, stray quote).
         console.error('site-config.json could not be read — check the JSON syntax.', err);

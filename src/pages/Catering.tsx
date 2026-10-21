@@ -4,7 +4,7 @@ import { CheckCircle2, Send, CheckCircle, ChevronDown } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
-import { EMAIL_REGEX, PHONE_REGEX, resolveAsset, NO_CACHE } from '../lib/utils';
+import { EMAIL_REGEX, PHONE_REGEX, resolveAsset, fetchJson } from '../lib/utils';
 
 const FALLBACK_HERO = 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000';
 
@@ -43,11 +43,10 @@ export function Catering() {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', eventType: '', guestCount: '', notes: '' });
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}gallery.json`, NO_CACHE)
-      .then(r => r.ok ? r.json() : null)
+    fetchJson<{ items?: GalleryItem[] }>('gallery.json')
       .then(data => {
-        if (data?.items) {
-          setEventPhotos(data.items.filter((i: GalleryItem) => i && i.url && i.category === 'Events'));
+        if (Array.isArray(data?.items)) {
+          setEventPhotos(data.items.filter((i: GalleryItem) => i && typeof i.url === 'string' && i.url.trim() && i.category === 'Events'));
         }
       })
       .catch(() => {});
@@ -183,6 +182,8 @@ export function Catering() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
+                    // Missing/misnamed file → hide the whole card instead of showing a broken image
+                    onError={(e) => { const card = e.currentTarget.parentElement; if (card) card.style.display = 'none'; }}
                   />
                   {photo.caption?.[language] && (
                     <div className="absolute inset-0 flex items-end">

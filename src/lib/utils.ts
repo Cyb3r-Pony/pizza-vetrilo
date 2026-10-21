@@ -13,7 +13,11 @@ export function resolveAsset(src?: string | null): string {
   if (!src) return '';
   const s = src.trim();
   if (/^https?:\/\//i.test(s)) return s;
-  return `${window.location.origin}${import.meta.env.BASE_URL}${s.replace(/^\/+/, '')}`;
+  const rel = s.replace(/^\/+/, '');
+  // Encode spaces / Cyrillic in file names (e.g. "images/menu/нова снимка.jpg"); keep already-encoded paths as they are.
+  let encoded = rel;
+  try { encoded = encodeURI(decodeURI(rel)); } catch { encoded = encodeURI(rel); }
+  return `${window.location.origin}${import.meta.env.BASE_URL}${encoded}`;
 }
 
 /**
@@ -28,6 +32,43 @@ export function toPrice(value: unknown): number | null {
 
 /** Fetch options for admin-editable JSON: always revalidate so edits show up immediately. */
 export const NO_CACHE: RequestInit = { cache: 'no-cache' };
+
+/**
+ * Parses JSON written by hand. If strict parsing fails, it repairs the most common
+ * editing mistakes and tries again, so one typo doesn't take the whole menu offline:
+ *   - invisible BOM character at the start (saved by Notepad)
+ *   - a missing comma between two lines / two { } blocks
+ *   - an extra comma before } or ]
+ * A warning is logged so the mistake can still be found and fixed.
+ */
+export function parseJsonLenient<T = unknown>(text: string, fileName = 'JSON'): T {
+  const clean = text.replace(/^﻿/, '');
+  try {
+    return JSON.parse(clean) as T;
+  } catch (firstError) {
+    const repaired = clean
+      // extra comma before a closing bracket:  "a": 1, }
+      .replace(/,(\s*[}\]])/g, '$1')
+      // missing comma between a value and the next "key" / "value" on a new line
+      .replace(/("|\d|true|false|null|[}\]])(\s*\r?\n\s*)(")/g, '$1,$2$3')
+      // missing comma between two blocks:  } \n {   or  ] \n [
+      .replace(/([}\]])(\s*\r?\n\s*)([{[])/g, '$1,$2$3');
+    try {
+      const data = JSON.parse(repaired) as T;
+      console.warn(`${fileName}: syntax error was auto-corrected (missing/extra comma). Please fix the file.`, firstError);
+      return data;
+    } catch {
+      throw firstError;
+    }
+  }
+}
+
+/** Fetches an admin-editable JSON file (no-cache + lenient parsing). Rejects on HTTP errors or unrecoverable syntax. */
+export async function fetchJson<T = unknown>(path: string): Promise<T> {
+  const r = await fetch(`${import.meta.env.BASE_URL}${path}`, NO_CACHE);
+  if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
+  return parseJsonLenient<T>(await r.text(), path);
+}
 
 /** Shared validation patterns used across Contact and Catering forms. */
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

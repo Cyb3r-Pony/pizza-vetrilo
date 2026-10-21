@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import { GalleryItem } from '../data/appData';
-import { cn, resolveAsset, NO_CACHE } from '../lib/utils';
+import { cn, resolveAsset, fetchJson } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 
 interface GalleryData {
@@ -23,18 +23,16 @@ export function Gallery() {
   const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}gallery.json`, NO_CACHE)
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
+    fetchJson<GalleryData>('gallery.json')
       .then((data: GalleryData) => setGalleryData(data))
       .catch(() => setFetchError(true));
   }, []);
 
-  const navCategories = Array.isArray(galleryData?.categories) ? galleryData!.categories : [];
   // Skip broken entries (no "url") so one typo can't break the page.
-  const allItems = (Array.isArray(galleryData?.items) ? galleryData!.items : []).filter(i => i && i.url);
+  const allItems = (Array.isArray(galleryData?.items) ? galleryData!.items : []).filter(i => i && typeof i.url === 'string' && i.url.trim());
+  // Categories from gallery.json; if that list is missing, use the ones found on the photos ("Events" belong to Catering).
+  const listed = Array.isArray(galleryData?.categories) ? galleryData!.categories.filter(c => typeof c === 'string' && c.trim()) : [];
+  const navCategories = listed.length ? listed : [...new Set(allItems.map(i => i.category).filter(c => c && c !== 'Events'))];
   // New categories without a built-in translation show their name as written in gallery.json.
   const catLabel = (c: string) => { const k = `cat.${c}`; const v = t(k); return v === k ? c : v; };
   const caption = (item: GalleryItem) =>
@@ -120,6 +118,8 @@ export function Gallery() {
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       referrerPolicy="no-referrer"
+                      // Missing/misnamed file → hide the whole card instead of showing a broken image
+                      onError={(e) => { const card = e.currentTarget.parentElement; if (card) card.style.display = 'none'; }}
                     />
                     {/* Caption: always visible on mobile, hover-only on desktop */}
                     <div className="absolute inset-0 flex items-end">

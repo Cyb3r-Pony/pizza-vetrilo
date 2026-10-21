@@ -2,8 +2,8 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ChevronUp, Info, ExternalLink } from 'lucide-react';
-import { MenuItem, MenuData, displayTags, getCategoryItems, categoryLabel } from '../data/appData';
-import { cn, resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
+import { MenuItem, MenuData, displayTags, getCategoryItems, categoryLabel, normalizeMenuData } from '../data/appData';
+import { cn, resolveAsset, toPrice, fetchJson } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 
@@ -30,16 +30,15 @@ export function Menu() {
   const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}menu/menu.json`, NO_CACHE)
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((data: MenuData) => {
+    fetchJson('menu/menu.json')
+      .then(normalizeMenuData)
+      .then((data: MenuData | null) => {
+        if (!data) throw new Error('menu.json is empty or not an object');
         setMenuData(data);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('menu.json could not be read — check the JSON syntax (e.g. on jsonlint.com).', err);
         setFetchError(true);
         setLoading(false);
       });

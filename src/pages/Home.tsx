@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MenuItem, MenuData, isPopular, displayTags, getCategoryItems, categoryLabel } from '../data/appData';
-import { resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
+import { MenuItem, MenuData, isPopular, displayTags, getCategoryItems, categoryLabel, normalizeMenuData } from '../data/appData';
+import { resolveAsset, toPrice, fetchJson } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
@@ -28,14 +28,14 @@ export function Home() {
   const [menuData, setMenuData] = useState<MenuData | null>(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}menu/menu.json`, NO_CACHE)
-      .then(r => r.ok ? r.json() : null)
+    fetchJson('menu/menu.json')
+      .then(normalizeMenuData)
       .then((data: MenuData | null) => {
         if (!data) return;
         setMenuData(data);
         const all: MenuItem[] = [];
         // Walk every category listed in menu.json (including newly added ones)
-        for (const cat of data.categories ?? []) {
+        for (const cat of data.categories) {
           getCategoryItems(data, cat).forEach(item => { if (!item.hidden) all.push({ ...item, category: cat }); });
         }
         // Show every dish marked as a Chef's Favorite ("popular": true or the "popular" tag) — no hidden limit.

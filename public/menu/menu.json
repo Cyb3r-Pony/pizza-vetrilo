@@ -1910,23 +1910,6 @@
       "price": 7.19,
       "weight": "200г",
       "image": "images/menu/main-dishes/svinsko_file_natur.jpg"
-    },
-    {
-      "id": "bb1",
-      "name": {
-        "bg": "Мешана скара",
-        "en": "Mixed Grill"
-      },
-      "description": {
-        "bg": "Кюфте, кебапче, свинска пържола и пилешко шишче, поднесени с пържени картофи и лютеница.",
-        "en": "Meatball, kebab, pork steak and chicken skewer, served with fries and lyutenitsa."
-      },
-      "price": 11.25,
-      "weight": "600г",
-      "tags": [
-        "popular"
-      ],
-      "image": ""
     }
   ],
   "main-dishes": [
