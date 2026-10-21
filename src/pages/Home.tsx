@@ -7,6 +7,7 @@ import { resolveAsset, toPrice, NO_CACHE } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
+import { CallChooser } from '../components/CallChooser';
 
 const LOGO_PLACEHOLDER = `${typeof window !== 'undefined' ? window.location.origin : ''}${import.meta.env.BASE_URL}images/restaurant/general/Vetrilo-logo.png`;
 
@@ -22,7 +23,7 @@ export function Home() {
   const heroSubtitle = configLoaded ? (heroLang?.subtitle?.trim() || t('hero.subtitle')) : '\u00A0';
   const restaurantInfo = useRestaurantInfo();
   const locations = restaurantInfo?.locations ?? [];
-  const mainPhone = locations[0]?.phone ?? '';
+  const [callOpen, setCallOpen] = useState(false);
   const [featuredDishes, setFeaturedDishes] = useState<MenuItem[]>([]);
   const [menuData, setMenuData] = useState<MenuData | null>(null);
 
@@ -118,10 +119,11 @@ export function Home() {
 
       {/* Quick Actions Bar */}
       <div className="bg-white shadow-xl relative z-20 -mt-6 sm:-mt-12 mx-4 lg:mx-auto max-w-5xl rounded-2xl grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100 overflow-hidden">
-        <a href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`} className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
+        <button type="button" onClick={() => setCallOpen(true)} className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
           <Phone size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
           <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.call')}</span>
-        </a>
+        </button>
+        <CallChooser open={callOpen} onClose={() => setCallOpen(false)} />
         <Link to="/locations" className="p-4 sm:p-6 flex flex-col items-center gap-1.5 sm:gap-2 hover:bg-brand-bg transition-colors group">
           <Calendar size={20} className="text-brand-accent group-hover:scale-110 transition-transform" />
           <span className="text-[10px] sm:text-xs uppercase tracking-widest font-bold">{t('quick.reserve')}</span>

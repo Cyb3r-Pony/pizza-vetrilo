@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { splitPhones } from '../lib/utils';
+import { CallChooser } from '../components/CallChooser';
 
 export function Contact() {
   const { t, language } = useTranslation();
   const info = useRestaurantInfo();
   const locations = info?.locations ?? [];
   const social = info?.social;
+  const [callOpen, setCallOpen] = React.useState(false);
 
   return (
     <div className="pt-24 pb-24 min-h-screen">
@@ -34,7 +36,8 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-brand-muted mb-2">{t('nav.call')}</p>
-                <a href={`tel:${(locations[0]?.phone ?? '').replace(/[\s\/]/g, '')}`} className="text-base font-semibold hover:text-brand-accent transition-colors">{locations[0]?.phone ?? ''}</a>
+                <button type="button" onClick={() => setCallOpen(true)} className="text-base font-semibold text-brand-accent hover:underline transition-colors">{t('call.choose')}</button>
+                <CallChooser open={callOpen} onClose={() => setCallOpen(false)} />
               </div>
             </div>
 

@@ -6,6 +6,7 @@ import { cn } from '../lib/utils';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
+import { CallChooser } from './CallChooser';
 
 interface NavLink {
   name: string;
@@ -41,7 +42,7 @@ export function Header() {
   const { lunchMenuEnabled } = siteConfig;
   const restaurantInfo = useRestaurantInfo();
   const locations = restaurantInfo?.locations ?? [];
-  const mainPhone = locations[0]?.phone ?? '';
+  const [callOpen, setCallOpen] = useState(false);
   // Seasonal PDF buttons (site-config.json → "specialButtons") go right after "Lunch Menu".
   const specialLinks: NavLink[] = getSpecialButtons(siteConfig, language).map(b => ({
     name: `special:${b.url}:${b.label}`, path: b.url, label: b.label, isExternal: true, highlight: true,
@@ -195,15 +196,17 @@ export function Header() {
             </button>
           </div>
 
-          <a
-            href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`}
+          <button
+            type="button"
+            onClick={() => setCallOpen(true)}
+            aria-label={t('nav.call')}
             className={cn(
               "p-2 rounded-full transition-colors",
               isScrolled || currentPath !== '/' ? "bg-brand-bg text-brand-ink hover:bg-brand-accent hover:text-white" : "bg-white/10 text-white hover:bg-white/20"
             )}
           >
             <Phone size={20} />
-          </a>
+          </button>
           <Link
             to="/locations"
             className="bg-brand-accent text-white px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0"
@@ -273,12 +276,13 @@ export function Header() {
                 )
               ))}
               <div className="mt-4 flex flex-col gap-3">
-                <a
-                  href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`}
+                <button
+                  type="button"
+                  onClick={() => { setIsMobileMenuOpen(false); setCallOpen(true); }}
                   className="flex items-center justify-center gap-2 bg-brand-bg text-brand-ink py-3 rounded-xl font-semibold"
                 >
                   <Phone size={20} /> {t('nav.call')}
-                </a>
+                </button>
                 <Link
                   to="/locations"
                   className="flex items-center justify-center gap-2 bg-brand-accent text-white py-3 rounded-xl font-semibold"
@@ -290,6 +294,7 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+      <CallChooser open={callOpen} onClose={() => setCallOpen(false)} />
     </header>
   );
 }
