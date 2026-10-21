@@ -9,6 +9,9 @@
   --color-brand-ink: #1F1F1F;
   --color-brand-accent: #A13A2A;
   --color-brand-secondary: #C79A63;
+  /* Seasonal/special PDF buttons (New Year, Easter...) — deep pine green */
+  --color-brand-festive: #2F5D46;
+  --color-brand-festive-light: #9CCBAF;
   --color-brand-muted: #6B6B6B;
 }
 

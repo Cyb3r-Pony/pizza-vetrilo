@@ -143,7 +143,7 @@ export function Menu() {
       href={btn.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="whitespace-nowrap shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 bg-brand-accent text-white hover:bg-opacity-90"
+      className="whitespace-nowrap shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 bg-brand-festive text-white hover:bg-brand-festive/90 shadow-md shadow-brand-festive/20"
     >
       {btn.label} <ExternalLink size={11} />
     </a>
@@ -193,7 +193,6 @@ export function Menu() {
                 const lunchLabel = menuData?.categoryLabels?.[cat]?.[language as 'bg'|'en'] || t(`cat.${cat}`);
                 return (
                   <React.Fragment key={cat}>
-                return (
                   <a
                     key={cat}
                     ref={isActive ? (el: HTMLAnchorElement | null) => { activeBtnRef.current = el; } : undefined}

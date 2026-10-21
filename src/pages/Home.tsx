@@ -86,7 +86,7 @@ export function Home() {
                   href={btn.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto bg-brand-secondary text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all hover:-translate-y-1 shadow-lg"
+                  className="w-full sm:w-auto bg-brand-festive text-white border border-white/20 px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-bold uppercase tracking-widest hover:bg-brand-festive/90 transition-all hover:-translate-y-1 shadow-lg"
                 >
                   {btn.label}
                 </a>

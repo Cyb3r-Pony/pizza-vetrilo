@@ -107,7 +107,7 @@ export function Header() {
                   className={cn(
                     "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-accent whitespace-nowrap",
                     link.highlight
-                      ? "!text-brand-secondary hover:!text-brand-accent"
+                      ? (isScrolled || location.pathname !== '/' ? "!text-brand-festive hover:!text-brand-accent" : "!text-brand-festive-light hover:!text-white")
                       : isScrolled || location.pathname !== '/' ? "text-brand-ink/80" : "text-white/80"
                   )}
                 >
@@ -252,7 +252,7 @@ export function Header() {
                     rel="noopener noreferrer"
                     className={cn(
                       "py-3 text-lg font-medium border-b border-gray-50 last:border-0",
-                      link.highlight ? "text-brand-secondary font-semibold" : "text-brand-ink"
+                      link.highlight ? "text-brand-festive font-semibold" : "text-brand-ink"
                     )}
                   >
                     {linkText(link)}
