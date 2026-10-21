@@ -81,15 +81,20 @@ export function Menu() {
   const navScrollRef = useRef<HTMLDivElement>(null);
   const activeBtnRef = useRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
 
+  // Also re-run once the menu has loaded — on a direct link (e.g. ?category=Pizza)
+  // the buttons don't exist yet when activeCategory is first set.
+  // Scroll only the strip horizontally (not the whole page).
   useEffect(() => {
-    if (activeBtnRef.current && navScrollRef.current) {
-      activeBtnRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
-    }
-  }, [activeCategory]);
+    const id = requestAnimationFrame(() => {
+      const btn = activeBtnRef.current, strip = navScrollRef.current;
+      if (!btn || !strip) return;
+      const b = btn.getBoundingClientRect(), s = strip.getBoundingClientRect();
+      const target = strip.scrollLeft + (b.left - s.left) - (strip.clientWidth - b.width) / 2;
+      if (typeof strip.scrollTo === 'function') strip.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+      else strip.scrollLeft = Math.max(0, target);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [activeCategory, menuData]);
 
   // Scroll indicator: tracks position and visible ratio of the category strip
   const [navScrollState, setNavScrollState] = useState({ left: 0, clientW: 1, scrollW: 1 });

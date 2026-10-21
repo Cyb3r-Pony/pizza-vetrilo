@@ -34,6 +34,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const location = useLocation();
+  // Ignore a trailing slash (e.g. "/menu/") so active-link highlighting still works.
+  const currentPath = location.pathname.replace(/(.)\/+$/, '$1');
   const { language, setLanguage, t } = useTranslation();
   const siteConfig = useSiteConfig();
   const { lunchMenuEnabled } = siteConfig;
@@ -72,7 +74,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className={cn(
             "text-lg sm:text-2xl font-serif font-bold tracking-tight transition-colors group-hover:text-brand-accent",
-            isScrolled || location.pathname !== '/' ? "text-brand-accent" : "text-white"
+            isScrolled || currentPath !== '/' ? "text-brand-accent" : "text-white"
           )}>
             PIZZA VETRILO
           </span>
@@ -107,8 +109,8 @@ export function Header() {
                   className={cn(
                     "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-accent whitespace-nowrap",
                     link.highlight
-                      ? (isScrolled || location.pathname !== '/' ? "!text-brand-festive hover:!text-brand-accent" : "!text-brand-festive-light hover:!text-white")
-                      : isScrolled || location.pathname !== '/' ? "text-brand-ink/80" : "text-white/80"
+                      ? (isScrolled || currentPath !== '/' ? "!text-brand-festive hover:!text-brand-accent" : "!text-brand-festive-light hover:!text-white")
+                      : isScrolled || currentPath !== '/' ? "text-brand-ink/80" : "text-white/80"
                   )}
                 >
                   {linkText(link)}
@@ -120,13 +122,13 @@ export function Header() {
                 aria-expanded={link.hasDropdown ? hoveredLink === link.name : undefined}
                 className={cn(
                   "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-accent",
-                  isScrolled || location.pathname !== '/' ? "text-brand-ink/80" : "text-white/80",
-                  (location.pathname === link.path.split('?')[0] || (link.hasDropdown && location.pathname === '/locations')) && "!text-brand-accent"
+                  isScrolled || currentPath !== '/' ? "text-brand-ink/80" : "text-white/80",
+                  (currentPath === link.path.split('?')[0] || (link.hasDropdown && currentPath === '/locations')) && "!text-brand-accent"
                 )}
               >
                 {t(link.name)}
                 {link.hasDropdown && <ChevronDown size={14} className={cn("transition-transform", hoveredLink === link.name && "rotate-180")} aria-hidden="true" />}
-                {(location.pathname === link.path.split('?')[0] || (link.hasDropdown && location.pathname === '/locations')) && (
+                {(currentPath === link.path.split('?')[0] || (link.hasDropdown && currentPath === '/locations')) && (
                   <motion.div
                     layoutId="nav-underline"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent"
@@ -173,20 +175,20 @@ export function Header() {
               onClick={() => setLanguage('bg')}
               className={cn(
                 "text-xs font-bold uppercase tracking-widest transition-colors hover:text-brand-accent",
-                language === 'bg' ? "text-brand-accent" : (isScrolled || location.pathname !== '/' ? "text-brand-ink/60" : "text-white/60")
+                language === 'bg' ? "text-brand-accent" : (isScrolled || currentPath !== '/' ? "text-brand-ink/60" : "text-white/60")
               )}
             >
               BG
             </button>
             <span className={cn(
               "text-xs",
-              isScrolled || location.pathname !== '/' ? "text-brand-ink/20" : "text-white/20"
+              isScrolled || currentPath !== '/' ? "text-brand-ink/20" : "text-white/20"
             )}>|</span>
             <button
               onClick={() => setLanguage('en')}
               className={cn(
                 "text-xs font-bold uppercase tracking-widest transition-colors hover:text-brand-accent",
-                language === 'en' ? "text-brand-accent" : (isScrolled || location.pathname !== '/' ? "text-brand-ink/60" : "text-white/60")
+                language === 'en' ? "text-brand-accent" : (isScrolled || currentPath !== '/' ? "text-brand-ink/60" : "text-white/60")
               )}
             >
               EN
@@ -197,7 +199,7 @@ export function Header() {
             href={`tel:${mainPhone.replace(/[\s\/]/g, '')}`}
             className={cn(
               "p-2 rounded-full transition-colors",
-              isScrolled || location.pathname !== '/' ? "bg-brand-bg text-brand-ink hover:bg-brand-accent hover:text-white" : "bg-white/10 text-white hover:bg-white/20"
+              isScrolled || currentPath !== '/' ? "bg-brand-bg text-brand-ink hover:bg-brand-accent hover:text-white" : "bg-white/10 text-white hover:bg-white/20"
             )}
           >
             <Phone size={20} />
@@ -216,7 +218,7 @@ export function Header() {
             onClick={() => setLanguage(language === 'bg' ? 'en' : 'bg')}
             className={cn(
               "p-2 flex items-center gap-1 text-xs font-bold uppercase tracking-widest",
-              isScrolled || location.pathname !== '/' ? "text-brand-ink" : "text-white"
+              isScrolled || currentPath !== '/' ? "text-brand-ink" : "text-white"
             )}
           >
             <Globe size={18} /> {language.toUpperCase()}
@@ -224,7 +226,7 @@ export function Header() {
           <button
             className={cn(
               "p-2",
-              isScrolled || location.pathname !== '/' ? "text-brand-ink" : "text-white"
+              isScrolled || currentPath !== '/' ? "text-brand-ink" : "text-white"
             )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -263,7 +265,7 @@ export function Header() {
                   to={link.path}
                   className={cn(
                     "py-3 text-lg font-medium border-b border-gray-50 last:border-0",
-                    location.pathname === link.path ? "text-brand-accent" : "text-brand-ink"
+                    currentPath === link.path.split('?')[0] ? "text-brand-accent" : "text-brand-ink"
                   )}
                 >
                   {t(link.name)}

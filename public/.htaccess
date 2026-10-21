@@ -1,5 +1,17 @@
-Options -MultiViews
+Options -MultiViews -Indexes
 RewriteEngine On
+
+# ── Old website links still indexed by Google → permanent (301) redirects ──
+# Old menu: /Menu_Pizza_Vetrilo/menu.html (and anything in that folder) → new Menu page
+RewriteRule ^Menu_Pizza_Vetrilo(/.*)?$ /menu? [R=301,L,NC]
+# Any other old .html page that no longer exists → home page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(?!index\.html$).+\.html?$ /? [R=301,L,NC]
+
+# "/menu" is both a page of the site AND a real folder (menu.json, PDFs).
+# Without this rule Apache tries to open the folder and shows "403 Forbidden"
+# when someone opens or refreshes a Menu link (e.g. /menu?category=Pizza).
+RewriteRule ^menu/?$ index.html [QSA,L]
 
 # Serve existing files and directories as-is
 RewriteCond %{REQUEST_FILENAME} !-f
