@@ -399,7 +399,7 @@
       "price_small": 7.99,
       "price_large": 8.99,
       "weight": "",
-      "image": ""
+      "image": "images/menu/pizza/Pizza_mafiozo.jpg"
     },
     {
       "id": "pi22",
@@ -414,7 +414,7 @@
       "price_small": 7.49,
       "price_large": 8.49,
       "weight": "",
-      "image": ""
+      "image": "images/menu/pizza/Pizza_havai.jpeg"
     },
     {
       "id": "pi23",
@@ -444,7 +444,7 @@
       "price_small": 7.99,
       "price_large": 8.99,
       "weight": "",
-      "image": ""
+      "image": "images/menu/pizza/Roma.jpg"
     },
     {
       "id": "pi25",
@@ -844,7 +844,7 @@
       },
       "price": 2.89,
       "weight": "",
-      "image": ""
+      "image": "images/menu/salads/Medeni_apetitki.jpg"
     },
     {
       "id": "s24",
@@ -942,7 +942,7 @@
       },
       "price": 6.89,
       "weight": "",
-      "image": ""
+      "image": "images/menu/salads/Domat_pechena_chushki_sirene.jpeg"
     },
     {
       "id": "s31",
@@ -1168,7 +1168,7 @@
       },
       "price": 6.99,
       "weight": "",
-      "image": ""
+      "image": "images/menu/starters/Pileshki_surca.jpg"
     },
     {
       "id": "st10",
@@ -1210,7 +1210,7 @@
       },
       "price": 6.79,
       "weight": "",
-      "image": ""
+      "image": "images/menu/starters/Pileshki_hapki.jpg"
     },
     {
       "id": "st11",
@@ -1241,7 +1241,7 @@
       },
       "price": 2.59,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/soups/Tarator.jpg"
     },
     {
       "id": "so2",
@@ -1255,7 +1255,7 @@
       },
       "price": 2.99,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/soups/Krem_supa_ot_kartofi.jpg"
     },
     {
       "id": "so5",
@@ -1269,7 +1269,7 @@
       },
       "price": 3.39,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/soups/Pileshka_supa.jpg"
     },
     {
       "id": "so3",
@@ -1283,7 +1283,7 @@
       },
       "price": 3.99,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/soups/Shkembe.jpg"
     },
     {
       "id": "so4",
@@ -1297,7 +1297,7 @@
       },
       "price": 4.69,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/soups/Teleshko_vareno.jpg"
     },
     {
       "id": "so6",
@@ -1311,7 +1311,7 @@
       },
       "price": 3.99,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/soups/Krem_supa_gubi.jpg"
     }
   ],
   "pasta": [
@@ -1780,7 +1780,7 @@
       },
       "price": 3.39,
       "weight": "150г",
-      "image": ""
+      "image": "images/menu/bbq/Pileshko_shishche.jpeg"
     },
     {
       "id": "bb19",
@@ -1808,7 +1808,7 @@
       },
       "price": 8.39,
       "weight": "300г",
-      "image": ""
+      "image": "images/menu/bbq/Pileshko_vreteno.jpeg"
     },
     {
       "id": "bb20",
@@ -1981,7 +1981,7 @@
       },
       "price": 9.19,
       "weight": "",
-      "image": ""
+      "image": "images/menu/main-dishes/Teleshki_djolan.jpeg"
     },
     {
       "id": "md4",
@@ -2037,7 +2037,7 @@
       },
       "price": 6.69,
       "weight": "",
-      "image": ""
+      "image": "images/menu/main-dishes/Pile_sus_zelenchuci.jpg"
     },
     {
       "id": "md7",
@@ -2100,7 +2100,7 @@
       "tags": [
         "vegetarian"
       ],
-      "image": ""
+      "image": "images/menu/main-dishes/Pikanten_bob_na_pesht.jpg"
     },
     {
       "id": "ov5",
@@ -2207,7 +2207,7 @@
       "tags": [
         "vegetarian"
       ],
-      "image": ""
+      "image": "images/menu/main-dishes/Zelenchukov_sach.jpg"
     },
     {
       "id": "ov3",
@@ -2369,7 +2369,7 @@
       },
       "price": 8.99,
       "weight": "450г",
-      "image": ""
+      "image": "images/menu/burgeri/Burger_s_chips_ot_bekon.jpg"
     },
     {
       "id": "bu2",
@@ -2455,7 +2455,7 @@
       },
       "price": 2.39,
       "weight": "",
-      "image": ""
+      "image": "images/menu/bread/Chesnovo_hlebche.jpeg"
     },
     {
       "id": "si6",
@@ -2483,7 +2483,7 @@
       },
       "price": 2.99,
       "weight": "",
-      "image": ""
+      "image": "images/menu/bread/Chesnovo_hlebche_sirene_i_kashkaval.jpg"
     },
     {
       "id": "si5",
@@ -2497,7 +2497,7 @@
       },
       "price": 2.89,
       "weight": "",
-      "image": ""
+      "image": "images/menu/bread/Hlebche_sus_susam.jpeg"
     }
   ],
   "garnishes": [
@@ -2516,7 +2516,7 @@
       "tags": [
         "vegetarian"
       ],
-      "image": ""
+      "image": "images/menu/garnituri/Zadusheni_kartofi.jpg"
     },
     {
       "id": "ga2",
@@ -2584,7 +2584,7 @@
       "tags": [
         "vegetarian"
       ],
-      "image": ""
+      "image": "images/menu/garnituri/PK_chesnovi.jpg"
     },
     {
       "id": "ga6",

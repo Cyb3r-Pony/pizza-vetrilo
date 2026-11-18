@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import { GalleryItem } from '../data/appData';
 import { cn, resolveAsset, fetchJson } from '../lib/utils';
+import { makeImageFallback } from '../lib/images';
 import { useTranslation } from '../contexts/LanguageContext';
 
 interface GalleryData {
@@ -110,7 +111,7 @@ export function Gallery() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: Math.min(i * 0.04, 0.25) }}
                     className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-shadow"
-                    onClick={() => setSelectedImage(src)}
+                    onClick={(e) => setSelectedImage(e.currentTarget.querySelector('img')?.src || src)} // the URL that actually loaded
                   >
                     <img
                       src={src}
@@ -119,7 +120,7 @@ export function Gallery() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       referrerPolicy="no-referrer"
                       // Missing/misnamed file → hide the whole card instead of showing a broken image
-                      onError={(e) => { const card = e.currentTarget.parentElement; if (card) card.style.display = 'none'; }}
+                      onError={makeImageFallback(item.url, img => { const card = img.parentElement; if (card) card.style.display = 'none'; })}
                     />
                     {/* Caption: always visible on mobile, hover-only on desktop */}
                     <div className="absolute inset-0 flex items-end">

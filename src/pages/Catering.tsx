@@ -5,6 +5,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
 import { EMAIL_REGEX, PHONE_REGEX, resolveAsset, fetchJson } from '../lib/utils';
+import { makeImageFallback } from '../lib/images';
 
 const FALLBACK_HERO = 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=2000';
 
@@ -119,7 +120,7 @@ export function Catering() {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover object-[center_65%]"
             referrerPolicy="no-referrer"
-            onError={(e) => { if (e.currentTarget.src !== FALLBACK_HERO) e.currentTarget.src = FALLBACK_HERO; }}
+            onError={cateringHeroImage ? makeImageFallback(cateringHeroImage, img => { img.src = FALLBACK_HERO; }) : undefined}
           />
         )}
         <div className="absolute inset-0 bg-black/60" />
@@ -183,7 +184,7 @@ export function Catering() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                     // Missing/misnamed file → hide the whole card instead of showing a broken image
-                    onError={(e) => { const card = e.currentTarget.parentElement; if (card) card.style.display = 'none'; }}
+                    onError={makeImageFallback(photo.url, img => { const card = img.parentElement; if (card) card.style.display = 'none'; })}
                   />
                   {photo.caption?.[language] && (
                     <div className="absolute inset-0 flex items-end">

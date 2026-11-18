@@ -4,6 +4,7 @@ import { ArrowRight, Phone, Calendar, ShoppingBag, UtensilsCrossed, Truck } from
 import { motion } from 'motion/react';
 import { MenuItem, MenuData, isPopular, displayTags, getCategoryItems, categoryLabel, normalizeMenuData } from '../data/appData';
 import { resolveAsset, toPrice, fetchJson } from '../lib/utils';
+import { makeImageFallback } from '../lib/images';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 import { useRestaurantInfo } from '../hooks/useRestaurantInfo';
@@ -208,7 +209,7 @@ export function Home() {
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
-                    onError={(e) => { const t = e.currentTarget; if (!t.src.includes('Vetrilo-logo')) t.src = LOGO_PLACEHOLDER; }}
+                    onError={dish.image ? makeImageFallback(dish.image, img => { img.src = LOGO_PLACEHOLDER; }, dish.name.bg) : undefined}
                   />
                   <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                     {displayTags(dish).map(tag => (

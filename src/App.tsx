@@ -11,6 +11,7 @@ import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
 import { NotFound } from './pages/NotFound';
+import { ImageCheck } from './pages/ImageCheck';
 
 /**
  * Old-site URLs (still indexed by Google). The server (.htaccess) already sends a 301 redirect;
@@ -36,6 +37,8 @@ export default function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="privacy" element={<PrivacyPolicy />} />
           <Route path="terms" element={<TermsOfService />} />
+          {/* Hidden admin tool — checks every photo path in the JSON files */}
+          <Route path="proverka-snimki" element={<ImageCheck />} />
           <Route path="Menu_Pizza_Vetrilo/*" element={<Navigate to="/menu" replace />} />
           <Route path="*" element={<CatchAll />} />
         </Route>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ChevronUp, Info, ExternalLink } from 'lucide-react';
 import { MenuItem, MenuData, displayTags, getCategoryItems, categoryLabel, normalizeMenuData } from '../data/appData';
 import { cn, resolveAsset, toPrice, fetchJson } from '../lib/utils';
+import { makeImageFallback } from '../lib/images';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSiteConfig, getSpecialButtons } from '../hooks/useSiteConfig';
 
@@ -323,12 +324,8 @@ function DishCard({ item, isExpanded, onToggle, language, t }: {
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           referrerPolicy="no-referrer"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (!target.src.includes('Vetrilo-logo')) {
-              target.src = LOGO_PLACEHOLDER;
-            }
-          }}
+          // Tries common name variants (.jpg/.jpeg, capital letter, stray space) before showing the logo
+          onError={item.image ? makeImageFallback(item.image, img => { img.src = LOGO_PLACEHOLDER; }, item.name.bg) : undefined}
         />
         <div className="absolute top-3 right-3 flex flex-col gap-1.5">
           {displayTags(item).map(tag => (
